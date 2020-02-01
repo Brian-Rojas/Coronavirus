@@ -34,7 +34,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   void _data(ctx) {
-    Navigator.pushNamed(ctx, '/data');
+    Navigator.pushReplacementNamed(ctx, "/data");
+    // Navigator.pushNamed(ctx, '/data');
   }
 
   @override

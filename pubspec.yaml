@@ -37,7 +37,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/dark.json
+    - assets/map_styles/
     - assets/images/
 
   # The following line ensures that the Material Icons font is

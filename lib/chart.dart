@@ -1,3 +1,5 @@
+import 'package:coronavirus_app/widgets/table_item.dart';
+import 'package:coronavirus_app/widgets/table_title.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/status_card.dart';
@@ -22,6 +24,8 @@ class _ChartState extends State<Chart> {
       child: Column(
         children: <Widget>[
           StatusCard(),
+          TableTitle(),
+          TableItem(),
         ],
       ),
       color: color,

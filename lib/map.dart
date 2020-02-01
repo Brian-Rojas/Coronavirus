@@ -10,14 +10,44 @@ class Map extends StatefulWidget {
 
 class _MapState extends State<Map> {
   GoogleMapController mapController;
+  String _light;
+  String _dark;
+  String _black;
+  String _retro;
+  String _blue;
+  String _normal;
 
   @override
   void initState() {
     super.initState();
 
-    rootBundle.loadString('assets/dark.json').then((string) {
-      _mapStyle = string;
+    rootBundle.loadString('assets/map_styles/dark.json').then((string) {
+      _dark = string;
     });
+
+    rootBundle.loadString('assets/map_styles/light.json').then((string) {
+      _light = string;
+    });
+
+    rootBundle.loadString('assets/map_styles/normal.json').then((string) {
+      _normal = string;
+    });
+
+    rootBundle.loadString('assets/map_styles/black.json').then((string) {
+      _black = string;
+    });
+
+    rootBundle.loadString('assets/map_styles/retro.json').then((string) {
+      _retro = string;
+    });
+
+    rootBundle.loadString('assets/map_styles/blue.json').then((string) {
+      _blue = string;
+    });
+  }
+
+  void setMapStyle() {
+    mapController.setMapStyle(_light);
   }
 
   static final CameraPosition _nearChina = CameraPosition(
@@ -25,12 +55,10 @@ class _MapState extends State<Map> {
     zoom: 2,
   );
 
-  String _mapStyle;
-
   @override
   Widget build(BuildContext context) {
     if (mapController != null) {
-      mapController.setMapStyle(_mapStyle);
+      setMapStyle();
     }
 
     return Stack(
@@ -40,7 +68,7 @@ class _MapState extends State<Map> {
           initialCameraPosition: _nearChina,
           onMapCreated: (GoogleMapController controller) {
             mapController = controller;
-            mapController.setMapStyle(_mapStyle);
+            setMapStyle();
           },
           compassEnabled: false,
           myLocationEnabled: true,

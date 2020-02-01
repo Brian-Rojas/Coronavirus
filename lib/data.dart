@@ -1,3 +1,5 @@
+import 'package:coronavirus_app/news.dart';
+
 import 'chart.dart';
 import 'map.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,7 @@ class _DataState extends State<Data> {
   final List<Widget> _children = [
     Chart(Colors.red),
     Map(),
-    PlaceholderWidget(Colors.green),
+    News(),
     PlaceholderWidget(Colors.yellow)
   ];
 

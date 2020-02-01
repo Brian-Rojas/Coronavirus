@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './widgets/status_card.dart';
+import './widgets/status_card_tri.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   final Color color;
@@ -14,7 +14,7 @@ class PlaceholderWidget extends StatelessWidget {
       // child: Text("hi khush"),
       child: Column(
         children: <Widget>[
-          StatusCard(),
+          StatusCardTri(),
         ],
       ),
       color: color,
