@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class StatusCard extends StatelessWidget {
+  final String cases;
+  final String deaths;
+  StatusCard({this.cases = "99999", this.deaths = "333"});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +25,7 @@ class StatusCard extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      '9983',
+                      cases,
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).accentColor),
                     ),
@@ -44,7 +48,7 @@ class StatusCard extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      '213',
+                      deaths,
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).primaryColor),
                     ),

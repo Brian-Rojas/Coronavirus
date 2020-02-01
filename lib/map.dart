@@ -45,7 +45,11 @@ class _MapState extends State<Map> {
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
             }),
-        Positioned(child: StatusCard()),
+        Positioned(
+            child: StatusCard(
+          cases: '1111',
+          deaths: '331',
+        )),
       ],
     );
   }
