@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:coronavirus_app/widgets/status_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -11,7 +9,7 @@ class Map extends StatefulWidget {
 }
 
 class _MapState extends State<Map> {
-  Completer<GoogleMapController> _controller = Completer();
+  GoogleMapController mapController;
 
   @override
   void initState() {
@@ -22,28 +20,27 @@ class _MapState extends State<Map> {
     });
   }
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+  static final CameraPosition _nearChina = CameraPosition(
+    target: LatLng(21.4669223, 92.1321944),
+    zoom: 2,
   );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 12);
 
   String _mapStyle;
 
   @override
   Widget build(BuildContext context) {
+    if (mapController != null) {
+      mapController.setMapStyle(_mapStyle);
+    }
+
     return Stack(
       children: <Widget>[
         GoogleMap(
             mapType: MapType.normal,
-            initialCameraPosition: _kGooglePlex,
+            initialCameraPosition: _nearChina,
             onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
+              mapController = controller;
+              mapController.setMapStyle(_mapStyle);
             }),
         Positioned(
             child: StatusCard(
@@ -52,10 +49,5 @@ class _MapState extends State<Map> {
         )),
       ],
     );
-  }
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
