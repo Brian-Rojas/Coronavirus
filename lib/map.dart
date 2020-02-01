@@ -36,12 +36,19 @@ class _MapState extends State<Map> {
     return Stack(
       children: <Widget>[
         GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: _nearChina,
-            onMapCreated: (GoogleMapController controller) {
-              mapController = controller;
-              mapController.setMapStyle(_mapStyle);
-            }),
+          mapType: MapType.normal,
+          initialCameraPosition: _nearChina,
+          onMapCreated: (GoogleMapController controller) {
+            mapController = controller;
+            mapController.setMapStyle(_mapStyle);
+          },
+          compassEnabled: false,
+          myLocationEnabled: true,
+          trafficEnabled: false,
+          mapToolbarEnabled: false,
+          myLocationButtonEnabled: true,
+          tiltGesturesEnabled: false,
+        ),
         Positioned(
             child: StatusCard(
           cases: '1111',
