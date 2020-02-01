@@ -58,7 +58,7 @@ class MyHomePage extends StatelessWidget {
             height: 50,
             margin: EdgeInsets.only(bottom: 50),
             child: Text(
-              'Coronovirus',
+              'Coronavirus',
               style: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: 50,

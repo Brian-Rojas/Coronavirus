@@ -1,3 +1,5 @@
+import 'chart.dart';
+import 'map.dart';
 import 'package:flutter/material.dart';
 
 import 'PlaceholderWidget.dart';
@@ -10,9 +12,10 @@ class Data extends StatefulWidget {
 class _DataState extends State<Data> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.red),
-    PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green)
+    Chart(Colors.red),
+    Map(),
+    PlaceholderWidget(Colors.green),
+    PlaceholderWidget(Colors.yellow)
   ];
 
   void onTabTapped(int index) {
@@ -29,6 +32,7 @@ class _DataState extends State<Data> {
       // ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: [
@@ -43,6 +47,10 @@ class _DataState extends State<Data> {
           BottomNavigationBarItem(
             icon: new Icon(Icons.rss_feed),
             title: new Text('News'),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.announcement),
+            title: new Text('About'),
           ),
         ],
       ),

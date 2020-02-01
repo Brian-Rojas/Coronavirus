@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 
-import './widgets/status_card.dart';
+import 'widgets/status_card.dart';
 
-class PlaceholderWidget extends StatelessWidget {
+class Chart extends StatefulWidget {
+  final Color color;
+  Chart(this.color);
+
+  @override
+  _ChartState createState() => _ChartState(color);
+}
+
+class _ChartState extends State<Chart> {
   final Color color;
 
-  PlaceholderWidget(this.color);
+  _ChartState(this.color);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
-      // child: Text("hi khush"),
       child: Column(
         children: <Widget>[
           StatusCard(),
