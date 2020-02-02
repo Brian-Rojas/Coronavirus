@@ -25,10 +25,40 @@ class _ChartState extends State<Chart> {
         children: <Widget>[
           StatusCard(),
           TableTitle(),
-          TableItem(),
+          Container(
+            color: Colors.transparent,
+            alignment: Alignment.topCenter,
+            height: MediaQuery.of(context).size.height - 283,
+            width: double.infinity,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                  TableItem(),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
-      color: color,
+      color: Colors.white,
     );
   }
 }

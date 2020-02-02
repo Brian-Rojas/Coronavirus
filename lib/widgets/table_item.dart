@@ -3,31 +3,50 @@ import 'package:flutter/material.dart';
 class TableItem extends StatelessWidget {
   final Color lblBGColor = Colors.white;
   final Color lblColor = Colors.grey;
+  final bool shadowEnabled;
+  final String country;
+  final String cases;
+  final String deaths;
+
+  TableItem(
+      {this.shadowEnabled = true,
+      this.country = "China",
+      this.cases = "12,789",
+      this.deaths = "233"});
+
+  BoxShadow getShadow() {
+    if (this.shadowEnabled) {
+      return new BoxShadow(
+        color: Colors.black12,
+        blurRadius: 10.0,
+        offset: new Offset(0.0, 10.0),
+      );
+    }
+    return new BoxShadow();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
+      color: Colors.white,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(top: 0),
-      padding: EdgeInsets.only(left: 15, right: 15),
+      // padding: EdgeInsets.only(left: 15, right: 15),
       height: 50,
       child: Center(
         child: Container(
           decoration: new BoxDecoration(
             color: Colors.white,
-            shape: BoxShape.rectangle,
-            borderRadius: new BorderRadius.circular(12),
+            // shape: BoxShape.rectangle,
+            // border: Border.all(
+            //     width: 0, color: Colors.transparent, style: BorderStyle.none),
+            // borderRadius: new BorderRadius.circular(12),
             boxShadow: <BoxShadow>[
-              new BoxShadow(
-                color: Colors.black12,
-                blurRadius: 10.0,
-                offset: new Offset(0.0, 10.0),
-              ),
+              getShadow(),
             ],
           ),
           child: Container(
-            height: 40,
+            height: 48,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +65,7 @@ class TableItem extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 0),
                         child: Text(
-                          'China',
+                          country,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.normal,
@@ -63,7 +82,7 @@ class TableItem extends StatelessWidget {
                   color: lblBGColor,
                   child: Center(
                     child: Text(
-                      '9788',
+                      cases,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,
@@ -78,7 +97,7 @@ class TableItem extends StatelessWidget {
                   color: lblBGColor,
                   child: Center(
                     child: Text(
-                      '9788',
+                      deaths,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,

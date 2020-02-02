@@ -1,4 +1,4 @@
-import 'package:coronavirus_app/widgets/status_card.dart';
+import 'package:coronavirus_app/widgets/status_card_tri.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -78,7 +78,7 @@ class _MapState extends State<Map> {
           tiltGesturesEnabled: false,
         ),
         Positioned(
-            child: StatusCard(
+            child: StatusCardTri(
           cases: '1111',
           deaths: '331',
         )),
