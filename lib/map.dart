@@ -2,6 +2,7 @@ import 'package:coronavirus_app/widgets/status_card_tri.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 class Map extends StatefulWidget {
   @override
@@ -17,9 +18,22 @@ class _MapState extends State<Map> {
   String _blue;
   String _normal;
 
+  getLocationPermission() async {
+    var location = new Location();
+    try {
+      location.requestPermission(); //to lunch location permission popup
+    } catch (e) {
+      if (e.code == 'PERMISSION_DENIED') {
+        print('Permission denied');
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+
+    getLocationPermission();
 
     rootBundle.loadString('assets/map_styles/dark.json').then((string) {
       _dark = string;
