@@ -17,6 +17,7 @@ class _MapState extends State<Map> {
   String _retro;
   String _blue;
   String _normal;
+  String _new;
 
   getLocationPermission() async {
     var location = new Location();
@@ -33,7 +34,7 @@ class _MapState extends State<Map> {
   void initState() {
     super.initState();
 
-    getLocationPermission();
+    // getLocationPermission();
 
     rootBundle.loadString('assets/map_styles/dark.json').then((string) {
       _dark = string;
@@ -58,10 +59,14 @@ class _MapState extends State<Map> {
     rootBundle.loadString('assets/map_styles/blue.json').then((string) {
       _blue = string;
     });
+
+    rootBundle.loadString('assets/map_styles/new.json').then((string) {
+      _new = string;
+    });
   }
 
   void setMapStyle() {
-    mapController.setMapStyle(_light);
+    mapController.setMapStyle(_new);
   }
 
   static final CameraPosition _nearChina = CameraPosition(
