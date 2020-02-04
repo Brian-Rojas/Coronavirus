@@ -90,7 +90,8 @@ class NewsArticle extends StatelessWidget {
                     child: Text(
                       'When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.',
                       textWidthBasis: TextWidthBasis.longestLine,
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(
+                          fontSize: 15, color: Theme.of(context).accentColor),
                     ),
                   ),
                 ),
@@ -98,37 +99,40 @@ class NewsArticle extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 20),
                   child: Divider(),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    print("Hi brian");
-                  },
-                  child: Container(
-                    // color: Colors.yellow,
-                    height: 48,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(right: 5),
-                          child: Text(
-                            "Read More",
-                            style: TextStyle(
-                              // color: Colors.grey,
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      print("Clicked article 1");
+                    },
+                    child: Container(
+                      height: 48,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(right: 5),
+                            child: Text(
+                              "Read More",
+                              style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 5, top: 3),
-                          child: Icon(
-                            Icons.keyboard_arrow_down,
-                            size: 20,
-                            // color: Colors.grey,
+                          Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(right: 15),
+                            child: Icon(
+                              Icons.keyboard_arrow_down,
+                              size: 20,
+                              color: Theme.of(context).accentColor,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
