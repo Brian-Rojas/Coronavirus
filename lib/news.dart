@@ -29,7 +29,10 @@ class News extends StatelessWidget {
             NewsArticle(),
             NewsArticle(),
             NewsArticle(),
-            NewsArticle(),
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              child: NewsArticle(),
+            ),
           ],
         ),
       ),
