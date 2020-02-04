@@ -20,13 +20,13 @@ class NewsArticle extends StatelessWidget {
         width: MediaQuery.of(context).size.width - 30,
         margin: EdgeInsets.only(top: 20),
         padding: EdgeInsets.only(left: 15, right: 15),
-        height: 200,
+        height: 242,
         child: Center(
           child: Container(
             decoration: new BoxDecoration(
               color: Colors.white,
               shape: BoxShape.rectangle,
-              borderRadius: new BorderRadius.circular(8.0),
+              borderRadius: new BorderRadius.circular(12.0),
               boxShadow: <BoxShadow>[
                 new BoxShadow(
                   color: Colors.black12,
@@ -41,8 +41,20 @@ class NewsArticle extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.network(
+                            'https://www.bing.com/th?id=ON.9340BCB612C8B89DAD29E549ADC48051&pid=News',
+                            height: 50,
+                            // width: 100.0,
+                          ),
+                        ),
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,11 +79,6 @@ class NewsArticle extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Image.network(
-                        'https://www.bing.com/th?id=ON.9340BCB612C8B89DAD29E549ADC48051&pid=News',
-                        fit: BoxFit.cover,
-                        height: 70,
-                      ),
                     ],
                   ),
                 ),
@@ -83,6 +90,45 @@ class NewsArticle extends StatelessWidget {
                     child: Text(
                       'When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.',
                       textWidthBasis: TextWidthBasis.longestLine,
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Divider(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    print("Hi brian");
+                  },
+                  child: Container(
+                    // color: Colors.yellow,
+                    height: 48,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 5),
+                          child: Text(
+                            "Read More",
+                            style: TextStyle(
+                              // color: Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: 5, top: 3),
+                          child: Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 20,
+                            // color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
