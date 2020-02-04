@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-// import './map.dart';
 import './data.dart';
 
 import './widgets/btn.dart';
