@@ -7,14 +7,14 @@ class TableItem extends StatelessWidget {
   final Color lblColor = Colors.grey;
   final bool shadowEnabled;
   final String country;
-  final String cases;
-  final String deaths;
+  final int cases;
+  final int deaths;
 
   TableItem(
       {this.shadowEnabled = true,
-      this.country = "China",
-      this.cases = "12,789",
-      this.deaths = "233"});
+      this.country = "",
+      this.cases = 0,
+      this.deaths = 0});
 
   BoxShadow getShadow() {
     if (this.shadowEnabled) {
@@ -87,7 +87,7 @@ class TableItem extends StatelessWidget {
                   color: lblBGColor,
                   child: Center(
                     child: Text(
-                      cases,
+                      cases.toString(),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,
@@ -102,7 +102,7 @@ class TableItem extends StatelessWidget {
                   color: lblBGColor,
                   child: Center(
                     child: Text(
-                      deaths,
+                      deaths.toString(),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,
