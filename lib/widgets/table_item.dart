@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'marquee.dart';
+
 class TableItem extends StatelessWidget {
   final Color lblBGColor = Colors.white;
   final Color lblColor = Colors.grey;
   final bool shadowEnabled;
   final String country;
-  final String cases;
-  final String deaths;
+  final int cases;
+  final int deaths;
 
   TableItem(
       {this.shadowEnabled = true,
       this.country = "China",
-      this.cases = "12,789",
-      this.deaths = "233"});
+      this.cases = 0,
+      this.deaths = 0});
 
   BoxShadow getShadow() {
     if (this.shadowEnabled) {
@@ -28,7 +30,7 @@ class TableItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      // color: Colors.red,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(top: 0),
       // padding: EdgeInsets.only(left: 15, right: 15),
@@ -52,7 +54,7 @@ class TableItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: MediaQuery.of(context).size.width / 3 - 30,
+                  width: MediaQuery.of(context).size.width / 2.5,
                   color: lblBGColor,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,14 +67,17 @@ class TableItem extends StatelessWidget {
                           height: 20.0,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 0),
-                        child: Text(
-                          country,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black,
+                      SizedBox(
+                        width: 128,
+                        child: MarqueeWidget(
+                          direction: Axis.horizontal,
+                          child: Text(
+                            country,
+                            style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ),
@@ -85,7 +90,7 @@ class TableItem extends StatelessWidget {
                   color: lblBGColor,
                   child: Center(
                     child: Text(
-                      cases,
+                      cases.toString(),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,
@@ -100,7 +105,7 @@ class TableItem extends StatelessWidget {
                   color: lblBGColor,
                   child: Center(
                     child: Text(
-                      deaths,
+                      deaths.toString(),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,

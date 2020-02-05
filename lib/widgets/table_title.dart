@@ -8,6 +8,8 @@ class TableTitle extends StatelessWidget {
 
     return Container(
       color: Colors.transparent,
+      // color: Colors.blue,
+
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(top: 20),
       // padding: EdgeInsets.only(left: 15, right: 15),
@@ -34,7 +36,7 @@ class TableTitle extends StatelessWidget {
               children: <Widget>[
                 Container(
                   color: lblBGColor,
-                  width: MediaQuery.of(context).size.width / 3 - 30,
+                  width: MediaQuery.of(context).size.width / 2.5,
                   child: Center(
                     child: Text(
                       'COUNTRY',

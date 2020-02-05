@@ -5,7 +5,7 @@ class StatusCardTri extends StatelessWidget {
   final String deaths;
   final String regions;
   StatusCardTri(
-      {this.cases = "10,234", this.deaths = "333", this.regions = "13"});
+      {this.cases = "?????", this.deaths = "????", this.regions = "???"});
 
   @override
   Widget build(BuildContext context) {
