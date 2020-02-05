@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:expandable/expandable.dart';
 
 class About extends StatelessWidget {
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold (
       backgroundColor: Colors.white,
@@ -20,10 +21,15 @@ class About extends StatelessWidget {
         centerTitle: false,
         backgroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
-
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Colors.blue,
+        child: ExpandablePanel(
+          header: Text('Hello'),
+          collapsed: Text('Testing', softWrap: true, maxLines: 2, overflow: TextOverflow.ellipsis,),
+          expanded: Text('article body blah blah blah', softWrap: true, ),
+        ),
       ),
     );
   }
-
 }
