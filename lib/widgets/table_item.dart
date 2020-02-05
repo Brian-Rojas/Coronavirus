@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'marquee.dart';
+
 class TableItem extends StatelessWidget {
   final Color lblBGColor = Colors.white;
   final Color lblColor = Colors.grey;
@@ -28,7 +30,6 @@ class TableItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(top: 0),
       // padding: EdgeInsets.only(left: 15, right: 15),
@@ -60,16 +61,20 @@ class TableItem extends StatelessWidget {
                     children: <Widget>[
                       Image.network(
                         'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/45px-Flag_of_the_People%27s_Republic_of_China.svg.png',
-                        height: 20,
+                        height: 15,
+                        alignment: Alignment.centerLeft,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 0),
-                        child: Text(
-                          country,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black,
+                      SizedBox(
+                        width: 77,
+                        child: MarqueeWidget(
+                          direction: Axis.horizontal,
+                          child: Text(
+                            country,
+                            style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ),
