@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'marquee.dart';
 
@@ -7,13 +8,16 @@ class NewsArticle extends StatelessWidget {
   final String title;
   final String date;
   final String description;
-  final Image image;
+  final String url;
+  final String image;
 
-  NewsArticle(
-      {@required this.title,
-      @required this.date,
-      @required this.description,
-      this.image});
+  NewsArticle({
+    @required this.title,
+    @required this.date,
+    @required this.description,
+    @required this.url,
+    @required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +27,21 @@ class NewsArticle extends StatelessWidget {
           dateGiven, [mm, '/', dd, '/', yy, ' ', hh, ':', nn, ' ', am]);
     }
 
+    _launchURL(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Center(
       child: Container(
         // color: Colors.amber,
         width: MediaQuery.of(context).size.width - 30,
         margin: EdgeInsets.only(top: 20),
         padding: EdgeInsets.only(left: 15, right: 15),
-        height: 242,
+        height: 300,
         child: Center(
           child: Container(
             decoration: new BoxDecoration(
@@ -57,11 +69,20 @@ class NewsArticle extends StatelessWidget {
                             EdgeInsets.symmetric(horizontal: 20, vertical: 4),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
-                          child: Image.network(
-                            'https://www.bing.com/th?id=ON.9340BCB612C8B89DAD29E549ADC48051&pid=News',
-                            height: 50,
-                            // width: 100.0,
-                          ),
+                          child: image != null
+                              ? Image.network(
+                                  image,
+                                  height: 50,
+                                )
+                              : SizedBox(
+                                  child: Icon(
+                                    Icons.rss_feed,
+                                    color: Theme.of(context).accentColor,
+                                    size: 40,
+                                  ),
+                                  height: 50,
+                                  width: 50,
+                                ),
                         ),
                       ),
                       Column(
@@ -82,14 +103,6 @@ class NewsArticle extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // Text(
-                          //   title.substring(0, 29),
-                          //   style: TextStyle(
-                          //     color: Theme.of(context).accentColor,
-                          //     fontSize: 16,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
                           Padding(
                             padding: const EdgeInsets.only(top: 4),
                             child: Text(
@@ -107,11 +120,11 @@ class NewsArticle extends StatelessWidget {
                 ),
                 Container(
                   // color: Colors.red,
-                  height: 100,
+                  height: 155,
                   margin: EdgeInsets.only(left: 15, right: 15),
                   child: Center(
                     child: Text(
-                      'When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.',
+                      description,
                       textWidthBasis: TextWidthBasis.longestLine,
                       style: TextStyle(
                           fontSize: 15, color: Theme.of(context).accentColor),
@@ -125,9 +138,7 @@ class NewsArticle extends StatelessWidget {
                 Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: () {
-                      print("Clicked article 1");
-                    },
+                    onTap: () => _launchURL(url),
                     child: Container(
                       height: 48,
                       child: Row(

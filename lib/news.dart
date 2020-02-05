@@ -5,9 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class News extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     return NewsArticle(
-        title: document['name'],
-        date: document['time'],
-        description: document['desc']);
+      title: document['name'],
+      date: document['time'],
+      description: document['desc'],
+      image: document['image']['thumbnail']['contentUrl'],
+      url: document['url'],
+    );
   }
 
   @override
