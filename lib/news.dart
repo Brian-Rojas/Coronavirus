@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'widgets/news_article.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class News extends StatelessWidget {
+  Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
+    return NewsArticle(
+        title: document['name'],
+        date: document['time'],
+        description: document['desc']);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,36 +29,18 @@ class News extends StatelessWidget {
         centerTitle: false,
         backgroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            NewsArticle(),
-            NewsArticle(),
-            NewsArticle(),
-            NewsArticle(),
-            NewsArticle(),
-            Container(
-              margin: EdgeInsets.only(bottom: 20),
-              child: NewsArticle(),
-            ),
-          ],
-        ),
+      body: StreamBuilder(
+        stream: Firestore.instance.collection('news').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
+          return ListView.builder(
+            // itemExtent: 80,
+            itemCount: snapshot.data.documents.length,
+            itemBuilder: (context, index) =>
+                _buildListItem(context, snapshot.data.documents[index]),
+          );
+        },
       ),
     );
-    // return Container(
-    //   color: Colors.white,
-    //   height: double.infinity,
-    //   child: SingleChildScrollView(
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       children: <Widget>[
-    //         NewsArticle(),
-    //         NewsArticle(),
-    //         NewsArticle(),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:date_format/date_format.dart';
+
+import 'marquee.dart';
 
 class NewsArticle extends StatelessWidget {
   final String title;
@@ -14,6 +17,12 @@ class NewsArticle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String convertDateFromString(String strDate) {
+      DateTime dateGiven = DateTime.parse(strDate).toLocal();
+      return formatDate(
+          dateGiven, [mm, '/', dd, '/', yy, ' ', hh, ':', nn, ' ', am]);
+    }
+
     return Center(
       child: Container(
         // color: Colors.amber,
@@ -59,18 +68,32 @@ class NewsArticle extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            'Five new cases in the US',
-                            style: TextStyle(
-                              color: Theme.of(context).accentColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          SizedBox(
+                            width: 200.0,
+                            child: MarqueeWidget(
+                              direction: Axis.horizontal,
+                              child: Text(
+                                title,
+                                style: TextStyle(
+                                  color: Theme.of(context).accentColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
+                          // Text(
+                          //   title.substring(0, 29),
+                          //   style: TextStyle(
+                          //     color: Theme.of(context).accentColor,
+                          //     fontSize: 16,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
                           Padding(
                             padding: const EdgeInsets.only(top: 4),
                             child: Text(
-                              '8 Nov',
+                              convertDateFromString(date),
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
