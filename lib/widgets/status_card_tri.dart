@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class StatusCardTri extends StatelessWidget {
-  final String cases;
-  final String deaths;
-  final String regions;
-  StatusCardTri(
-      {this.cases = "?????", this.deaths = "????", this.regions = "???"});
+  final int cases;
+  final int deaths;
+  final int regions;
+  StatusCardTri({this.cases = 0, this.deaths = 0, this.regions = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class StatusCardTri extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      cases,
+                      cases.toString(),
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).accentColor),
                     ),
@@ -50,7 +49,7 @@ class StatusCardTri extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      deaths,
+                      deaths.toString(),
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).primaryColor),
                     ),
@@ -73,7 +72,7 @@ class StatusCardTri extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      regions,
+                      regions.toString(),
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).accentColor),
                     ),

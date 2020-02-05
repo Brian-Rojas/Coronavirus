@@ -12,7 +12,7 @@ class TableItem extends StatelessWidget {
 
   TableItem(
       {this.shadowEnabled = true,
-      this.country = "China",
+      this.country = "",
       this.cases = 0,
       this.deaths = 0});
 

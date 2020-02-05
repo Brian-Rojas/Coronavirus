@@ -11,6 +11,24 @@ class Chart extends StatefulWidget {
 }
 
 class _ChartState extends State<Chart> {
+  int cases = 0;
+  int deaths = 0;
+  int regions = 0;
+
+  void getSums() {
+    Firestore.instance
+        .collection("totals")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      setState(() {
+        cases = snapshot.documents[0]['cases'] as int;
+        deaths = snapshot.documents[0]['deaths'] as int;
+        regions = snapshot.documents[0]['countries'] as int;
+      });
+      // snapshot.documents.forEach((f) => print('${f.data}}'));
+    });
+  }
+
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     return TableItem(
       country: document.documentID,
@@ -22,10 +40,14 @@ class _ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: double.infinity,
+      height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
-          StatusCardTri(),
+          StatusCardTri(
+            cases: cases,
+            deaths: deaths,
+            regions: regions,
+          ),
           TableTitle(),
           Container(
               color: Colors.transparent,
@@ -34,9 +56,13 @@ class _ChartState extends State<Chart> {
               height: MediaQuery.of(context).size.height - 283,
               width: double.infinity,
               child: StreamBuilder(
-                stream: Firestore.instance.collection('locations').snapshots(),
+                stream: Firestore.instance
+                    .collection('locations')
+                    .orderBy("infected", descending: true)
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return const Text('Loading...');
+                  getSums();
                   return ListView.builder(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     itemCount: snapshot.data.documents.length,

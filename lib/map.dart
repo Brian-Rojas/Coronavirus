@@ -98,8 +98,8 @@ class _MapState extends State<Map> {
         ),
         Positioned(
             child: StatusCardTri(
-          cases: '1111',
-          deaths: '331',
+          cases: 0,
+          deaths: 0,
         )),
       ],
     );
