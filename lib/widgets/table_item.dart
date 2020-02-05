@@ -9,12 +9,15 @@ class TableItem extends StatelessWidget {
   final String country;
   final int cases;
   final int deaths;
+  final String imageUrl;
 
-  TableItem(
-      {this.shadowEnabled = true,
-      this.country = "",
-      this.cases = 0,
-      this.deaths = 0});
+  TableItem({
+    this.shadowEnabled = true,
+    this.country = "",
+    this.cases = 0,
+    this.deaths = 0,
+    this.imageUrl,
+  });
 
   BoxShadow getShadow() {
     if (this.shadowEnabled) {
@@ -62,10 +65,21 @@ class TableItem extends StatelessWidget {
                     children: <Widget>[
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/45px-Flag_of_the_People%27s_Republic_of_China.svg.png',
-                          height: 20.0,
-                        ),
+                        child: imageUrl != null
+                            ? Image.network(
+                                imageUrl,
+                                height: 15,
+                                alignment: Alignment.centerLeft,
+                              )
+                            : SizedBox(
+                                child: Icon(
+                                  Icons.flag,
+                                  color: Theme.of(context).accentColor,
+                                  size: 20,
+                                ),
+                                height: 20,
+                                width: 20,
+                              ),
                       ),
                       SizedBox(
                         width: 128,

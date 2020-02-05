@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
 class StatusCardTri extends StatelessWidget {
-  final int cases;
-  final int deaths;
-  final int regions;
-  StatusCardTri({this.cases = 0, this.deaths = 0, this.regions = 0});
+  final int firstVal;
+  final int secondVal;
+  final int thirdVal;
+  final String firstLbl;
+  final String secondLbl;
+  final String thirdLbl;
+
+  StatusCardTri({
+    this.firstLbl = "Cases",
+    this.firstVal = 0,
+    this.secondLbl = "Deaths",
+    this.secondVal = 0,
+    this.thirdLbl = "Regions",
+    this.thirdVal = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +37,12 @@ class StatusCardTri extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      cases.toString(),
+                      firstVal.toString(),
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).accentColor),
                     ),
                     Text(
-                      'Cases',
+                      firstLbl,
                       style: TextStyle(
                           fontSize: 16, color: Theme.of(context).accentColor),
                     ),
@@ -49,12 +60,12 @@ class StatusCardTri extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      deaths.toString(),
+                      secondVal.toString(),
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).primaryColor),
                     ),
                     Text(
-                      'Deaths',
+                      secondLbl,
                       style: TextStyle(
                           fontSize: 16, color: Theme.of(context).accentColor),
                     ),
@@ -72,12 +83,12 @@ class StatusCardTri extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      regions.toString(),
+                      thirdVal.toString(),
                       style: TextStyle(
                           fontSize: 30, color: Theme.of(context).accentColor),
                     ),
                     Text(
-                      'Regions',
+                      thirdLbl,
                       style: TextStyle(
                           fontSize: 16, color: Theme.of(context).accentColor),
                     ),
