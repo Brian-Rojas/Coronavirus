@@ -36,10 +36,10 @@ class NewsArticle extends StatelessWidget {
 
     return Center(
       child: Container(
-        color: Colors.amber,
+        // color: Colors.amber,
         width: MediaQuery.of(context).size.width,
         // margin: EdgeInsets.only(top: 10, bottom: 10),
-        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
         height: 320,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
