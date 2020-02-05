@@ -96,11 +96,7 @@ class _MapState extends State<Map> {
           myLocationButtonEnabled: true,
           tiltGesturesEnabled: false,
         ),
-        Positioned(
-            child: StatusCardTri(
-          cases: 0,
-          deaths: 0,
-        )),
+        Positioned(child: StatusCardTri()),
       ],
     );
   }

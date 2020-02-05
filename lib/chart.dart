@@ -14,6 +14,7 @@ class _ChartState extends State<Chart> {
   int cases = 0;
   int deaths = 0;
   int regions = 0;
+  int recoveries = 0;
 
   void getSums() {
     Firestore.instance
@@ -24,6 +25,7 @@ class _ChartState extends State<Chart> {
         cases = snapshot.documents[0]['cases'] as int;
         deaths = snapshot.documents[0]['deaths'] as int;
         regions = snapshot.documents[0]['countries'] as int;
+        recoveries = snapshot.documents[0]['recoveries'] as int;
       });
       // snapshot.documents.forEach((f) => print('${f.data}}'));
     });
@@ -34,6 +36,7 @@ class _ChartState extends State<Chart> {
       country: document.documentID,
       deaths: document['dead'],
       cases: document['infected'],
+      imageUrl: "https://" + document['flag'],
     );
   }
 
@@ -44,9 +47,10 @@ class _ChartState extends State<Chart> {
       child: Column(
         children: <Widget>[
           StatusCardTri(
-            cases: cases,
-            deaths: deaths,
-            regions: regions,
+            firstVal: cases,
+            secondVal: deaths,
+            thirdLbl: "Recoveries",
+            thirdVal: recoveries,
           ),
           TableTitle(),
           Container(
