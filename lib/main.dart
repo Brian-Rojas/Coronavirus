@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-// import './map.dart';
 import './data.dart';
 
 import './widgets/btn.dart';
@@ -46,6 +44,8 @@ class MyHomePage extends StatelessWidget {
     ]);
     return Container(
       color: Colors.white,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,16 +53,19 @@ class MyHomePage extends StatelessWidget {
           Image.asset(
             'assets/images/hero.png',
             fit: BoxFit.cover,
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 2 / 3,
           ),
           Container(
-            height: 50,
-            margin: EdgeInsets.only(bottom: 50),
+            // color: Colors.yellow,
+            height: MediaQuery.of(context).size.height / 16,
+            margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height / 32),
             child: Text(
               'Coronavirus',
               style: TextStyle(
                 color: Theme.of(context).accentColor,
-                fontSize: 50,
+                fontSize: MediaQuery.of(context).size.height / 16,
                 fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none,
                 // fontFamily: 'Lobster',
@@ -71,13 +74,14 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Container(
-            height: 50,
+            // color: Colors.green,
+            height: MediaQuery.of(context).size.height / 16,
             margin: EdgeInsets.only(left: 20, right: 20),
             child: Text(
               'Data is currently updated every hour. Not 100% accurate.',
               style: TextStyle(
                 color: Theme.of(context).accentColor,
-                fontSize: 15,
+                fontSize: MediaQuery.of(context).size.height / 44,
                 fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none,
                 // fontFamily: 'Lobster',

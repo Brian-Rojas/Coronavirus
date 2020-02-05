@@ -5,18 +5,11 @@ import 'package:flutter/material.dart';
 import 'widgets/status_card.dart';
 
 class Chart extends StatefulWidget {
-  final Color color;
-  Chart(this.color);
-
   @override
-  _ChartState createState() => _ChartState(color);
+  _ChartState createState() => _ChartState();
 }
 
 class _ChartState extends State<Chart> {
-  final Color color;
-
-  _ChartState(this.color);
-
   @override
   Widget build(BuildContext context) {
     return Container(
