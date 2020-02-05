@@ -4,7 +4,7 @@ import 'chart.dart';
 import 'map.dart';
 import 'package:flutter/material.dart';
 
-import 'PlaceholderWidget.dart';
+import 'about.dart';
 
 class Data extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _DataState extends State<Data> {
     Chart(Colors.red),
     Map(),
     News(),
-    PlaceholderWidget(Colors.yellow)
+    About(),
   ];
 
   void onTabTapped(int index) {
