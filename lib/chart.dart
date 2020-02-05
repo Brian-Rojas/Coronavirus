@@ -43,6 +43,8 @@ class _ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // color: Colors.red,
+      //  color: Colors.white,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
@@ -54,10 +56,11 @@ class _ChartState extends State<Chart> {
           ),
           TableTitle(),
           Container(
-              color: Colors.transparent,
+              // color: Colors.transparent,
               // color: Colors.yellow,
               alignment: Alignment.topCenter,
-              height: MediaQuery.of(context).size.height - 283,
+              // height: MediaQuery.of(context).size.height - 283,
+              height: MediaQuery.of(context).size.height - 257,
               width: double.infinity,
               child: StreamBuilder(
                 stream: Firestore.instance
@@ -77,7 +80,7 @@ class _ChartState extends State<Chart> {
               )),
         ],
       ),
-      color: Colors.white,
+     
     );
   }
 }

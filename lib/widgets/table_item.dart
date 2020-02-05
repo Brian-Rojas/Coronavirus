@@ -59,27 +59,41 @@ class TableItem extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width / 2.5,
                   color: lblBGColor,
+                  // color: Colors.red,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: imageUrl != null
-                            ? Image.network(
-                                imageUrl,
-                                height: 15,
-                                alignment: Alignment.centerLeft,
-                              )
-                            : SizedBox(
-                                child: Icon(
-                                  Icons.flag,
-                                  color: Theme.of(context).accentColor,
-                                  size: 20,
+                      Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 0,
+                              blurRadius: 0,
+                              offset:
+                                  Offset(0.5, 0.5), 
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(2.0),
+                          child: imageUrl != null
+                              ? Image.network(
+                                  imageUrl,
+                                  height: 13,
+                                  alignment: Alignment.centerLeft,
+                                )
+                              : SizedBox(
+                                  child: Icon(
+                                    Icons.flag,
+                                    color: Theme.of(context).accentColor,
+                                    size: 20,
+                                  ),
+                                  height: 20,
+                                  width: 20,
                                 ),
-                                height: 20,
-                                width: 20,
-                              ),
+                        ),
                       ),
                       SizedBox(
                         width: 128,
