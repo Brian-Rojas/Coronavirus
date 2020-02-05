@@ -14,7 +14,7 @@ class Data extends StatefulWidget {
 class _DataState extends State<Data> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Chart(Colors.red),
+    Chart(),
     Map(),
     News(),
     About(),
