@@ -40,7 +40,7 @@ class NewsArticle extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         // margin: EdgeInsets.only(top: 10, bottom: 10),
         padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
-        height: 320,
+        height: 250,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
           decoration: new BoxDecoration(
@@ -113,30 +113,31 @@ class NewsArticle extends StatelessWidget {
               //------------------- Description -------------------
               Container(
                 // color: Colors.red,
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding:
+                    EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
                 child: SizedBox(
-                  height: 155,
+                  height: 100,
                   width: MediaQuery.of(context).size.width,
-                  child: Center(
-                    child: AutoSizeText(
-                      description,
-                      style: TextStyle(
-                        color: Theme.of(context).accentColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                      ),
-                      // textAlign: TextAlign.left,
-                      // maxLines: 2,
-                      minFontSize: 14,
-                      // maxFontSize: 16,
+                  child: AutoSizeText(
+                    description,
+                    style: TextStyle(
+                      color: Theme.of(context).accentColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
                     ),
+                    // textAlign: TextAlign.left,
+                    // maxLines: 2,
+                    minFontSize: 14,
+                    // maxFontSize: 16,
                   ),
                 ),
               ),
               //------------------- Divider -------------------
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
-                child: Divider(),
+                child: Divider(
+                  height: 1,
+                ),
               ),
               //------------------- Bottom Of Card -------------------
               Material(
@@ -145,7 +146,7 @@ class NewsArticle extends StatelessWidget {
                   onTap: () => _launchURL(url),
                   child: Container(
                     // color: Colors.green,
-                    height: 50,
+                    height: 40,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
