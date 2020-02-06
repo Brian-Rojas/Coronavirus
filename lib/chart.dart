@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coronavirus_app/widgets/table_item.dart';
 import 'package:coronavirus_app/widgets/table_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:flutter/material.dart';
 
 import 'widgets/status_card_tri.dart';
@@ -15,6 +17,7 @@ class _ChartState extends State<Chart> {
   int deaths = 0;
   int regions = 0;
   int recoveries = 0;
+  // Set<String> countries = {};
 
   void getSums() {
     Firestore.instance
@@ -27,11 +30,47 @@ class _ChartState extends State<Chart> {
         regions = snapshot.documents[0]['countries'] as int;
         recoveries = snapshot.documents[0]['recoveries'] as int;
       });
-      // snapshot.documents.forEach((f) => print('${f.data}}'));
+      storeSums(cases, deaths, regions, recoveries);
     });
   }
 
+  // void getRegions() {
+  //   Firestore.instance
+  //       .collection("locations")
+  //       .getDocuments()
+  //       .then((QuerySnapshot snapshot) {
+  //     setState(() {
+  //       for (int i = 0; i < snapshot.documents.length; i++) {
+  //         countries.add(snapshot.documents[i].documentID);
+  //       }
+  //     });
+  //     storeRegions();
+  //     // snapshot.documents.forEach((f) => print('${f.data}}'));
+  //   });
+  // }
+
+  void storeSums(int cases, int deaths, int regions, int recoveries) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('cases', cases);
+    await prefs.setInt('deaths', deaths);
+    await prefs.setInt('regions', regions);
+    await prefs.setInt('recoveries', recoveries);
+  }
+
+  // void storeRegions() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   for (int i = 0; i < regions; i++) {
+  //     prefs.setString(countries.elementAt(i), 'blah');
+  //   }
+  // }
+
+  // void addRegion(DocumentSnapshot document) {
+  //   countries.add(document.documentID);
+  //   print(countries);
+  // }
+
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
+    // addRegion(document);
     return TableItem(
       country: document.documentID,
       deaths: document['dead'],
@@ -70,6 +109,8 @@ class _ChartState extends State<Chart> {
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return const Text('Loading...');
                   getSums();
+                  // getRegions();
+                  // addRegion(snapshot.data.documents[0]);
                   return ListView.builder(
                     padding: EdgeInsets.symmetric(horizontal: 0),
                     itemCount: snapshot.data.documents.length,
