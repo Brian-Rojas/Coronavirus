@@ -33,11 +33,13 @@ class News extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection('news').snapshots(),
+        stream: Firestore.instance
+            .collection('news')
+            .orderBy("time", descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return const Text('Loading...');
           return ListView.builder(
-            // itemExtent: 80,
             itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index) =>
                 _buildListItem(context, snapshot.data.documents[index]),
