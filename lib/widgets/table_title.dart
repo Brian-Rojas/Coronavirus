@@ -21,7 +21,7 @@ class TableTitle extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
+                color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 0,
                 blurRadius: 8,
                 offset: Offset(0, 3),
@@ -30,8 +30,9 @@ class TableTitle extends StatelessWidget {
           ),
           child: ClipRRect(
             // borderRadius: BorderRadius.circular(12.0),
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-            
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+
             child: Container(
               height: 50,
               color: Colors.white,

@@ -71,8 +71,7 @@ class TableItem extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 0,
-                              offset:
-                                  Offset(0.5, 0.5), 
+                              offset: Offset(0.5, 0.5),
                             ),
                           ],
                         ),

@@ -44,7 +44,7 @@ class _ChartState extends State<Chart> {
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.red,
-      //  color: Colors.white,
+      // color: Colors.white,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
@@ -58,10 +58,10 @@ class _ChartState extends State<Chart> {
           Container(
               // color: Colors.transparent,
               // color: Colors.yellow,
+              margin: EdgeInsets.symmetric(horizontal: 10),
               alignment: Alignment.topCenter,
-              // height: MediaQuery.of(context).size.height - 283,
-              height: MediaQuery.of(context).size.height - 257,
-              width: double.infinity,
+              height: MediaQuery.of(context).size.height - 283,
+              width: MediaQuery.of(context).size.width,
               child: StreamBuilder(
                 stream: Firestore.instance
                     .collection('locations')
@@ -71,7 +71,7 @@ class _ChartState extends State<Chart> {
                   if (!snapshot.hasData) return const Text('Loading...');
                   getSums();
                   return ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 0),
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (context, index) =>
                         _buildListItem(context, snapshot.data.documents[index]),
@@ -80,7 +80,6 @@ class _ChartState extends State<Chart> {
               )),
         ],
       ),
-     
     );
   }
 }
