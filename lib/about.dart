@@ -1,5 +1,6 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
+import 'widgets/animated_card.dart';
 import 'widgets/exp_animated.dart';
 import 'widgets/expandable.dart';
 
@@ -30,10 +31,8 @@ class About extends StatelessWidget {
           child: Column(
             children: <Widget>[
               ImageSlider(),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ExpAnimated(),
-              ),
+              AnimatedCard(),
+              ExpAnimated(),
               ExpandableCard(),
               ExpandableCard(
                 title: "Transmission",
@@ -44,7 +43,7 @@ class About extends StatelessWidget {
                 color: Color.fromRGBO(228, 209, 195, 1.0),
               ),
               ExpandableCard(
-                title: "Symptoms",
+                title: "Prevention",
                 color: Colors.amber,
               ),
             ],
