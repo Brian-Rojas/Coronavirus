@@ -42,8 +42,6 @@ class _ExpAnimatedState extends State<ExpAnimated> {
         child: Container(
           padding: EdgeInsets.all(20),
           child: Container(
-          
-            child: SingleChildScrollView(
               child: RichText(
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
@@ -79,7 +77,6 @@ class _ExpAnimatedState extends State<ExpAnimated> {
                   ],
                 ),
               ),
-            ),
           ),
         ),
       ),
