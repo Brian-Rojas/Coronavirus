@@ -17,7 +17,6 @@ class About extends StatelessWidget {
   var prevention =
       'Standard recommendations to prevent infection spread include regular hand washing, covering mouth and nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone showing symptoms of respiratory illness such as coughing and sneezing.';
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,7 @@ class About extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: Padding(
-          padding: const EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20,),
           child: Text(
             'About',
             style: TextStyle(
@@ -58,7 +57,7 @@ class About extends StatelessWidget {
                 color: Color.fromRGBO(228, 209, 195, 1.0),
               ),
               ExpAnimated(
-                cardTitle:'Symptoms\n\n',
+                cardTitle: 'Symptoms\n\n',
                 textHeight: 250,
                 discription: symptoms,
                 color: Color.fromRGBO(251, 419, 98, 1.0),
@@ -68,6 +67,29 @@ class About extends StatelessWidget {
                 textHeight: 250,
                 discription: prevention,
                 color: Color.fromRGBO(258, 209, 195, 1.0),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    FlatButton.icon(
+                        onPressed: null,
+                        icon: Icon(Icons.info),
+                        label: Text(
+                          'Info',
+                          style: TextStyle(fontSize: 24),
+                        )),
+                   FlatButton.icon(
+                        onPressed: null,
+                        icon: Icon(Icons.share),
+                        label: Text(
+                          'Share',
+                          style: TextStyle(fontSize: 24),
+                        )),
+                    
+                  ],
+                ),
               ),
             ],
           ),

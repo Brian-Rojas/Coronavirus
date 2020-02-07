@@ -21,7 +21,7 @@ class ExpAnimated extends StatefulWidget {
 class _ExpAnimatedState extends State<ExpAnimated> {
   MediaQueryData _mediaQueryData;
   Color _color = Colors.red;
-  double _height = 100;
+  double _height = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _ExpAnimatedState extends State<ExpAnimated> {
       onTap: () {
         setState(() {
           if (_height > 100) {
-            _height = 100;
+            _height = 60;
             _color = widget.color;
           } else {
             _height = widget.textHeight;
@@ -46,10 +46,11 @@ class _ExpAnimatedState extends State<ExpAnimated> {
         ),
         duration: Duration(milliseconds: 1000),
         curve: Curves.elasticInOut,
+        // curve: Curves.decelerate,
         height: _height,
         width: _mediaQueryData.size.width,
         child: Container(
-          padding: EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 10),
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
           child: RichText(
             text: TextSpan(
               style: DefaultTextStyle.of(context).style,
