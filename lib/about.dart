@@ -30,7 +30,12 @@ class About extends StatelessWidget {
           child: Column(
             children: <Widget>[
               ImageSlider(),
-              ExpAnimated(),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ExpAnimated(
+                  title: "Info",
+                ),
+              ),
               ExpandableCard(),
               ExpandableCard(
                 title: "Transmission",
