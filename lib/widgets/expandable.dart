@@ -11,30 +11,42 @@ class ExpandableCard extends StatelessWidget {
     this.body =
         '2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people.',
     this.color = const Color.fromRGBO(185, 209, 195, 1.0),
+    // this.color = const Color.fromRGBO(0, 0, 0, 0),
+
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(      
       child: ExpandablePanel(
         theme: ExpandableThemeData(
           hasIcon: false,
           tapHeaderToExpand: true,
-          animationDuration: Duration(milliseconds: 10),
+          animationDuration: Duration(milliseconds: 500),
           // headerAlignment: ExpandablePanelHeaderAlignment.bottom,
         ),
         header: Container(
           alignment: Alignment.bottomLeft,
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(top: 20),
           decoration: new BoxDecoration(
             color: color,
             shape: BoxShape.rectangle,
             borderRadius: new BorderRadius.only(
               topLeft: Radius.circular(12),
               topRight: Radius.circular(12),
+              bottomLeft: Radius.circular(12),
+              bottomRight: Radius.circular(12),
             ),
+            boxShadow: [
+            new BoxShadow(
+              color: color,
+              offset: new Offset(0, 10.0),
+              blurRadius: 0.0,
+              spreadRadius: 0.0,
+            )
+          ],
           ),
-          height: 100,
+          height: 90,
           child: Padding(
             padding: const EdgeInsets.only(top: 0, left: 20),
             child: Text(
@@ -46,17 +58,18 @@ class ExpandableCard extends StatelessWidget {
             ),
           ),
         ),
-        collapsed: Container(
-          decoration: new BoxDecoration(
-            color: color,
-            shape: BoxShape.rectangle,
-            borderRadius: new BorderRadius.only(
-              bottomLeft: Radius.circular(12),
-              bottomRight: Radius.circular(12),
-            ),
-          ),
-          height: 15,
-        ),
+        // collapsed: Container(
+        //   decoration: new BoxDecoration(
+        //     // color: color,
+        //     color: Colors.white,
+        //     shape: BoxShape.rectangle,
+        //     borderRadius: new BorderRadius.only(
+        //       bottomLeft: Radius.circular(12),
+        //       bottomRight: Radius.circular(12),
+        //     ),
+        //   ),
+        //   height: 15,
+        // ),
         expanded: Container(
           height: 200,
           // color: Colors.red,
