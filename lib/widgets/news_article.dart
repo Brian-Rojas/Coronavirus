@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsArticle extends StatelessWidget {
@@ -96,14 +97,14 @@ class NewsArticle extends StatelessWidget {
                       width: MediaQuery.of(context).size.width - 100 - 10,
                       child: AutoSizeText(
                         title,
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
+                          fontSize: 15,
                           color: Theme.of(context).accentColor,
-                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.start,
                         maxLines: 2,
-                        minFontSize: 16,
+                        minFontSize: 15,
                         // maxFontSize: 18,
                       ),
                     ),
@@ -120,15 +121,12 @@ class NewsArticle extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: AutoSizeText(
                     description,
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
+                      fontSize: 13,
                       color: Theme.of(context).accentColor,
-                      fontSize: 14,
                       fontWeight: FontWeight.normal,
                     ),
-                    // textAlign: TextAlign.left,
-                    // maxLines: 2,
-                    minFontSize: 14,
-                    // maxFontSize: 16,
+                    minFontSize: 13,
                   ),
                 ),
               ),
@@ -156,8 +154,8 @@ class NewsArticle extends StatelessWidget {
                           // color: Colors.yellow,
                           child: Text(
                             convertDateFromString(date),
-                            style: TextStyle(
-                              fontSize: 16,
+                            style: GoogleFonts.montserrat(
+                              fontSize: 14,
                               color: Theme.of(context).accentColor,
                               fontWeight: FontWeight.w300,
                             ),
@@ -172,11 +170,16 @@ class NewsArticle extends StatelessWidget {
                               margin: EdgeInsets.only(right: 5),
                               child: Text(
                                 "Read More",
-                                style: TextStyle(
-                                  color: Theme.of(context).accentColor,
+                                style: GoogleFonts.montserrat(
                                   fontSize: 16,
+                                  color: Theme.of(context).accentColor,
                                   fontWeight: FontWeight.normal,
                                 ),
+                                // style: TextStyle(
+                                //   color: Theme.of(context).accentColor,
+                                //   fontSize: 16,
+                                //   fontWeight: FontWeight.normal,
+                                // ),
                               ),
                             ),
                             Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'marquee.dart';
 
@@ -42,10 +43,6 @@ class TableItem extends StatelessWidget {
         child: Container(
           decoration: new BoxDecoration(
             color: Colors.white,
-            // shape: BoxShape.rectangle,
-            // border: Border.all(
-            //     width: 0, color: Colors.transparent, style: BorderStyle.none),
-            // borderRadius: new BorderRadius.circular(12),
             boxShadow: <BoxShadow>[
               getShadow(),
             ],
@@ -100,10 +97,9 @@ class TableItem extends StatelessWidget {
                           direction: Axis.horizontal,
                           child: Text(
                             country,
-                            style: TextStyle(
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
                               color: Theme.of(context).accentColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         ),
@@ -118,9 +114,8 @@ class TableItem extends StatelessWidget {
                   child: Center(
                     child: Text(
                       cases.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 17,
                         color: lblColor,
                       ),
                     ),

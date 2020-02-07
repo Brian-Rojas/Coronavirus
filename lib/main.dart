@@ -66,7 +66,9 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: MediaQuery.of(context).size.height / 16,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Montserrat',
+                // fontStyle: FontStyle.italic,
                 decoration: TextDecoration.none,
                 // fontFamily: 'Lobster',
               ),
@@ -82,6 +84,7 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: MediaQuery.of(context).size.height / 44,
+                fontFamily: 'Montserrat',
                 fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none,
                 // fontFamily: 'Lobster',
