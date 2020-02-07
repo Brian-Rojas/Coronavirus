@@ -42,48 +42,43 @@ class _ExpAnimatedState extends State<ExpAnimated> {
         child: Container(
           padding: EdgeInsets.all(20),
           child: Container(
-            child: Column(
-              children: <Widget>[
-                Text("Info"),
-                Container(
-                  child: SingleChildScrollView(
-                    child: RichText(
-                      text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                        children: <TextSpan>[
-                          // TextSpan(text: '\n\n'),
-                          // TextSpan(
-                          //   text: 'About \n\n',
-                          //   style: TextStyle(
-                          //     fontSize: 18.0,
-                          //     color: Theme.of(context).accentColor,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-                          TextSpan(
-                            text:
-                                'The 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people. \n\n',
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: Theme.of(context).accentColor,
-                              // fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          TextSpan(
-                            text:
-                                'The 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people.',
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: Theme.of(context).accentColor,
-                              // fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+          
+            child: SingleChildScrollView(
+              child: RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: <TextSpan>[
+                    TextSpan(text: '\n\n'),
+                    TextSpan(
+                      text: 'About \n\n',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Theme.of(context).accentColor,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
+                    TextSpan(
+                      text:
+                          'The 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people. \n\n',
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Theme.of(context).accentColor,
+                        // fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                     TextSpan(
+                      text:
+                          'The 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people.',
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Theme.of(context).accentColor,
+                        // fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
