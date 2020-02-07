@@ -32,9 +32,7 @@ class About extends StatelessWidget {
               ImageSlider(),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
-                child: ExpAnimated(
-                  title: "Info",
-                ),
+                child: ExpAnimated(),
               ),
               ExpandableCard(),
               ExpandableCard(
