@@ -29,10 +29,6 @@ class News extends StatelessWidget {
               color: Theme.of(context).accentColor,
               fontWeight: FontWeight.w500,
             ),
-            // style: TextStyle(
-            //   color: Theme.of(context).accentColor,
-            //   fontSize: 45,
-            // ),
           ),
         ),
         centerTitle: false,
