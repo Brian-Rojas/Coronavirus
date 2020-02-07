@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter/widgets.dart';
 
 class ExpAnimated extends StatefulWidget {
@@ -74,15 +75,15 @@ class _ExpAnimatedState extends State<ExpAnimated> {
                 children: <TextSpan>[
                   TextSpan(
                     text: widget.cardTitle,
-                    style: TextStyle(
-                      fontSize: 24,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 23,
                       color: Theme.of(context).accentColor,
                     ),
                   ),
                   TextSpan(
                     text: widget.discription,
-                    style: TextStyle(
-                      fontSize: 14.0,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 13,
                       color: Theme.of(context).accentColor,
                     ),
                   ),

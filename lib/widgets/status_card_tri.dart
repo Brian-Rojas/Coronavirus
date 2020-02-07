@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StatusCardTri extends StatelessWidget {
   final int firstVal;
@@ -38,13 +39,17 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       firstVal.toString(),
-                      style: TextStyle(
-                          fontSize: 30, color: Theme.of(context).accentColor),
+                      style: GoogleFonts.montserrat(
+                        fontSize: 26,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                     Text(
                       firstLbl,
-                      style: TextStyle(
-                          fontSize: 16, color: Theme.of(context).accentColor),
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                   ],
                 ),
@@ -61,13 +66,17 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       secondVal.toString(),
-                      style: TextStyle(
-                          fontSize: 30, color: Theme.of(context).primaryColor),
+                      style: GoogleFonts.montserrat(
+                        fontSize: 26,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                     Text(
                       secondLbl,
-                      style: TextStyle(
-                          fontSize: 16, color: Theme.of(context).accentColor),
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                   ],
                 ),
@@ -84,13 +93,17 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       thirdVal.toString(),
-                      style: TextStyle(
-                          fontSize: 30, color: Theme.of(context).accentColor),
+                      style: GoogleFonts.montserrat(
+                        fontSize: 26,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                     Text(
                       thirdLbl,
-                      style: TextStyle(
-                          fontSize: 16, color: Theme.of(context).accentColor),
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                   ],
                 ),

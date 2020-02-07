@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'widgets/news_article.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -23,10 +24,15 @@ class News extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           child: Text(
             'News',
-            style: TextStyle(
+            style: GoogleFonts.montserrat(
+              fontSize: 40,
               color: Theme.of(context).accentColor,
-              fontSize: 45,
+              fontWeight: FontWeight.w500,
             ),
+            // style: TextStyle(
+            //   color: Theme.of(context).accentColor,
+            //   fontSize: 45,
+            // ),
           ),
         ),
         centerTitle: false,

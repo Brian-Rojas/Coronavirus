@@ -1,4 +1,5 @@
 import 'package:coronavirus_app/news.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'chart.dart';
 import 'map.dart';
@@ -40,19 +41,39 @@ class _DataState extends State<Data> {
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.home),
-            title: new Text('Home'),
+            title: new Text(
+              'Home',
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+              ),
+            ),
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.map),
-            title: new Text('Map'),
+            title: new Text(
+              'Map',
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+              ),
+            ),
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.rss_feed),
-            title: new Text('News'),
+            title: new Text(
+              'News',
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+              ),
+            ),
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.announcement),
-            title: new Text('About'),
+            title: new Text(
+              'About',
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+              ),
+            ),
           ),
         ],
       ),
