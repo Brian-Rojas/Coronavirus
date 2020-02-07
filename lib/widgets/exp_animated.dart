@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,13 +13,23 @@ class _ExpAnimatedState extends State<ExpAnimated> {
   Color _color = Color.fromRGBO(245, 220, 216, 1.0);
   double _height = 100;
 
+  var info =
+      'A novel coronavirus (nCoV) is a new strain of coronavirus that has not been previously identified in humans. The new, or “novel” coronavirus, now called 2019-nCoV, had not previously detected before the outbreak was reported in Wuhan, China in December 2019.';
+
+  var transmission =
+      'Person-to-person spread is thought to occur mainly via respiratory droplets produced when an infected person coughs or sneezes, similar to how influenza and other respiratory pathogens spread. These droplets can land in the mouths or noses of people who are nearby or possibly be inhaled into the lungs. It’s currently unclear if a person can get 2019-nCoV by touching a surface or object that has the virus on it and then touching their own mouth, nose, or possibly their eyes.';
+
+  var symptoms = 'Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death.';
+
+  var prevention = 'Standard recommendations to prevent infection spread include regular hand washing, covering mouth and nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone showing symptoms of respiratory illness such as coughing and sneezing.';
+
   void _animate() {
     setState(() {
       if (_height > 100) {
         _height = 100;
         _color = Color.fromRGBO(245, 220, 216, 1.0);
       } else {
-        _height = 300;
+        _height = 250;
         _color = Color.fromRGBO(245, 220, 216, 1.0);
       }
     });
@@ -41,42 +53,29 @@ class _ExpAnimatedState extends State<ExpAnimated> {
         width: _mediaQueryData.size.width,
         child: Container(
           padding: EdgeInsets.all(20),
-          child: Container(
-              child: RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(text: '\n\n'),
-                    TextSpan(
-                      text: 'About \n\n',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Theme.of(context).accentColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text:
-                          'The 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people. \n\n',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: Theme.of(context).accentColor,
-                        // fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                     TextSpan(
-                      text:
-                          'The 2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness first detected in Wuhan, China. Early on, many of the patients in the outbreak in Wuhan, China reportedly had some link to a large seafood and animal market, suggesting animal-to-person spread. However, a growing number of patients reportedly have not had exposure to animal markets, indicating person-to-person spread is occurring. At this time, it’s unclear how easily or sustainably this virus is spreading between people.',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: Theme.of(context).accentColor,
-                        // fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                  ],
+          child: RichText(
+            text: TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(text: '\n\n'),
+                TextSpan(
+                  text: 'Info \n\n',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Theme.of(context).accentColor,
+                    // fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+                TextSpan(
+                  text:info,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Theme.of(context).accentColor,
+                    // fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
