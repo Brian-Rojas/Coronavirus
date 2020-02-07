@@ -17,9 +17,7 @@ class ExpandableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    Container(      
+    return Container(      
       child: ExpandablePanel(
         theme: ExpandableThemeData(
           hasIcon: false,

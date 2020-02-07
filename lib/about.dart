@@ -1,6 +1,7 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'widgets/animated_card.dart';
+import 'widgets/exp_animated.dart';
 import 'widgets/expandable.dart';
 
 class About extends StatelessWidget {
@@ -31,6 +32,7 @@ class About extends StatelessWidget {
             children: <Widget>[
               ImageSlider(),
               AnimatedCard(),
+              ExpAnimated(),
               ExpandableCard(),
               ExpandableCard(
                 title: "Transmission",
