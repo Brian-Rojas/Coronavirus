@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsArticle extends StatelessWidget {
@@ -36,10 +37,8 @@ class NewsArticle extends StatelessWidget {
 
     return Center(
       child: Container(
-        color: Colors.transparent,
         width: MediaQuery.of(context).size.width,
-        // margin: EdgeInsets.only(top: 10, bottom: 10),
-        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
         height: 250,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
@@ -59,18 +58,6 @@ class NewsArticle extends StatelessWidget {
               ),
             ],
           ),
-          // decoration: new BoxDecoration(
-          //   color: Colors.white,
-          //   shape: BoxShape.rectangle,
-          //   borderRadius: new BorderRadius.circular(12.0),
-          //   boxShadow: <BoxShadow>[
-          //     new BoxShadow(
-          //       color: Colors.black12,
-          //       blurRadius: 10.0,
-          //       offset: new Offset(0.0, 10.0),
-          //     ),
-          //   ],
-          // ),
           child: Column(
             children: <Widget>[
               //------------------- Headline Bar -------------------
@@ -112,14 +99,12 @@ class NewsArticle extends StatelessWidget {
                       width: MediaQuery.of(context).size.width - 100 - 10,
                       child: AutoSizeText(
                         title,
-                        style: TextStyle(
-                          color: Theme.of(context).accentColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display1.apply(
+                              fontWeightDelta: 2,
+                            ),
                         textAlign: TextAlign.start,
                         maxLines: 2,
-                        minFontSize: 16,
+                        minFontSize: 15,
                         // maxFontSize: 18,
                       ),
                     ),
@@ -136,15 +121,8 @@ class NewsArticle extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: AutoSizeText(
                     description,
-                    style: TextStyle(
-                      color: Theme.of(context).accentColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    // textAlign: TextAlign.left,
-                    // maxLines: 2,
-                    minFontSize: 14,
-                    // maxFontSize: 16,
+                    style: Theme.of(context).accentTextTheme.display1,
+                    minFontSize: 12,
                   ),
                 ),
               ),
@@ -172,11 +150,7 @@ class NewsArticle extends StatelessWidget {
                           // color: Colors.yellow,
                           child: Text(
                             convertDateFromString(date),
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Theme.of(context).accentColor,
-                              fontWeight: FontWeight.w300,
-                            ),
+                            style: Theme.of(context).textTheme.display1,
                           ),
                         ),
                         Row(
@@ -188,11 +162,8 @@ class NewsArticle extends StatelessWidget {
                               margin: EdgeInsets.only(right: 5),
                               child: Text(
                                 "Read More",
-                                style: TextStyle(
-                                  color: Theme.of(context).accentColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                                style:
+                                    Theme.of(context).accentTextTheme.display2,
                               ),
                             ),
                             Container(

@@ -38,13 +38,11 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       firstVal.toString(),
-                      style: TextStyle(
-                          fontSize: 30, color: Theme.of(context).accentColor),
+                      style: Theme.of(context).accentTextTheme.title,
                     ),
                     Text(
                       firstLbl,
-                      style: TextStyle(
-                          fontSize: 16, color: Theme.of(context).accentColor),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ],
                 ),
@@ -61,13 +59,11 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       secondVal.toString(),
-                      style: TextStyle(
-                          fontSize: 30, color: Theme.of(context).primaryColor),
+                      style: Theme.of(context).accentTextTheme.title,
                     ),
                     Text(
                       secondLbl,
-                      style: TextStyle(
-                          fontSize: 16, color: Theme.of(context).accentColor),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ],
                 ),
@@ -84,13 +80,11 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       thirdVal.toString(),
-                      style: TextStyle(
-                          fontSize: 30, color: Theme.of(context).accentColor),
+                      style: Theme.of(context).accentTextTheme.title,
                     ),
                     Text(
                       thirdLbl,
-                      style: TextStyle(
-                          fontSize: 16, color: Theme.of(context).accentColor),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ],
                 ),

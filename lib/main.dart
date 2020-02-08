@@ -1,7 +1,6 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import './data.dart';
 
 import './widgets/btn.dart';
@@ -9,15 +8,99 @@ import './widgets/btn.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  static const Color primary = Color.fromRGBO(194, 56, 55, 1.0);
+  static const Color accent = Color.fromRGBO(69, 79, 99, 1.0);
+  static const Color bg = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Coronovirus',
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(194, 56, 55, 1.0),
-        accentColor: Color.fromRGBO(69, 79, 99, 1.0),
-        backgroundColor: Colors.white,
+        primaryColor: primary,
+        accentColor: accent,
+        backgroundColor: bg,
+        textTheme: TextTheme(
+          headline: GoogleFonts.montserrat(
+            fontSize: 40,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey,
+          ),
+          title: GoogleFonts.montserrat(
+            fontSize: 26,
+            color: Colors.grey,
+          ),
+          subhead: GoogleFonts.montserrat(
+            fontSize: 22,
+            color: Colors.grey,
+          ),
+          display1: GoogleFonts.montserrat(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+          display2: GoogleFonts.montserrat(
+            fontSize: 16,
+            color: Colors.grey,
+          ),
+          display3: GoogleFonts.montserrat(
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+        ),
+        accentTextTheme: TextTheme(
+          headline: GoogleFonts.montserrat(
+            fontSize: 40,
+            fontWeight: FontWeight.w500,
+            color: accent,
+          ),
+          title: GoogleFonts.montserrat(
+            fontSize: 26,
+            color: accent,
+          ),
+          subhead: GoogleFonts.montserrat(
+            fontSize: 22,
+            color: accent,
+          ),
+          display1: GoogleFonts.montserrat(
+            fontSize: 14,
+            color: accent,
+          ),
+          display2: GoogleFonts.montserrat(
+            fontSize: 16,
+            color: accent,
+          ),
+          display3: GoogleFonts.montserrat(
+            fontSize: 18,
+            color: accent,
+          ),
+        ),
+        primaryTextTheme: TextTheme(
+          headline: GoogleFonts.montserrat(
+            fontSize: 40,
+            fontWeight: FontWeight.w500,
+            color: primary,
+          ),
+          title: GoogleFonts.montserrat(
+            fontSize: 26,
+            color: primary,
+          ),
+          subhead: GoogleFonts.montserrat(
+            fontSize: 22,
+            color: primary,
+          ),
+          display1: GoogleFonts.montserrat(
+            fontSize: 14,
+            color: primary,
+          ),
+          display2: GoogleFonts.montserrat(
+            fontSize: 16,
+            color: primary,
+          ),
+          display3: GoogleFonts.montserrat(
+            fontSize: 18,
+            color: primary,
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
@@ -66,7 +149,9 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: MediaQuery.of(context).size.height / 16,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Montserrat',
+                // fontStyle: FontStyle.italic,
                 decoration: TextDecoration.none,
                 // fontFamily: 'Lobster',
               ),
@@ -82,6 +167,7 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(
                 color: Theme.of(context).accentColor,
                 fontSize: MediaQuery.of(context).size.height / 44,
+                fontFamily: 'Montserrat',
                 fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none,
                 // fontFamily: 'Lobster',

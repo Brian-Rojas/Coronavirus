@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TableTitle extends StatelessWidget {
   @override
@@ -46,11 +47,7 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'COUNTRY',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.normal,
-                          color: lblColor,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display3,
                       ),
                     ),
                   ),
@@ -60,11 +57,7 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'CASES',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.normal,
-                          color: lblColor,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display3,
                       ),
                     ),
                   ),
@@ -74,11 +67,7 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'DEATHS',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.normal,
-                          color: lblColor,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display3,
                       ),
                     ),
                   ),

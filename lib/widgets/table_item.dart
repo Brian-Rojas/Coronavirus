@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'marquee.dart';
 
@@ -42,10 +43,6 @@ class TableItem extends StatelessWidget {
         child: Container(
           decoration: new BoxDecoration(
             color: Colors.white,
-            // shape: BoxShape.rectangle,
-            // border: Border.all(
-            //     width: 0, color: Colors.transparent, style: BorderStyle.none),
-            // borderRadius: new BorderRadius.circular(12),
             boxShadow: <BoxShadow>[
               getShadow(),
             ],
@@ -100,11 +97,7 @@ class TableItem extends StatelessWidget {
                           direction: Axis.horizontal,
                           child: Text(
                             country,
-                            style: TextStyle(
-                              color: Theme.of(context).accentColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.normal,
-                            ),
+                            style: Theme.of(context).accentTextTheme.display2,
                           ),
                         ),
                       ),
@@ -118,11 +111,7 @@ class TableItem extends StatelessWidget {
                   child: Center(
                     child: Text(
                       cases.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        color: lblColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ),
                 ),
@@ -133,11 +122,7 @@ class TableItem extends StatelessWidget {
                   child: Center(
                     child: Text(
                       deaths.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        color: lblColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ),
                 ),
