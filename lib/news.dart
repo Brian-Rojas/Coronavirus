@@ -27,15 +27,7 @@ class News extends StatelessWidget {
           ),
           child: Text(
             'News',
-            style: GoogleFonts.montserrat(
-              fontSize: 40,
-              color: Theme.of(context).accentColor,
-              fontWeight: FontWeight.w500,
-            ),
-            // style: TextStyle(
-            //   color: Theme.of(context).accentColor,
-            //   fontSize: 45,
-            // ),
+            style: Theme.of(context).accentTextTheme.headline,
           ),
         ),
         centerTitle: false,

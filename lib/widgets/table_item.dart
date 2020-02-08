@@ -97,10 +97,7 @@ class TableItem extends StatelessWidget {
                           direction: Axis.horizontal,
                           child: Text(
                             country,
-                            style: GoogleFonts.montserrat(
-                              fontSize: 16,
-                              color: Theme.of(context).accentColor,
-                            ),
+                            style: Theme.of(context).accentTextTheme.display2,
                           ),
                         ),
                       ),
@@ -114,10 +111,7 @@ class TableItem extends StatelessWidget {
                   child: Center(
                     child: Text(
                       cases.toString(),
-                      style: GoogleFonts.montserrat(
-                        fontSize: 17,
-                        color: lblColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ),
                 ),
@@ -128,11 +122,7 @@ class TableItem extends StatelessWidget {
                   child: Center(
                     child: Text(
                       deaths.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                        color: lblColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ),
                 ),

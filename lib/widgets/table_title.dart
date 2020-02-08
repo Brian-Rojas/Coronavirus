@@ -47,10 +47,7 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'COUNTRY',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 17,
-                          color: lblColor,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display3,
                       ),
                     ),
                   ),
@@ -60,10 +57,7 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'CASES',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 17,
-                          color: lblColor,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display3,
                       ),
                     ),
                   ),
@@ -73,10 +67,7 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'DEATHS',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 17,
-                          color: lblColor,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display3,
                       ),
                     ),
                   ),

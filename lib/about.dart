@@ -29,11 +29,7 @@ class About extends StatelessWidget {
           ),
           child: Text(
             'About',
-            style: GoogleFonts.montserrat(
-              fontSize: 40,
-              color: Theme.of(context).accentColor,
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).accentTextTheme.headline,
           ),
         ),
         centerTitle: false,
@@ -81,9 +77,7 @@ class About extends StatelessWidget {
                       icon: Icon(Icons.info),
                       label: Text(
                         'Info',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 24,
-                        ),
+                        style: Theme.of(context).textTheme.title,
                       ),
                     ),
                     FlatButton.icon(
@@ -91,9 +85,7 @@ class About extends StatelessWidget {
                       icon: Icon(Icons.share),
                       label: Text(
                         'Share',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 24,
-                        ),
+                        style: Theme.of(context).textTheme.title,
                       ),
                     ),
                   ],

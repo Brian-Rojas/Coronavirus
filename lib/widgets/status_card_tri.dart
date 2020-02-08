@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class StatusCardTri extends StatelessWidget {
   final int firstVal;
@@ -39,17 +38,11 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       firstVal.toString(),
-                      style: GoogleFonts.montserrat(
-                        fontSize: 26,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style: Theme.of(context).accentTextTheme.title,
                     ),
                     Text(
                       firstLbl,
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ],
                 ),
@@ -66,17 +59,11 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       secondVal.toString(),
-                      style: GoogleFonts.montserrat(
-                        fontSize: 26,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style: Theme.of(context).accentTextTheme.title,
                     ),
                     Text(
                       secondLbl,
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ],
                 ),
@@ -93,17 +80,11 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       thirdVal.toString(),
-                      style: GoogleFonts.montserrat(
-                        fontSize: 26,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style: Theme.of(context).accentTextTheme.title,
                     ),
                     Text(
                       thirdLbl,
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Theme.of(context).accentColor,
-                      ),
+                      style: Theme.of(context).textTheme.display2,
                     ),
                   ],
                 ),

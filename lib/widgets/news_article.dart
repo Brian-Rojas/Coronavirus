@@ -37,9 +37,7 @@ class NewsArticle extends StatelessWidget {
 
     return Center(
       child: Container(
-        // color: Colors.amber,
         width: MediaQuery.of(context).size.width,
-        // margin: EdgeInsets.only(top: 10, bottom: 10),
         padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
         height: 250,
         child: Container(
@@ -97,11 +95,9 @@ class NewsArticle extends StatelessWidget {
                       width: MediaQuery.of(context).size.width - 100 - 10,
                       child: AutoSizeText(
                         title,
-                        style: GoogleFonts.montserrat(
-                          fontSize: 15,
-                          color: Theme.of(context).accentColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).accentTextTheme.display1.apply(
+                              fontWeightDelta: 2,
+                            ),
                         textAlign: TextAlign.start,
                         maxLines: 2,
                         minFontSize: 15,
@@ -121,12 +117,8 @@ class NewsArticle extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: AutoSizeText(
                     description,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 13,
-                      color: Theme.of(context).accentColor,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    minFontSize: 13,
+                    style: Theme.of(context).accentTextTheme.display1,
+                    minFontSize: 12,
                   ),
                 ),
               ),
@@ -154,11 +146,7 @@ class NewsArticle extends StatelessWidget {
                           // color: Colors.yellow,
                           child: Text(
                             convertDateFromString(date),
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14,
-                              color: Theme.of(context).accentColor,
-                              fontWeight: FontWeight.w300,
-                            ),
+                            style: Theme.of(context).textTheme.display1,
                           ),
                         ),
                         Row(
@@ -170,16 +158,8 @@ class NewsArticle extends StatelessWidget {
                               margin: EdgeInsets.only(right: 5),
                               child: Text(
                                 "Read More",
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 16,
-                                  color: Theme.of(context).accentColor,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                // style: TextStyle(
-                                //   color: Theme.of(context).accentColor,
-                                //   fontSize: 16,
-                                //   fontWeight: FontWeight.normal,
-                                // ),
+                                style:
+                                    Theme.of(context).accentTextTheme.display2,
                               ),
                             ),
                             Container(

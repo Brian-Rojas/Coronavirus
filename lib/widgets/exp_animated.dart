@@ -75,17 +75,11 @@ class _ExpAnimatedState extends State<ExpAnimated> {
                 children: <TextSpan>[
                   TextSpan(
                     text: widget.cardTitle,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 23,
-                      color: Theme.of(context).accentColor,
-                    ),
+                    style: Theme.of(context).accentTextTheme.subhead,
                   ),
                   TextSpan(
                     text: widget.discription,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 13,
-                      color: Theme.of(context).accentColor,
-                    ),
+                    style: Theme.of(context).accentTextTheme.display1,
                   ),
                 ],
               ),
