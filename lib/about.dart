@@ -18,90 +18,88 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 20),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          title: Padding(
-            padding: const EdgeInsets.only(
-              left: 10,
-            ),
-            child: Text(
-              'About',
-              style: GoogleFonts.montserrat(
-                fontSize: 40,
-                color: Theme.of(context).accentColor,
-                fontWeight: FontWeight.w500,
-              ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.only(
+            left: 10,
+            top: 20,
+          ),
+          child: Text(
+            'About',
+            style: GoogleFonts.montserrat(
+              fontSize: 40,
+              color: Theme.of(context).accentColor,
+              fontWeight: FontWeight.w500,
             ),
           ),
-          centerTitle: false,
-          backgroundColor: Colors.white,
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            color: Colors.white,
-            child: Column(
-              children: <Widget>[
-                ImageSlider(),
-                // ExpAnimated(),
-                ExpAnimated(
-                  cardTitle: 'Info\n\n',
-                  textHeight: 250,
-                  discription: info,
-                  color: Color.fromRGBO(245, 220, 216, 1.0),
-                ),
-                ExpAnimated(
-                  cardTitle: 'Transmission\n\n',
-                  textHeight: 300,
-                  discription: transmission,
-                  color: Color.fromRGBO(228, 209, 195, 1.0),
-                ),
-                ExpAnimated(
-                  cardTitle: 'Symptoms\n\n',
-                  textHeight: 250,
-                  discription: symptoms,
-                  color: Color.fromRGBO(251, 419, 98, 1.0),
-                ),
-                ExpAnimated(
-                  cardTitle: 'Prevention\n\n',
-                  textHeight: 250,
-                  discription: prevention,
-                  color: Color.fromRGBO(258, 209, 195, 1.0),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      FlatButton.icon(
-                        onPressed: null,
-                        icon: Icon(Icons.info),
-                        label: Text(
-                          'Info',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 24,
-                          ),
+        centerTitle: false,
+        backgroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              ImageSlider(),
+              // ExpAnimated(),
+              ExpAnimated(
+                cardTitle: 'Info\n\n',
+                textHeight: 250,
+                discription: info,
+                color: Color.fromRGBO(245, 220, 216, 1.0),
+              ),
+              ExpAnimated(
+                cardTitle: 'Transmission\n\n',
+                textHeight: 300,
+                discription: transmission,
+                color: Color.fromRGBO(228, 209, 195, 1.0),
+              ),
+              ExpAnimated(
+                cardTitle: 'Symptoms\n\n',
+                textHeight: 250,
+                discription: symptoms,
+                color: Color.fromRGBO(251, 419, 98, 1.0),
+              ),
+              ExpAnimated(
+                cardTitle: 'Prevention\n\n',
+                textHeight: 250,
+                discription: prevention,
+                color: Color.fromRGBO(258, 209, 195, 1.0),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    FlatButton.icon(
+                      onPressed: null,
+                      icon: Icon(Icons.info),
+                      label: Text(
+                        'Info',
+                        style: GoogleFonts.montserrat(
+                          fontSize: 24,
                         ),
                       ),
-                      FlatButton.icon(
-                        onPressed: null,
-                        icon: Icon(Icons.share),
-                        label: Text(
-                          'Share',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 24,
-                          ),
+                    ),
+                    FlatButton.icon(
+                      onPressed: null,
+                      icon: Icon(Icons.share),
+                      label: Text(
+                        'Share',
+                        style: GoogleFonts.montserrat(
+                          fontSize: 24,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
