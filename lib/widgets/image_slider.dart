@@ -8,7 +8,7 @@ class ImageSlider extends StatelessWidget {
 
   ImageSlider({
     this.height = 175,
-    this.imgNames = const ['1.jpg', '2.jpg'],
+    this.imgNames = const ['1.jpg', '2.jpg', ],
     this.autoPlay = false,
   });
 

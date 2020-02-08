@@ -21,7 +21,7 @@ class About extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 20),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
           title: Padding(
@@ -38,12 +38,12 @@ class About extends StatelessWidget {
             ),
           ),
           centerTitle: false,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
         ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            color: Colors.white,
+            // color: Colors.white,
             child: Column(
               children: <Widget>[
                 ImageSlider(),
