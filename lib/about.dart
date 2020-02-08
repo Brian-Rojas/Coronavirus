@@ -19,7 +19,7 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
         title: Padding(
@@ -33,12 +33,12 @@ class About extends StatelessWidget {
           ),
         ),
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          color: Colors.white,
+          color: Colors.transparent,
           child: Column(
             children: <Widget>[
               ImageSlider(),
