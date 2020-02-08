@@ -44,7 +44,7 @@ class About extends StatelessWidget {
               ImageSlider(),
               // ExpAnimated(),
               ExpAnimated(
-                cardTitle: 'Info\n\n',
+                cardTitle: 'Overview\n\n',
                 textHeight: 250,
                 discription: info,
                 color: Color.fromRGBO(245, 220, 216, 1.0),
