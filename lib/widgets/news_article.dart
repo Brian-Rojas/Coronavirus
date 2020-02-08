@@ -40,22 +40,38 @@ class NewsArticle extends StatelessWidget {
         // color: Colors.amber,
         width: MediaQuery.of(context).size.width,
         // margin: EdgeInsets.only(top: 10, bottom: 10),
-        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
+        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
         height: 250,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
           decoration: new BoxDecoration(
             color: Colors.white,
-            shape: BoxShape.rectangle,
+            // shape: BoxShape.rectangle,
             borderRadius: new BorderRadius.circular(12.0),
             boxShadow: <BoxShadow>[
               new BoxShadow(
-                color: Colors.black12,
-                blurRadius: 10.0,
-                offset: new Offset(0.0, 10.0),
+                color: Colors.black.withOpacity(0.05),
+                blurRadius: 6.0, // has the effect of softening the shadow
+                spreadRadius: 2.0, // has the effect of extending the shadow
+                offset: Offset(
+                  1.0, // horizontal, move right 10
+                  3.0, // vertical, move down 10
+                ),
               ),
             ],
           ),
+          // decoration: new BoxDecoration(
+          //   color: Colors.white,
+          //   shape: BoxShape.rectangle,
+          //   borderRadius: new BorderRadius.circular(12.0),
+          //   boxShadow: <BoxShadow>[
+          //     new BoxShadow(
+          //       color: Colors.black12,
+          //       blurRadius: 10.0,
+          //       offset: new Offset(0.0, 10.0),
+          //     ),
+          //   ],
+          // ),
           child: Column(
             children: <Widget>[
               //------------------- Headline Bar -------------------
