@@ -8,32 +8,14 @@ class TableTitle extends StatelessWidget {
     final Color lblBGColor = Colors.transparent;
 
     return Container(
-      color: Colors.transparent,
-      // color: Colors.blue,
-
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: 20),
-      // padding: EdgeInsets.only(left: 15, right: 15),
       height: 50,
       child: Center(
         child: Container(
-          // color: Colors.white,
-          margin: EdgeInsets.only(left: 10, right: 10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 0,
-                blurRadius: 8,
-                offset: Offset(0, 3),
-              ),
-            ],
-          ),
+          // color: Colors.red,
           child: ClipRRect(
-            // borderRadius: BorderRadius.circular(12.0),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-
             child: Container(
               height: 50,
               color: Colors.white,
