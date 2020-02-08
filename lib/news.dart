@@ -18,7 +18,7 @@ class News extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top:20),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
           title: Padding(
@@ -32,7 +32,7 @@ class News extends StatelessWidget {
             ),
           ),
           centerTitle: false,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
         ),
         body: StreamBuilder(
           stream: Firestore.instance
