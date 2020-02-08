@@ -44,7 +44,6 @@ class _ChartState extends State<Chart> {
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.red,
-      // color: Colors.white,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
@@ -54,30 +53,48 @@ class _ChartState extends State<Chart> {
             thirdLbl: "Recoveries",
             thirdVal: recoveries,
           ),
-          TableTitle(),
           Container(
-              // color: Colors.transparent,
-              // color: Colors.yellow,
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              alignment: Alignment.topCenter,
-              height: MediaQuery.of(context).size.height - 283,
-              width: MediaQuery.of(context).size.width,
-              child: StreamBuilder(
-                stream: Firestore.instance
-                    .collection('locations')
-                    .orderBy("infected", descending: true)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) return const Text('Loading...');
-                  getSums();
-                  return ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 0),
-                    itemCount: snapshot.data.documents.length,
-                    itemBuilder: (context, index) =>
-                        _buildListItem(context, snapshot.data.documents[index]),
-                  );
-                },
-              )),
+            margin: EdgeInsets.all(10),
+            decoration: new BoxDecoration(
+            color: Colors.white,
+            borderRadius: new BorderRadius.circular(12.0),
+            boxShadow: <BoxShadow>[
+              new BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                blurRadius: 4.0, // has the effect of softening the shadow
+                spreadRadius: 2.0, // has the effect of extending the shadow
+              ),
+            ],
+          ),
+            child: Column(
+              children: <Widget>[
+                TableTitle(),
+                Container(
+                  // color: Colors.yellow,
+                  margin: EdgeInsets.only(bottom: 10),
+                  alignment: Alignment.topCenter,
+                  height: MediaQuery.of(context).size.height - 283,
+                  width: MediaQuery.of(context).size.width,
+                  child: StreamBuilder(
+                    stream: Firestore.instance
+                        .collection('locations')
+                        .orderBy("infected", descending: true)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) return const Text('Loading...');
+                      getSums();
+                      return ListView.builder(
+                        padding: EdgeInsets.symmetric(horizontal: 0),
+                        itemCount: snapshot.data.documents.length,
+                        itemBuilder: (context, index) => _buildListItem(
+                            context, snapshot.data.documents[index]),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

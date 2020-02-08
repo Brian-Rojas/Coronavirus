@@ -36,8 +36,6 @@ class TableItem extends StatelessWidget {
     return Container(
       // color: Colors.red,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: 0),
-      // padding: EdgeInsets.only(left: 15, right: 15),
       height: 50,
       child: Center(
         child: Container(

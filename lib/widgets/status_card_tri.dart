@@ -22,10 +22,10 @@ class StatusCardTri extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16),
       height: 80,
-      margin: EdgeInsets.only(top: 50),
+      margin: EdgeInsets.only(top: 50,),
       child: Center(
         child: Card(
-          elevation: 15,
+          elevation: 4,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
           child: Row(
