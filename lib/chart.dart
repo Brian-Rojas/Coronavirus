@@ -117,11 +117,11 @@ class _ChartState extends State<Chart> {
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (!snapshot.hasData) return const Text('Loading...');
-                      return ListView.builder(
+                      return new ListView(
                         padding: EdgeInsets.symmetric(horizontal: 0),
-                        itemCount: snapshot.data.documents.length,
-                        itemBuilder: (context, index) => _buildListItem(
-                            context, snapshot.data.documents[index]),
+                        children: snapshot.data.documents.map((document) {
+                          return _buildListItem(context, document);
+                        }).toList(),
                       );
                     },
                   ),
