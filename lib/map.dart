@@ -22,7 +22,10 @@ class _MapState extends State<Map> {
   String _blue;
   String _normal;
   String _new;
+  // BitmapDescriptor pinLocationIcon;
   var marks = Markers();
+  static int size = 5; // 5 - 15
+  static const double SIZE_MULTYPLIER = 100000.0;
 
   getLocationPermission() async {
     var location = new Location();
@@ -33,6 +36,25 @@ class _MapState extends State<Map> {
         print('Permission denied');
       }
     }
+  }
+
+  void _currentLocation() async {
+    final GoogleMapController controller = mapController;
+    LocationData currentLocation;
+    var location = new Location();
+    try {
+      currentLocation = await location.getLocation();
+    } on Exception {
+      currentLocation = null;
+    }
+
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(
+        bearing: 0,
+        target: LatLng(currentLocation.latitude, currentLocation.longitude),
+        zoom: 4,
+      ),
+    ));
   }
 
   @override
@@ -68,6 +90,10 @@ class _MapState extends State<Map> {
     rootBundle.loadString('assets/map_styles/new.json').then((string) {
       _new = string;
     });
+
+    // pinLocationIcon = BitmapDescriptor.fromAssetImage(
+    //     ImageConfiguration(devicePixelRatio: 2.5),
+    //     'assets/marker-circle.png') as BitmapDescriptor;
   }
 
   void setMapStyle() {
@@ -102,8 +128,47 @@ class _MapState extends State<Map> {
             myLocationEnabled: true,
             trafficEnabled: false,
             mapToolbarEnabled: false,
-            myLocationButtonEnabled: true,
+            myLocationButtonEnabled: false,
             tiltGesturesEnabled: false,
+            indoorViewEnabled: false,
+            minMaxZoomPreference: MinMaxZoomPreference(1, 5),
+            // : FloatingActionButton.extended(
+            //   onPressed: _currentLocation,
+            //   label: Text('My Location'),
+            //   icon: Icon(Icons.location_on),
+            // ),
+          ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: FloatingActionButton(
+              foregroundColor: Theme.of(context).accentColor,
+              backgroundColor: Colors.white,
+              onPressed: _currentLocation,
+              child: Icon(Icons.my_location),
+              mini: true,
+            ),
+            // child: FloatingActionButton(
+            //   foregroundColor: Theme.of(context).primaryColor,
+            //   backgroundColor: Colors.white,
+            //   onPressed: _currentLocation,
+            //   child: Icon(Icons.my_location),
+            //   mini: true,
+            // ),
+            // child: FloatingActionButton(
+            //   foregroundColor: Colors.white,
+            //   backgroundColor: Theme.of(context).accentColor,
+            //   onPressed: _currentLocation,
+            //   child: Icon(Icons.my_location),
+            //   mini: true,
+            // ),
+            // child: FloatingActionButton(
+            //   foregroundColor: Colors.white,
+            //   backgroundColor: Theme.of(context).primaryColor,
+            //   onPressed: _currentLocation,
+            //   child: Icon(Icons.my_location),
+            //   mini: true,
+            // ),
           ),
           Positioned(
               child: StatusCardTri(

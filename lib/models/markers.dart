@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class Markers with ChangeNotifier {
+  BitmapDescriptor pinLocationIcon;
   Set<Marker> markers;
   Map<String, bool> countries;
   int count = 0;
@@ -10,6 +11,15 @@ class Markers with ChangeNotifier {
   Markers() {
     markers = Set();
     countries = Map<String, bool>();
+    loadIcon();
+    // clearMarkers();
+  }
+
+  void loadIcon() async {
+    pinLocationIcon = await BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(devicePixelRatio: 5),
+      'assets/images/marker-circle.png',
+    );
   }
 
   void addMarker(String country, LatLng cords,
@@ -20,6 +30,7 @@ class Markers with ChangeNotifier {
           count.toString(),
         ),
         position: cords,
+        icon: pinLocationIcon,
         infoWindow: InfoWindow(
             title: country, snippet: 'Cases: $cases Deaths: $deaths'),
         onTap: () {},
