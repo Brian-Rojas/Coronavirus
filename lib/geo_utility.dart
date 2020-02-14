@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 
 class GeoUtility {
   Future<LatLng> findCords(String country) async {
+    print("Country len ${country.length}");
     if (country.length > 1) {
       print("Running get cords on $country");
       List<Placemark> placemark =

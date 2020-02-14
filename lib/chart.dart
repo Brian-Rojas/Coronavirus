@@ -20,6 +20,12 @@ class _ChartState extends State<Chart> {
   int regions = 0;
   int recoveries = 0;
   Map<String, bool> countries = new Map<String, bool>();
+  int count = 0;
+
+  // void initState() {
+  //   super.initState();
+  //   Provider.of<Markers>(context, listen: false).clearMarkers();
+  // }
 
   void getSums() {
     Firestore.instance
@@ -37,12 +43,17 @@ class _ChartState extends State<Chart> {
   }
 
   Future<void> getCordsLocally(DocumentSnapshot document) async {
-    GeoUtility geo;
+    GeoUtility geo = new GeoUtility();
     if (countries.containsKey(document.documentID)) {
       if (countries[document.documentID] == false) {
         Future<LatLng> cords = geo.findCords(document.documentID);
         cords.then((value) {
-          Provider.of<Markers>(context).addMarker(document.documentID, value);
+          Provider.of<Markers>(context, listen: false).addMarker(
+            document.documentID,
+            value,
+            deaths: document['dead'],
+            cases: document['infected'],
+          );
           countries[document.documentID] = true;
         });
         cords.catchError((error) {
@@ -60,6 +71,8 @@ class _ChartState extends State<Chart> {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     storeCountriesLocally(document);
     getCordsLocally(document);
+    // print("Writting ${document.documentID} $count");
+    // count += 1;
     return TableItem(
       country: document.documentID,
       deaths: document['dead'],
@@ -103,14 +116,14 @@ class _ChartState extends State<Chart> {
                   alignment: Alignment.topCenter,
                   height: MediaQuery.of(context).size.height - 283,
                   width: MediaQuery.of(context).size.width,
-                  child: StreamBuilder(
+                  child: StreamBuilder<QuerySnapshot>(
                     stream: Firestore.instance
                         .collection('locations')
                         .orderBy("infected", descending: true)
                         .snapshots(),
-                    builder: (context, snapshot) {
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (!snapshot.hasData) return const Text('Loading...');
-                      // getSums();
                       return ListView.builder(
                         padding: EdgeInsets.symmetric(horizontal: 0),
                         itemCount: snapshot.data.documents.length,
