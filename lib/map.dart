@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:provider/provider.dart';
+
+import 'models/markers.dart';
 
 class Map extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class _MapState extends State<Map> {
   String _blue;
   String _normal;
   String _new;
+  var marks = Markers();
 
   getLocationPermission() async {
     var location = new Location();
@@ -76,28 +80,33 @@ class _MapState extends State<Map> {
 
   @override
   Widget build(BuildContext context) {
+    // var mapData = Provider.of<Markers>(context);
+    // print(mapData.getMarkers.first.position);
     if (mapController != null) {
       setMapStyle();
     }
 
-    return Stack(
-      children: <Widget>[
-        GoogleMap(
-          mapType: MapType.normal,
-          initialCameraPosition: _nearChina,
-          onMapCreated: (GoogleMapController controller) {
-            mapController = controller;
-            setMapStyle();
-          },
-          compassEnabled: false,
-          myLocationEnabled: true,
-          trafficEnabled: false,
-          mapToolbarEnabled: false,
-          myLocationButtonEnabled: true,
-          tiltGesturesEnabled: false,
-        ),
-        Positioned(child: StatusCardTri()),
-      ],
-    );
+    return Consumer<Markers>(builder: (context, markers, _) {
+      return Stack(
+        children: <Widget>[
+          GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _nearChina,
+            onMapCreated: (GoogleMapController controller) {
+              mapController = controller;
+              setMapStyle();
+            },
+            markers: markers.getMarkers,
+            compassEnabled: false,
+            myLocationEnabled: true,
+            trafficEnabled: false,
+            mapToolbarEnabled: false,
+            myLocationButtonEnabled: true,
+            tiltGesturesEnabled: false,
+          ),
+          Positioned(child: StatusCardTri()),
+        ],
+      );
+    });
   }
 }

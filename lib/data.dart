@@ -1,10 +1,11 @@
-import 'package:coronavirus_app/news.dart';
+import 'package:coronavirus_app/models/markers.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'chart.dart';
 import 'map.dart';
-import 'package:flutter/material.dart';
-
+import 'news.dart';
 import 'about.dart';
 
 class Data extends StatefulWidget {
@@ -29,50 +30,55 @@ class _DataState extends State<Data> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text(
-              'Home',
-              style: GoogleFonts.montserrat(
-                fontSize: 14,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Markers()),
+      ],
+      child: Scaffold(
+        body: _children[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: onTabTapped,
+          currentIndex: _currentIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.home),
+              title: new Text(
+                'Home',
+                style: GoogleFonts.montserrat(
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.map),
-            title: new Text(
-              'Map',
-              style: GoogleFonts.montserrat(
-                fontSize: 14,
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.map),
+              title: new Text(
+                'Map',
+                style: GoogleFonts.montserrat(
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.rss_feed),
-            title: new Text(
-              'News',
-              style: GoogleFonts.montserrat(
-                fontSize: 14,
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.rss_feed),
+              title: new Text(
+                'News',
+                style: GoogleFonts.montserrat(
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.announcement),
-            title: new Text(
-              'About',
-              style: GoogleFonts.montserrat(
-                fontSize: 14,
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.announcement),
+              title: new Text(
+                'About',
+                style: GoogleFonts.montserrat(
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
