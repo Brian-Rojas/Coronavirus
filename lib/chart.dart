@@ -16,10 +16,6 @@ class Chart extends StatefulWidget {
 }
 
 class _ChartState extends State<Chart> {
-  int cases = 0;
-  int deaths = 0;
-  int regions = 0;
-  int recoveries = 0;
   Map<String, bool> countries = new Map<String, bool>();
 
   void getSums() {
@@ -92,7 +88,7 @@ class _ChartState extends State<Chart> {
                 Provider.of<RegionStatus>(context, listen: false).getRecoveries,
           ),
           Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.circular(12.0),
