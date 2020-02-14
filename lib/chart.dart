@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'models/markers.dart';
+import 'models/region_status.dart';
 import 'widgets/status_card_tri.dart';
 
 class Chart extends StatefulWidget {
@@ -20,25 +21,19 @@ class _ChartState extends State<Chart> {
   int regions = 0;
   int recoveries = 0;
   Map<String, bool> countries = new Map<String, bool>();
-  int count = 0;
-
-  // void initState() {
-  //   super.initState();
-  //   Provider.of<Markers>(context, listen: false).clearMarkers();
-  // }
 
   void getSums() {
-    Firestore.instance
-        .collection("totals")
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      setState(() {
-        cases = snapshot.documents[0]['cases'] as int;
-        deaths = snapshot.documents[0]['deaths'] as int;
-        regions = snapshot.documents[0]['countries'] as int;
-        recoveries = snapshot.documents[0]['recoveries'] as int;
+    Firestore.instance.collection("totals").snapshots().listen((querySnapshot) {
+      querySnapshot.documentChanges.forEach((change) {
+        Provider.of<RegionStatus>(context, listen: false)
+            .setCases(change.document['cases'] as int);
+        Provider.of<RegionStatus>(context, listen: false)
+            .setDeaths(change.document['deaths'] as int);
+        Provider.of<RegionStatus>(context, listen: false)
+            .setRecoveries(change.document['recoveries'] as int);
+        Provider.of<RegionStatus>(context, listen: false)
+            .setRegions(change.document['countries'] as int);
       });
-      // snapshot.documents.forEach((f) => print('${f.data}}'));
     });
   }
 
@@ -71,8 +66,7 @@ class _ChartState extends State<Chart> {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     storeCountriesLocally(document);
     getCordsLocally(document);
-    // print("Writting ${document.documentID} $count");
-    // count += 1;
+    getSums();
     return TableItem(
       country: document.documentID,
       deaths: document['dead'],
@@ -89,10 +83,13 @@ class _ChartState extends State<Chart> {
       child: Column(
         children: <Widget>[
           StatusCardTri(
-            firstVal: cases,
-            secondVal: deaths,
+            firstVal:
+                Provider.of<RegionStatus>(context, listen: false).getCases,
+            secondVal:
+                Provider.of<RegionStatus>(context, listen: false).getDeaths,
             thirdLbl: "Recoveries",
-            thirdVal: recoveries,
+            thirdVal:
+                Provider.of<RegionStatus>(context, listen: false).getRecoveries,
           ),
           Container(
             margin: EdgeInsets.all(10),

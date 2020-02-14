@@ -1,6 +1,5 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'widgets/exp_animated.dart';
 
 class About extends StatelessWidget {

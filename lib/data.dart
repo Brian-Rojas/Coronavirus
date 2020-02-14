@@ -1,4 +1,5 @@
 import 'package:coronavirus_app/models/markers.dart';
+import 'package:coronavirus_app/models/region_status.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,7 @@ class _DataState extends State<Data> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Markers()),
+        ChangeNotifierProvider(create: (_) => RegionStatus()),
       ],
       child: Scaffold(
         body: _children[_currentIndex],

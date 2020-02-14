@@ -6,6 +6,7 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import 'models/markers.dart';
+import 'models/region_status.dart';
 
 class Map extends StatefulWidget {
   @override
@@ -104,7 +105,15 @@ class _MapState extends State<Map> {
             myLocationButtonEnabled: true,
             tiltGesturesEnabled: false,
           ),
-          Positioned(child: StatusCardTri()),
+          Positioned(
+              child: StatusCardTri(
+            firstVal:
+                Provider.of<RegionStatus>(context, listen: false).getCases,
+            secondVal:
+                Provider.of<RegionStatus>(context, listen: false).getDeaths,
+            thirdVal:
+                Provider.of<RegionStatus>(context, listen: false).getRegions,
+          )),
         ],
       );
     });
