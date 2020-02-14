@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import 'models/markers.dart';
 import 'models/region_status.dart';
+import 'models/regions.dart';
 import 'widgets/status_card_tri.dart';
 
 class Chart extends StatefulWidget {
@@ -16,8 +17,6 @@ class Chart extends StatefulWidget {
 }
 
 class _ChartState extends State<Chart> {
-  Map<String, bool> countries = new Map<String, bool>();
-
   void getSums() {
     Firestore.instance.collection("totals").snapshots().listen((querySnapshot) {
       querySnapshot.documentChanges.forEach((change) {
@@ -35,17 +34,29 @@ class _ChartState extends State<Chart> {
 
   Future<void> getCordsLocally(DocumentSnapshot document) async {
     GeoUtility geo = new GeoUtility();
-    if (countries.containsKey(document.documentID)) {
-      if (countries[document.documentID] == false) {
+    var countries = Provider.of<Markers>(context).getCountries;
+    if (Provider.of<Markers>(context, listen: false)
+        .getCountries
+        .containsKey(document.documentID)) {
+      if (Provider.of<Markers>(context, listen: false)
+              .getCountries[document.documentID] ==
+          false) {
         Future<LatLng> cords = geo.findCords(document.documentID);
         cords.then((value) {
           Provider.of<Markers>(context, listen: false).addMarker(
             document.documentID,
             value,
-            deaths: document['dead'],
-            cases: document['infected'],
+            deaths: Provider.of<Regions>(context, listen: false)
+                .getRegions[document.documentID]
+                .getDeaths,
+            cases: Provider.of<Regions>(context, listen: false)
+                .getRegions[document.documentID]
+                .getCases,
+            // deaths: document['dead'],
+            // cases: document['infected'],
           );
-          countries[document.documentID] = true;
+          Provider.of<Markers>(context, listen: false)
+              .getCountries[document.documentID] = true;
         });
         cords.catchError((error) {
           print("Error $error");
@@ -56,13 +67,33 @@ class _ChartState extends State<Chart> {
   }
 
   void storeCountriesLocally(DocumentSnapshot document) {
-    countries[document.documentID] = false;
+    Provider.of<Markers>(context, listen: false)
+        .getCountries[document.documentID] = false;
   }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     storeCountriesLocally(document);
     getCordsLocally(document);
     getSums();
+    var regions = Provider.of<Regions>(context, listen: false);
+    if (regions.getRegions.containsKey(document.documentID)) {
+      print("Regions has ${document.documentID} so updating instead.");
+      regions.updateRegion(
+        document.documentID,
+        new Region(
+          document.documentID,
+          cases: document['infected'],
+          recoveries: document['recovered'],
+          deaths: document['dead'],
+        ),
+      );
+    } else {
+      regions.addRegion(
+          region: document.documentID,
+          cases: document['infected'],
+          recoveries: document['recovered'],
+          deaths: document['dead']);
+    }
     return TableItem(
       country: document.documentID,
       deaths: document['dead'],
@@ -117,6 +148,8 @@ class _ChartState extends State<Chart> {
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (!snapshot.hasData) return const Text('Loading...');
+                      // Provider.of<Markers>(context, listen: false)
+                      //     .clearMarkers();
                       return new ListView(
                         padding: EdgeInsets.symmetric(horizontal: 0),
                         children: snapshot.data.documents.map((document) {
