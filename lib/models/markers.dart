@@ -1,70 +1,72 @@
+import 'package:coronavirus_app/geo_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
 
 class Markers with ChangeNotifier {
   BitmapDescriptor pinLocationIcon;
   Set<Marker> markers;
-  Map<String, bool> countries;
+  Map<Marker, LatLng> markerInfo;
   int count = 0;
+  GeoUtility geo;
 
   Markers() {
     markers = Set();
-    countries = Map<String, bool>();
-    loadIcon();
-    // clearMarkers();
+    markerInfo = Map<Marker, LatLng>();
+    _loadIcon();
+    geo = new GeoUtility();
+    notifyListeners();
   }
 
-  void loadIcon() async {
+  void _loadIcon() async {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
       ImageConfiguration(devicePixelRatio: 5),
       'assets/images/marker-circle.png',
     );
   }
 
-  void addMarker(String country, LatLng cords,
-      {int cases = 0, int deaths = 0}) {
-    if (cords != null) {
-      Marker mark = Marker(
-        markerId: MarkerId(
-          count.toString(),
-        ),
-        position: cords,
-        icon: pinLocationIcon,
-        infoWindow: InfoWindow(
-            title: country, snippet: 'Cases: $cases Deaths: $deaths'),
-        onTap: () {},
-      );
-      if (markers.add(mark)) {
-        count += 1;
-        print("Added new marker for $country with cords $cords");
-        print("Sanity check markers: ${markers.length} vs $count");
-      } else {
-        print("Marker $country already existed so not added.");
-      }
+  void addMarker(String country,
+      {int cases = 0, int deaths = 0, LatLng cords}) {
+    // LatLng cords = getCords(country);
+    Marker mark = Marker(
+      markerId: MarkerId(
+        country,
+      ),
+      position: cords,
+      icon: pinLocationIcon,
+      infoWindow:
+          InfoWindow(title: country, snippet: 'Cases: $cases Deaths: $deaths'),
+      onTap: () {},
+    );
+
+    if (markers.add(mark)) {
+      markerInfo[mark] = cords;
+      count += 1;
+      print("Added new marker for $country with cords $cords");
+      print("Sanity check markers: ${markers.length} vs $count");
       notifyListeners();
+    } else {
+      print("Marker $country already existed so not added.");
     }
   }
 
-  Marker getMarkerWithId(int id) {
-    if (id > count || id < 0) {
+  LatLng getCords(String location) {
+    Future<LatLng> cords = geo.findCords(location);
+    cords.then((value) {
+      return value;
+    });
+    cords.catchError((error) {
+      print("Error $error");
       return null;
-    } else {
-      return markers.elementAt(id);
-    }
+    });
   }
 
-  void removeMarkerWithId(int id) {
-    if (id > count || id < 0) {
-      // can't be in there
-      return null;
-    } else {
-      try {
-        markers.elementAt(id);
-        notifyListeners();
-      } catch (e) {
-        print("Error deleting marker at id $id because $e");
+  Marker getMarkerWithId(String id) {
+    for (var mark in markers) {
+      print("MARKER WITH ID ${mark.markerId.value}");
+      if (mark.markerId.value == id) {
+        return mark;
       }
+      return null;
     }
   }
 
@@ -72,11 +74,11 @@ class Markers with ChangeNotifier {
     print("MARKERS CLEARED!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     markers.clear();
     count = 0;
-    countries.clear();
+    // countries.clear();
     notifyListeners();
   }
 
   Set<Marker> get getMarkers => markers;
-  Map<String, bool> get getCountries => countries;
+  // Map<String, bool> get getCountries => countries;
   int get getCount => count;
 }

@@ -21,73 +21,67 @@ class _ChartState extends State<Chart> {
     Firestore.instance.collection("totals").snapshots().listen((querySnapshot) {
       querySnapshot.documentChanges.forEach((change) {
         Provider.of<RegionStatus>(context, listen: false)
-            .setCases(change.document['cases'] as int);
+            .setCases(change.document['cases']);
         Provider.of<RegionStatus>(context, listen: false)
-            .setDeaths(change.document['deaths'] as int);
+            .setDeaths(change.document['deaths']);
         Provider.of<RegionStatus>(context, listen: false)
-            .setRecoveries(change.document['recoveries'] as int);
+            .setRecoveries(change.document['recoveries']);
         Provider.of<RegionStatus>(context, listen: false)
-            .setRegions(change.document['countries'] as int);
+            .setRegions(change.document['countries']);
       });
     });
   }
 
-  Future<void> getCordsLocally(DocumentSnapshot document) async {
-    GeoUtility geo = new GeoUtility();
-    var countries = Provider.of<Markers>(context).getCountries;
-    if (Provider.of<Markers>(context, listen: false)
-        .getCountries
-        .containsKey(document.documentID)) {
-      if (Provider.of<Markers>(context, listen: false)
-              .getCountries[document.documentID] ==
-          false) {
-        Future<LatLng> cords = geo.findCords(document.documentID);
-        cords.then((value) {
-          Provider.of<Markers>(context, listen: false).addMarker(
-            document.documentID,
-            value,
-            deaths: Provider.of<Regions>(context, listen: false)
-                .getRegions[document.documentID]
-                .getDeaths,
-            cases: Provider.of<Regions>(context, listen: false)
-                .getRegions[document.documentID]
-                .getCases,
-            // deaths: document['dead'],
-            // cases: document['infected'],
-          );
-          Provider.of<Markers>(context, listen: false)
-              .getCountries[document.documentID] = true;
-        });
-        cords.catchError((error) {
-          print("Error $error");
-        });
-      }
-      print("${document.documentID} already stored.");
-    }
-  }
+  // Future<void> getCordsLocally(DocumentSnapshot document) async {
+  //   GeoUtility geo = new GeoUtility();
+  //   // var countries = Provider.of<Markers>(context).getCountries;
+  //   if (Provider.of<Markers>(context, listen: false)
+  //       .getCountries
+  //       .containsKey(document.documentID)) {
+  //     if (Provider.of<Markers>(context, listen: false)
+  //             .getCountries[document.documentID] ==
+  //         false) {
+  //       Future<LatLng> cords = geo.findCords(document.documentID);
+  //       cords.then((value) {
+  //         Provider.of<Markers>(context, listen: false).addMarker(
+  //           document.documentID,
+  //           value,
+  //           deaths: Provider.of<Regions>(context, listen: false)
+  //               .getRegions[document.documentID]
+  //               .getDeaths,
+  //           cases: Provider.of<Regions>(context, listen: false)
+  //               .getRegions[document.documentID]
+  //               .getCases,
+  //           // deaths: document['dead'],
+  //           // cases: document['infected'],
+  //         );
+  //         Provider.of<Markers>(context, listen: false)
+  //             .getCountries[document.documentID] = true;
+  //       });
+  //       cords.catchError((error) {
+  //         print("Error $error");
+  //       });
+  //     }
+  //     print("${document.documentID} already stored.");
+  //   }
+  // }
 
-  void storeCountriesLocally(DocumentSnapshot document) {
-    Provider.of<Markers>(context, listen: false)
-        .getCountries[document.documentID] = false;
-  }
+  // void storeCountriesLocally(DocumentSnapshot document) {
+  //   Provider.of<Markers>(context, listen: false)
+  //       .getCountries[document.documentID] = false;
+  // }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    storeCountriesLocally(document);
-    getCordsLocally(document);
+    // storeCountriesLocally(document);
+    // getCordsLocally(document);
     getSums();
     var regions = Provider.of<Regions>(context, listen: false);
     if (regions.getRegions.containsKey(document.documentID)) {
       print("Regions has ${document.documentID} so updating instead.");
-      regions.updateRegion(
-        document.documentID,
-        new Region(
-          document.documentID,
-          cases: document['infected'],
-          recoveries: document['recovered'],
-          deaths: document['dead'],
-        ),
-      );
+      regions.updateRegion(document.documentID, document['infected'],
+          document['dead'], document['recovered']);
     } else {
+      print("Added new region ${document.documentID}");
       regions.addRegion(
           region: document.documentID,
           cases: document['infected'],
@@ -148,8 +142,6 @@ class _ChartState extends State<Chart> {
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (!snapshot.hasData) return const Text('Loading...');
-                      // Provider.of<Markers>(context, listen: false)
-                      //     .clearMarkers();
                       return new ListView(
                         padding: EdgeInsets.symmetric(horizontal: 0),
                         children: snapshot.data.documents.map((document) {

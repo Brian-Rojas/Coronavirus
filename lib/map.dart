@@ -1,3 +1,4 @@
+import 'package:coronavirus_app/geo_utility.dart';
 import 'package:coronavirus_app/widgets/status_card_tri.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -7,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import 'models/markers.dart';
 import 'models/region_status.dart';
+import 'models/regions.dart';
 
 class Map extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class Map extends StatefulWidget {
 
 class _MapState extends State<Map> {
   GoogleMapController mapController;
+  GeoUtility geo;
   String _light;
   String _dark;
   String _black;
@@ -23,7 +26,7 @@ class _MapState extends State<Map> {
   String _normal;
   String _new;
   // BitmapDescriptor pinLocationIcon;
-  var marks = Markers();
+  // var marks = Markers();
   static int size = 5; // 5 - 15
   static const double SIZE_MULTYPLIER = 100000.0;
 
@@ -57,10 +60,24 @@ class _MapState extends State<Map> {
     ));
   }
 
+  void _getRegions(BuildContext ctx) {
+    Provider.of<Regions>(ctx, listen: false).getRegions.forEach((_, region) {
+      print(region.region);
+      var markers = Provider.of<Markers>(ctx, listen: false);
+      if (markers.getMarkerWithId(region.region) == null) {
+        var newCords = geo.findCords(region.region);
+        newCords.then((onValue) {
+          markers.addMarker(region.region,
+              cases: region.cases, deaths: region.deaths, cords: onValue);
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-
+    geo = new GeoUtility();
     // getLocationPermission();
 
     rootBundle.loadString('assets/map_styles/dark.json').then((string) {
@@ -111,9 +128,11 @@ class _MapState extends State<Map> {
     // print(mapData.getMarkers.first.position);
     if (mapController != null) {
       setMapStyle();
+      _getRegions(context);
     }
 
     return Consumer<Markers>(builder: (context, markers, _) {
+      // print("Markers found $markers");
       return Stack(
         children: <Widget>[
           GoogleMap(
@@ -122,6 +141,7 @@ class _MapState extends State<Map> {
             onMapCreated: (GoogleMapController controller) {
               mapController = controller;
               setMapStyle();
+              _getRegions(context);
             },
             markers: markers.getMarkers,
             compassEnabled: false,
@@ -148,27 +168,6 @@ class _MapState extends State<Map> {
               child: Icon(Icons.my_location),
               mini: true,
             ),
-            // child: FloatingActionButton(
-            //   foregroundColor: Theme.of(context).primaryColor,
-            //   backgroundColor: Colors.white,
-            //   onPressed: _currentLocation,
-            //   child: Icon(Icons.my_location),
-            //   mini: true,
-            // ),
-            // child: FloatingActionButton(
-            //   foregroundColor: Colors.white,
-            //   backgroundColor: Theme.of(context).accentColor,
-            //   onPressed: _currentLocation,
-            //   child: Icon(Icons.my_location),
-            //   mini: true,
-            // ),
-            // child: FloatingActionButton(
-            //   foregroundColor: Colors.white,
-            //   backgroundColor: Theme.of(context).primaryColor,
-            //   onPressed: _currentLocation,
-            //   child: Icon(Icons.my_location),
-            //   mini: true,
-            // ),
           ),
           Positioned(
               child: StatusCardTri(
