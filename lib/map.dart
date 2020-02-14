@@ -52,7 +52,7 @@ class _MapState extends State<Map> {
       CameraPosition(
         bearing: 0,
         target: LatLng(currentLocation.latitude, currentLocation.longitude),
-        zoom: 4,
+        zoom: 5,
       ),
     ));
   }
@@ -131,7 +131,7 @@ class _MapState extends State<Map> {
             myLocationButtonEnabled: false,
             tiltGesturesEnabled: false,
             indoorViewEnabled: false,
-            minMaxZoomPreference: MinMaxZoomPreference(1, 5),
+            minMaxZoomPreference: MinMaxZoomPreference(1, 10),
             // : FloatingActionButton.extended(
             //   onPressed: _currentLocation,
             //   label: Text('My Location'),

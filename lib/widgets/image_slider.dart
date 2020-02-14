@@ -1,14 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class ImageSlider extends StatelessWidget {
   final double height;
   final List<String> imgNames;
   final bool autoPlay;
+  bool show = true;
 
   ImageSlider({
     this.height = 175,
-    this.imgNames = const ['1.jpg', '2.jpg', ],
+    this.imgNames = const [
+      '1.jpg',
+      '2.jpg',
+    ],
     this.autoPlay = false,
   });
 
@@ -34,11 +39,31 @@ class ImageSlider extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                child: Image.asset(
-                  'assets/images/$i',
-                  fit: BoxFit.cover,
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        color: Colors.white,
+                        child: PhotoView(
+                          backgroundDecoration:
+                              BoxDecoration(color: Colors.transparent),
+                          imageProvider: AssetImage("assets/images/$i"),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  child: Image.asset(
+                    'assets/images/$i',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               // child: Text(
