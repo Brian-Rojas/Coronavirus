@@ -13,8 +13,11 @@ class GeoUtility {
             placemark.first.position.longitude);
         print("$country found $cord");
         return cord;
+      } catch (ERROR_GEOCODING_ADDRESS) {
+        return null;
       } catch (e) {
         print(e);
+        return null;
       }
     } else {
       return null;

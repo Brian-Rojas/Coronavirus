@@ -11,6 +11,7 @@ class RegionStatus with ChangeNotifier {
     regions = 0;
     deaths = 0;
     recoveries = 0;
+    notifyListeners();
   }
 
   void setCases(int value) {
