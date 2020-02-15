@@ -61,6 +61,7 @@ class _MapState extends State<Map> {
   }
 
   void _getRegions(BuildContext ctx) {
+    Provider.of<Markers>(context, listen: false).clearMarkers();
     Provider.of<Regions>(ctx, listen: false).getRegions.forEach((_, region) {
       print(region.region);
       var markers = Provider.of<Markers>(ctx, listen: false);

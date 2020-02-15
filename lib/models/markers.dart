@@ -26,6 +26,9 @@ class Markers with ChangeNotifier {
 
   void addMarker(String country,
       {int cases = 0, int deaths = 0, LatLng cords}) {
+    if (cords == null) {
+      return;
+    }
     // LatLng cords = getCords(country);
     Marker mark = Marker(
       markerId: MarkerId(
