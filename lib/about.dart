@@ -46,25 +46,25 @@ class About extends StatelessWidget {
                 cardTitle: 'Overview\n\n',
                 textHeight: 250,
                 discription: info,
-                color: Color.fromRGBO(245, 220, 216, 1.0),
+                color: Color.fromRGBO(283, 70, 102, 0.25),
               ),
               ExpAnimated(
                 cardTitle: 'Transmission\n\n',
                 textHeight: 300,
                 discription: transmission,
-                color: Color.fromRGBO(228, 209, 195, 1.0),
+                color: Color.fromRGBO(205, 118, 114, 0.25),
               ),
               ExpAnimated(
                 cardTitle: 'Symptoms\n\n',
                 textHeight: 250,
                 discription: symptoms,
-                color: Color.fromRGBO(251, 419, 98, 1.0),
+                color: Color.fromRGBO(238, 180, 98, 0.25),
               ),
               ExpAnimated(
                 cardTitle: 'Prevention\n\n',
                 textHeight: 250,
                 discription: prevention,
-                color: Color.fromRGBO(258, 209, 195, 1.0),
+                color: Color.fromRGBO(19, 128, 134, 0.25),
               ),
               Container(
                 padding: EdgeInsets.only(top: 40),
@@ -72,21 +72,64 @@ class About extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     FlatButton.icon(
-                      onPressed: null,
-                      icon: Icon(Icons.info),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Container(
+                                // color: Color.fromRGBO(283, 70, 102, 0.15),
+                                 color: Colors.transparent,
+                                height: 200.0,
+                                width: 360.0,
+                                child: ListView(
+                                  padding: EdgeInsets.all(20),
+                                  children: <Widget>[
+                                    Center(
+                                      child: Text(
+                                        "App Info\n",
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                    ),
+                                    Text(
+                                      'The data is updated every hour...',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      icon: Icon(
+                        Icons.info,
+                        // color: Color.fromARGB(283, 70, 102, 0.75),
+                      ),
                       label: Text(
                         'Info',
-                        style: Theme.of(context).textTheme.title,
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Color.fromRGBO(283, 70, 102, 0.75),
+                        ),
                       ),
                     ),
-                    FlatButton.icon(
-                      onPressed: null,
-                      icon: Icon(Icons.share),
-                      label: Text(
-                        'Share',
-                        style: Theme.of(context).textTheme.title,
-                      ),
-                    ),
+                    // FlatButton.icon(
+                    //   onPressed: () {},
+                    //   icon: Icon(Icons.share),
+                    //   label: Text(
+                    //     'Share',
+                    //     style: Theme.of(context).textTheme.title,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

@@ -19,8 +19,10 @@ class Markers with ChangeNotifier {
 
   void _loadIcon() async {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-      ImageConfiguration(devicePixelRatio: 5),
-      'assets/images/marker_round.png',
+      ImageConfiguration(
+        devicePixelRatio: 2.5,
+      ),
+      'assets/images/marker1.png',
     );
   }
 

@@ -113,7 +113,7 @@ class _ChartState extends State<Chart> {
                 Provider.of<RegionStatus>(context, listen: false).getRecoveries,
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+            margin: EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 20),
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.circular(12.0),
