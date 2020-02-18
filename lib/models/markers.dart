@@ -1,6 +1,7 @@
-import 'package:coronavirus_app/geo_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../controllers/geo_utility.dart';
 
 class Markers with ChangeNotifier {
   BitmapDescriptor pinLocationIcon;

@@ -1,6 +1,6 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
-import 'widgets/exp_animated.dart';
+import '../widgets/exp_animated.dart';
 
 class About extends StatelessWidget {
   final String info =
@@ -82,7 +82,7 @@ class About extends StatelessWidget {
                               ),
                               child: Container(
                                 // color: Color.fromRGBO(283, 70, 102, 0.15),
-                                 color: Colors.transparent,
+                                color: Colors.transparent,
                                 height: 200.0,
                                 width: 360.0,
                                 child: ListView(

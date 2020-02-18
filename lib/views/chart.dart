@@ -1,23 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coronavirus_app/geo_utility.dart';
 import 'package:coronavirus_app/widgets/table_item.dart';
 import 'package:coronavirus_app/widgets/table_title.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'models/markers.dart';
-import 'models/region_status.dart';
-import 'models/regions.dart';
-import 'widgets/status_card_tri.dart';
+import '../models/region_status.dart';
+import '../models/regions.dart';
+import '../widgets/status_card_tri.dart';
 
-class Chart extends StatefulWidget {
-  @override
-  _ChartState createState() => _ChartState();
-}
-
-class _ChartState extends State<Chart> {
-  void getSums() {
+class Chart extends StatelessWidget {
+  void _getSums(BuildContext context) {
     Firestore.instance.collection("totals").snapshots().listen((querySnapshot) {
       querySnapshot.documentChanges.forEach((change) {
         Provider.of<RegionStatus>(context, listen: false)
@@ -32,49 +24,8 @@ class _ChartState extends State<Chart> {
     });
   }
 
-  // Future<void> getCordsLocally(DocumentSnapshot document) async {
-  //   GeoUtility geo = new GeoUtility();
-  //   // var countries = Provider.of<Markers>(context).getCountries;
-  //   if (Provider.of<Markers>(context, listen: false)
-  //       .getCountries
-  //       .containsKey(document.documentID)) {
-  //     if (Provider.of<Markers>(context, listen: false)
-  //             .getCountries[document.documentID] ==
-  //         false) {
-  //       Future<LatLng> cords = geo.findCords(document.documentID);
-  //       cords.then((value) {
-  //         Provider.of<Markers>(context, listen: false).addMarker(
-  //           document.documentID,
-  //           value,
-  //           deaths: Provider.of<Regions>(context, listen: false)
-  //               .getRegions[document.documentID]
-  //               .getDeaths,
-  //           cases: Provider.of<Regions>(context, listen: false)
-  //               .getRegions[document.documentID]
-  //               .getCases,
-  //           // deaths: document['dead'],
-  //           // cases: document['infected'],
-  //         );
-  //         Provider.of<Markers>(context, listen: false)
-  //             .getCountries[document.documentID] = true;
-  //       });
-  //       cords.catchError((error) {
-  //         print("Error $error");
-  //       });
-  //     }
-  //     print("${document.documentID} already stored.");
-  //   }
-  // }
-
-  // void storeCountriesLocally(DocumentSnapshot document) {
-  //   Provider.of<Markers>(context, listen: false)
-  //       .getCountries[document.documentID] = false;
-  // }
-
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    // storeCountriesLocally(document);
-    // getCordsLocally(document);
-    getSums();
+    _getSums(context);
     var regions = Provider.of<Regions>(context, listen: false);
     if (regions.getRegions.containsKey(document.documentID)) {
       print("Regions has ${document.documentID} so updating instead.");
@@ -99,7 +50,6 @@ class _ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.red,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
@@ -129,7 +79,6 @@ class _ChartState extends State<Chart> {
               children: <Widget>[
                 TableTitle(),
                 Container(
-                  // color: Colors.yellow,
                   margin: EdgeInsets.only(bottom: 10),
                   alignment: Alignment.topCenter,
                   height: MediaQuery.of(context).size.height - 283,
@@ -145,6 +94,7 @@ class _ChartState extends State<Chart> {
                       return new ListView(
                         padding: EdgeInsets.symmetric(horizontal: 0),
                         children: snapshot.data.documents.map((document) {
+                          _getSums(context);
                           return _buildListItem(context, document);
                         }).toList(),
                       );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/news_article.dart';
+import '../widgets/news_article.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class News extends StatelessWidget {
