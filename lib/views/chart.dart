@@ -9,23 +9,24 @@ import '../models/regions.dart';
 import '../widgets/status_card_tri.dart';
 
 class Chart extends StatelessWidget {
-  void _getSums(BuildContext context) {
-    Firestore.instance.collection("totals").snapshots().listen((querySnapshot) {
-      querySnapshot.documentChanges.forEach((change) {
-        Provider.of<RegionStatus>(context, listen: false)
-            .setCases(change.document['cases']);
-        Provider.of<RegionStatus>(context, listen: false)
-            .setDeaths(change.document['deaths']);
-        Provider.of<RegionStatus>(context, listen: false)
-            .setRecoveries(change.document['recoveries']);
-        Provider.of<RegionStatus>(context, listen: false)
-            .setRegions(change.document['countries']);
-      });
-    });
+  Widget _buildStatusCard(BuildContext context, DocumentSnapshot document) {
+    Provider.of<RegionStatus>(context, listen: false)
+        .setCases(document.data['cases']);
+    Provider.of<RegionStatus>(context, listen: false)
+        .setDeaths(document.data['deaths']);
+    Provider.of<RegionStatus>(context, listen: false)
+        .setRecoveries(document.data['recoveries']);
+    Provider.of<RegionStatus>(context, listen: false)
+        .setRegions(document.data['countries']);
+    return new StatusCardTri(
+      firstVal: Provider.of<RegionStatus>(context, listen: false).getCases,
+      secondVal: Provider.of<RegionStatus>(context, listen: false).getDeaths,
+      thirdLbl: "Recoveries",
+      thirdVal: Provider.of<RegionStatus>(context, listen: false).getRecoveries,
+    );
   }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    _getSums(context);
     var regions = Provider.of<Regions>(context, listen: false);
     if (regions.getRegions.containsKey(document.documentID)) {
       print("Regions has ${document.documentID} so updating instead.");
@@ -53,14 +54,27 @@ class Chart extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: <Widget>[
-          StatusCardTri(
-            firstVal:
-                Provider.of<RegionStatus>(context, listen: false).getCases,
-            secondVal:
-                Provider.of<RegionStatus>(context, listen: false).getDeaths,
-            thirdLbl: "Recoveries",
-            thirdVal:
-                Provider.of<RegionStatus>(context, listen: false).getRecoveries,
+          // Grabs the total sums of the status card
+          Container(
+            child: StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance.collection('totals').snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData)
+                  return StatusCardTri(
+                    firstVal: 0,
+                    firstLbl: '?',
+                    secondVal: 0,
+                    secondLbl: '?',
+                    thirdVal: 0,
+                    thirdLbl: '?',
+                  );
+                return _buildStatusCard(
+                  context,
+                  snapshot.data.documents.first,
+                );
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 20),
