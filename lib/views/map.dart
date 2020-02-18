@@ -25,10 +25,6 @@ class _MapState extends State<Map> {
   String _blue;
   String _normal;
   String _new;
-  // BitmapDescriptor pinLocationIcon;
-  // var marks = Markers();
-  static int size = 5; // 5 - 15
-  static const double SIZE_MULTYPLIER = 100000.0;
 
   getLocationPermission() async {
     var location = new Location();
@@ -113,10 +109,6 @@ class _MapState extends State<Map> {
     rootBundle.loadString('assets/map_styles/new.json').then((string) {
       _new = string;
     });
-
-    // pinLocationIcon = BitmapDescriptor.fromAssetImage(
-    //     ImageConfiguration(devicePixelRatio: 2.5),
-    //     'assets/marker-circle.png') as BitmapDescriptor;
   }
 
   void setMapStyle() {
@@ -158,11 +150,6 @@ class _MapState extends State<Map> {
             tiltGesturesEnabled: false,
             indoorViewEnabled: false,
             minMaxZoomPreference: MinMaxZoomPreference(1, 10),
-            // : FloatingActionButton.extended(
-            //   onPressed: _currentLocation,
-            //   label: Text('My Location'),
-            //   icon: Icon(Icons.location_on),
-            // ),
           ),
           Positioned(
             bottom: 10,
@@ -177,7 +164,7 @@ class _MapState extends State<Map> {
           ),
           Positioned(
             child: SafeArea(
-              minimum: EdgeInsets.only(top: 10),
+              minimum: EdgeInsets.only(top: 50),
               child: Padding(
                 padding: const EdgeInsets.only(top: 0),
                 child: StatusCardTri(
