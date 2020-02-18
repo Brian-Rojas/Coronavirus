@@ -28,7 +28,7 @@ class Markers with ChangeNotifier {
   }
 
   void addMarker(String country,
-      {int cases = 0, int deaths = 0, LatLng cords}) {
+      {int cases = 0, int deaths = 0, int recoveries = 0, LatLng cords}) {
     if (cords == null) {
       return;
     }
@@ -39,8 +39,10 @@ class Markers with ChangeNotifier {
       ),
       position: cords,
       icon: pinLocationIcon,
-      infoWindow:
-          InfoWindow(title: country, snippet: 'Cases: $cases Deaths: $deaths'),
+      infoWindow: InfoWindow(
+        title: country,
+        snippet: 'Cases:$cases  Deaths:$deaths  Recoveries:$recoveries',
+      ),
       onTap: () {},
     );
 

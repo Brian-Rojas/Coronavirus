@@ -68,8 +68,13 @@ class _MapState extends State<Map> {
       if (markers.getMarkerWithId(region.region) == null) {
         var newCords = geo.findCords(region.region);
         newCords.then((onValue) {
-          markers.addMarker(region.region,
-              cases: region.cases, deaths: region.deaths, cords: onValue);
+          markers.addMarker(
+            region.region,
+            cases: region.cases,
+            deaths: region.deaths,
+            recoveries: region.recoveries,
+            cords: onValue,
+          );
         });
       }
     });
