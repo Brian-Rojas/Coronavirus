@@ -128,28 +128,31 @@ class _ChartState extends State<Chart> {
             child: Column(
               children: <Widget>[
                 TableTitle(),
-                Container(
-                  // color: Colors.yellow,
-                  margin: EdgeInsets.only(bottom: 10),
-                  alignment: Alignment.topCenter,
-                  height: MediaQuery.of(context).size.height - 283,
-                  width: MediaQuery.of(context).size.width,
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: Firestore.instance
-                        .collection('locations')
-                        .orderBy("infected", descending: true)
-                        .snapshots(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (!snapshot.hasData) return const Text('Loading...');
-                      return new ListView(
-                        padding: EdgeInsets.symmetric(horizontal: 0),
-                        children: snapshot.data.documents.map((document) {
-                          return _buildListItem(context, document);
-                        }).toList(),
-                      );
-                    },
+                RefreshIndicator(
+                  child: Container(
+                    // color: Colors.yellow,
+                    margin: EdgeInsets.only(bottom: 10),
+                    alignment: Alignment.topCenter,
+                    height: MediaQuery.of(context).size.height - 283,
+                    width: MediaQuery.of(context).size.width,
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream: Firestore.instance
+                          .collection('locations')
+                          .orderBy("infected", descending: true)
+                          .snapshots(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (!snapshot.hasData) return const Text('Loading...');
+                        return new ListView(
+                          padding: EdgeInsets.symmetric(horizontal: 0),
+                          children: snapshot.data.documents.map((document) {
+                            return _buildListItem(context, document);
+                          }).toList(),
+                        );
+                      },
+                    ),
                   ),
+                  onRefresh: _handleRefresh,
                 ),
               ],
             ),
@@ -158,4 +161,8 @@ class _ChartState extends State<Chart> {
       ),
     );
   }
+}
+
+Future<Null> _handleRefresh() async {
+  await new Future.delayed(new Duration(milliseconds: 500));
 }
