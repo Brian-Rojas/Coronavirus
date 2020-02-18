@@ -39,7 +39,7 @@ class NewsArticle extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
-        height: 250,
+        height: 240,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
           decoration: new BoxDecoration(
@@ -75,8 +75,8 @@ class NewsArticle extends StatelessWidget {
                       child: image != null
                           ? Image.network(
                               image,
-                              height: 50,
-                              width: 50,
+                              height: 40,
+                              width: 40,
                             )
                           : SizedBox(
                               child: Icon(
@@ -93,10 +93,10 @@ class NewsArticle extends StatelessWidget {
                   Container(
                     // color: Colors.yellow,
                     padding:
-                        EdgeInsets.only(left: 5, top: 4, bottom: 4, right: 10),
+                        EdgeInsets.only(left: 5, top: 0, bottom: 0, right: 0),
                     child: SizedBox(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width - 100 - 10,
+                      height: 44,
+                      width: MediaQuery.of(context).size.width - 90,
                       child: AutoSizeText(
                         title,
                         style: Theme.of(context).accentTextTheme.display1.apply(
