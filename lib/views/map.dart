@@ -171,13 +171,15 @@ class _MapState extends State<Map> {
             ),
           ),
           Positioned(
-              child: StatusCardTri(
-            firstVal:
-                Provider.of<RegionStatus>(context, listen: false).getCases,
-            secondVal:
-                Provider.of<RegionStatus>(context, listen: false).getDeaths,
-            thirdVal:
-                Provider.of<RegionStatus>(context, listen: false).getRegions,
+              child: SafeArea(
+            child: StatusCardTri(
+              firstVal:
+                  Provider.of<RegionStatus>(context, listen: false).getCases,
+              secondVal:
+                  Provider.of<RegionStatus>(context, listen: false).getDeaths,
+              thirdVal:
+                  Provider.of<RegionStatus>(context, listen: false).getRegions,
+            ),
           )),
         ],
       );

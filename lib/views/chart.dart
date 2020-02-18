@@ -50,78 +50,83 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        children: <Widget>[
-          // Grabs the total sums of the status card
-          Container(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: Firestore.instance.collection('totals').snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData)
-                  return StatusCardTri(
-                    firstVal: 0,
-                    firstLbl: '?',
-                    secondVal: 0,
-                    secondLbl: '?',
-                    thirdVal: 0,
-                    thirdLbl: '?',
+    return SafeArea(
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            // Grabs the total sums of the status card
+            Container(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: Firestore.instance.collection('totals').snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData)
+                    return StatusCardTri(
+                      firstVal: 0,
+                      firstLbl: '?',
+                      secondVal: 0,
+                      secondLbl: '?',
+                      thirdVal: 0,
+                      thirdLbl: '?',
+                    );
+                  return _buildStatusCard(
+                    context,
+                    snapshot.data.documents.first,
                   );
-                return _buildStatusCard(
-                  context,
-                  snapshot.data.documents.first,
-                );
-              },
+                },
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 20),
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              borderRadius: new BorderRadius.circular(12.0),
-              boxShadow: <BoxShadow>[
-                new BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  blurRadius: 4.0, // has the effect of softening the shadow
-                  spreadRadius: 2.0, // has the effect of extending the shadow
-                ),
-              ],
-            ),
-            child: Column(
-              children: <Widget>[
-                TableTitle(),
-                RefreshIndicator(
-                  child: Container(
-                    // color: Colors.yellow,
-                    margin: EdgeInsets.only(bottom: 10),
-                    alignment: Alignment.topCenter,
-                    height: MediaQuery.of(context).size.height - 283,
-                    width: MediaQuery.of(context).size.width,
-                    child: StreamBuilder<QuerySnapshot>(
-                      stream: Firestore.instance
-                          .collection('locations')
-                          .orderBy("infected", descending: true)
-                          .snapshots(),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<QuerySnapshot> snapshot) {
-                        if (!snapshot.hasData) return const Text('Loading...');
-                        return new ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 0),
-                          children: snapshot.data.documents.map((document) {
-                            return _buildListItem(context, document);
-                          }).toList(),
-                        );
-                      },
-                    ),
+            Container(
+              // margin: EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 20),
+              margin: EdgeInsets.symmetric(horizontal: 10), //chart margin sides
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                borderRadius: new BorderRadius.circular(12.0),
+                boxShadow: <BoxShadow>[
+                  new BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    blurRadius: 4.0, // has the effect of softening the shadow
+                    spreadRadius: 2.0, // has the effect of extending the shadow
                   ),
-                  onRefresh: _handleRefresh,
-                ),
-              ],
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
+                  TableTitle(),
+                  RefreshIndicator(
+                    child: Container(
+                      // color: Colors.yellow,
+                      margin: EdgeInsets.only(bottom: 0), // for the curb add 10
+                      alignment: Alignment.topCenter,
+                      height: MediaQuery.of(context).size.height - 283,
+                      width: MediaQuery.of(context).size.width,
+                      child: StreamBuilder<QuerySnapshot>(
+                        stream: Firestore.instance
+                            .collection('locations')
+                            .orderBy("infected", descending: true)
+                            .snapshots(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<QuerySnapshot> snapshot) {
+                          if (!snapshot.hasData)
+                            return const Text('Loading...');
+                          return new ListView(
+                            padding: EdgeInsets.symmetric(horizontal: 0),
+                            children: snapshot.data.documents.map((document) {
+                              return _buildListItem(context, document);
+                            }).toList(),
+                          );
+                        },
+                      ),
+                    ),
+                    onRefresh: _handleRefresh,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
