@@ -54,7 +54,7 @@ class Chart extends StatelessWidget {
       child: Container(
         height: MediaQuery.of(context).size.height,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             // Grabs the total sums of the status card
             Container(

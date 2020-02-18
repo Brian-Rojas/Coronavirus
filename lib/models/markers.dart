@@ -23,7 +23,7 @@ class Markers with ChangeNotifier {
       ImageConfiguration(
         devicePixelRatio: 2.5,
       ),
-      'assets/images/marker1.png',
+      'assets/images/marker4.png',
     );
   }
 

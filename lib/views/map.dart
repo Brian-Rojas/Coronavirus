@@ -171,16 +171,21 @@ class _MapState extends State<Map> {
             ),
           ),
           Positioned(
-              child: SafeArea(
-            child: StatusCardTri(
-              firstVal:
-                  Provider.of<RegionStatus>(context, listen: false).getCases,
-              secondVal:
-                  Provider.of<RegionStatus>(context, listen: false).getDeaths,
-              thirdVal:
-                  Provider.of<RegionStatus>(context, listen: false).getRegions,
+            child: SafeArea(
+              minimum: EdgeInsets.only(top: 10),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 0),
+                child: StatusCardTri(
+                  firstVal: Provider.of<RegionStatus>(context, listen: false)
+                      .getCases,
+                  secondVal: Provider.of<RegionStatus>(context, listen: false)
+                      .getDeaths,
+                  thirdVal: Provider.of<RegionStatus>(context, listen: false)
+                      .getRegions,
+                ),
+              ),
             ),
-          )),
+          ),
         ],
       );
     });
