@@ -49,82 +49,82 @@ class _MainState extends State<Main> {
           accentColor: accent,
           backgroundColor: bg,
           textTheme: TextTheme(
-            headline: GoogleFonts.montserrat(
+            headline: GoogleFonts.openSans(
               fontSize: 40,
               fontWeight: FontWeight.w500,
               color: Colors.grey,
             ),
-            title: GoogleFonts.montserrat(
+            title: GoogleFonts.openSans(
               fontSize: 26,
               color: Colors.grey,
             ),
-            subhead: GoogleFonts.montserrat(
+            subhead: GoogleFonts.openSans(
               fontSize: 22,
               color: Colors.grey,
             ),
-            display1: GoogleFonts.montserrat(
+            display1: GoogleFonts.openSans(
               fontSize: 14,
               color: Colors.grey,
             ),
-            display2: GoogleFonts.montserrat(
+            display2: GoogleFonts.openSans(
               fontSize: 16,
               color: Colors.grey,
             ),
-            display3: GoogleFonts.montserrat(
+            display3: GoogleFonts.openSans(
               fontSize: 18,
               color: Colors.grey,
             ),
           ),
           accentTextTheme: TextTheme(
-            headline: GoogleFonts.montserrat(
+            headline: GoogleFonts.openSans(
               fontSize: 40,
               fontWeight: FontWeight.w500,
               color: accent,
             ),
-            title: GoogleFonts.montserrat(
+            title: GoogleFonts.openSans(
               fontSize: 26,
               color: accent,
             ),
-            subhead: GoogleFonts.montserrat(
+            subhead: GoogleFonts.openSans(
               fontSize: 22,
               color: accent,
             ),
-            display1: GoogleFonts.montserrat(
+            display1: GoogleFonts.openSans(
               fontSize: 14,
               color: accent,
             ),
-            display2: GoogleFonts.montserrat(
+            display2: GoogleFonts.openSans(
               fontSize: 16,
               color: accent,
             ),
-            display3: GoogleFonts.montserrat(
+            display3: GoogleFonts.openSans(
               fontSize: 18,
               color: accent,
             ),
           ),
           primaryTextTheme: TextTheme(
-            headline: GoogleFonts.montserrat(
+            headline: GoogleFonts.openSans(
               fontSize: 40,
               fontWeight: FontWeight.w500,
               color: primary,
             ),
-            title: GoogleFonts.montserrat(
+            title: GoogleFonts.openSans(
               fontSize: 26,
               color: primary,
             ),
-            subhead: GoogleFonts.montserrat(
+            subhead: GoogleFonts.openSans(
               fontSize: 22,
               color: primary,
             ),
-            display1: GoogleFonts.montserrat(
+            display1: GoogleFonts.openSans(
               fontSize: 14,
               color: primary,
             ),
-            display2: GoogleFonts.montserrat(
+            display2: GoogleFonts.openSans(
               fontSize: 16,
               color: primary,
             ),
-            display3: GoogleFonts.montserrat(
+            display3: GoogleFonts.openSans(
               fontSize: 18,
               color: primary,
             ),
@@ -142,7 +142,7 @@ class _MainState extends State<Main> {
                 icon: new Icon(Icons.home),
                 title: new Text(
                   'Home',
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
                 ),
@@ -151,7 +151,7 @@ class _MainState extends State<Main> {
                 icon: new Icon(Icons.map),
                 title: new Text(
                   'Map',
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
                 ),
@@ -160,7 +160,7 @@ class _MainState extends State<Main> {
                 icon: new Icon(Icons.rss_feed),
                 title: new Text(
                   'News',
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
                 ),
@@ -169,7 +169,7 @@ class _MainState extends State<Main> {
                 icon: new Icon(Icons.announcement),
                 title: new Text(
                   'About',
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
                 ),

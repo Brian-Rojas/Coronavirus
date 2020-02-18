@@ -21,7 +21,7 @@ class StatusCardTri extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16),
-      height: 80,
+      height: 81,
       // margin: EdgeInsets.only(top: 50,),
       child: Center(
         child: Card(
