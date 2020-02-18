@@ -32,20 +32,28 @@ class News extends StatelessWidget {
         centerTitle: false,
         backgroundColor: Colors.white,
       ),
-      body: StreamBuilder(
-        stream: Firestore.instance
-            .collection('news')
-            .orderBy("time", descending: true)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) return const Text('Loading...');
-          return ListView.builder(
-            itemCount: snapshot.data.documents.length,
-            itemBuilder: (context, index) =>
-                _buildListItem(context, snapshot.data.documents[index]),
-          );
-        },
+      body: RefreshIndicator(
+        child: StreamBuilder(
+          stream: Firestore.instance
+              .collection('news')
+              .orderBy("time", descending: true)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) return const Text('Loading...');
+            return ListView.builder(
+              itemCount: snapshot.data.documents.length,
+              itemBuilder: (context, index) =>
+                  _buildListItem(context, snapshot.data.documents[index]),
+            );
+          },
+        ),
+        onRefresh: _handleRefresh,
       ),
     );
   }
+}
+
+Future<Null> _handleRefresh() async {
+  await new Future.delayed(new Duration(milliseconds: 500));
+  
 }

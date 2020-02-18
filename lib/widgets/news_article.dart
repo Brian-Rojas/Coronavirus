@@ -104,7 +104,7 @@ class NewsArticle extends StatelessWidget {
                             ),
                         textAlign: TextAlign.start,
                         maxLines: 2,
-                        minFontSize: 15,
+                        minFontSize: 14,
                         // maxFontSize: 18,
                       ),
                     ),
@@ -122,7 +122,7 @@ class NewsArticle extends StatelessWidget {
                   child: AutoSizeText(
                     description,
                     style: Theme.of(context).accentTextTheme.display1,
-                    minFontSize: 12,
+                    minFontSize: 14,
                   ),
                 ),
               ),
