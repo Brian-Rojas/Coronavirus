@@ -4,13 +4,23 @@ import 'package:coronavirus_app/models/regions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
+
+import 'controllers/db.dart';
 
 import 'views/chart.dart';
 import 'views/map.dart';
 import 'views/news.dart';
 import 'views/about.dart';
 
-void main() => runApp(Main());
+void main() {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  runApp(Main());
+}
 
 class Main extends StatefulWidget {
   @override
@@ -21,6 +31,7 @@ class _MainState extends State<Main> {
   static const Color primary = Color.fromRGBO(205, 118, 114, 1.0);
   static const Color accent = Color.fromRGBO(69, 79, 99, 1.0);
   static const Color bg = Colors.white;
+  DB db = DB.instance;
   int _currentIndex = 0;
   final List<Widget> _children = [
     Chart(),
@@ -30,6 +41,21 @@ class _MainState extends State<Main> {
   ];
 
   void onTabTapped(int index) {
+    db.insertCountry(Country(code: 'AZ', lat: 33, lon: 69, name: 'Arizona'));
+    // var cords = db.getCords('arizona');
+    // cords.then((value) {
+    //   print("Got back cords ${value}");
+    // });
+    // db.insertCountry(
+    //     Country(code: 'NZ', lat: 21, lon: 77, name: 'New Zealeand'));
+    // db.deleteCountry('Arizona');
+    db.clearCountries();
+    var countries = db.countries();
+    countries.then((list) {
+      for (var i = 0; i < list.length; i++) {
+        print(list[i]);
+      }
+    });
     setState(() {
       _currentIndex = index;
     });

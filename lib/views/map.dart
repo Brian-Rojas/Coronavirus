@@ -1,3 +1,4 @@
+import 'package:coronavirus_app/controllers/geocoder.dart';
 import 'package:coronavirus_app/widgets/status_card_tri.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -18,6 +19,7 @@ class Map extends StatefulWidget {
 class _MapState extends State<Map> {
   GoogleMapController mapController;
   GeoUtility geo;
+  Geocoder geoCoder;
   String _light;
   String _dark;
   String _black;
@@ -63,6 +65,7 @@ class _MapState extends State<Map> {
       var markers = Provider.of<Markers>(ctx, listen: false);
       if (markers.getMarkerWithId(region.region) == null) {
         var newCords = geo.findCords(region.region);
+        geoCoder.readCsv();
         newCords.then((onValue) {
           markers.addMarker(
             region.region,
@@ -80,6 +83,7 @@ class _MapState extends State<Map> {
   void initState() {
     super.initState();
     geo = new GeoUtility();
+    geoCoder = new Geocoder();
     // getLocationPermission();
 
     rootBundle.loadString('assets/map_styles/dark.json').then((string) {

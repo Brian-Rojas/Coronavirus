@@ -27,8 +27,13 @@ class Markers with ChangeNotifier {
     );
   }
 
-  void addMarker(String country,
-      {int cases = 0, int deaths = 0, int recoveries = 0, LatLng cords}) {
+  void addMarker(
+    String country, {
+    int cases = 0,
+    int deaths = 0,
+    int recoveries = 0,
+    LatLng cords,
+  }) {
     if (cords == null) {
       return;
     }
