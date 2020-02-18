@@ -58,15 +58,19 @@ class _MapState extends State<Map> {
     ));
   }
 
-  void _getRegions(BuildContext ctx) {
+  void _getRegions() {
+    geoCoder = Geocoder();
     Provider.of<Markers>(context, listen: false).clearMarkers();
-    Provider.of<Regions>(ctx, listen: false).getRegions.forEach((_, region) {
-      print(region.region);
-      var markers = Provider.of<Markers>(ctx, listen: false);
+    Provider.of<Regions>(context, listen: false)
+        .getRegions
+        .forEach((_, region) {
+      // print(region.region);
+      var markers = Provider.of<Markers>(context, listen: false);
       if (markers.getMarkerWithId(region.region) == null) {
-        var newCords = geo.findCords(region.region);
-        geoCoder.readCsv();
+        var newCords = geoCoder.findCords(region.region);
+
         newCords.then((onValue) {
+          print("making a marker brian with cords $onValue");
           markers.addMarker(
             region.region,
             cases: region.cases,
@@ -130,7 +134,7 @@ class _MapState extends State<Map> {
     // print(mapData.getMarkers.first.position);
     if (mapController != null) {
       setMapStyle();
-      _getRegions(context);
+      _getRegions();
     }
 
     return Consumer<Markers>(builder: (context, markers, _) {
@@ -143,9 +147,9 @@ class _MapState extends State<Map> {
             onMapCreated: (GoogleMapController controller) {
               mapController = controller;
               setMapStyle();
-              _getRegions(context);
+              _getRegions();
             },
-            markers: markers.getMarkers,
+            markers: Set.from(markers.getMarkers),
             compassEnabled: false,
             myLocationEnabled: true,
             trafficEnabled: false,

@@ -12,13 +12,18 @@ import 'views/chart.dart';
 import 'views/map.dart';
 import 'views/news.dart';
 import 'views/about.dart';
+import 'controllers/geocoder.dart';
+
+Geocoder geo;
+bool loaded = false;
 
 void main() {
+  geo = Geocoder();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
   runApp(Main());
 }
 
@@ -28,6 +33,15 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  void initState() {
+    geo.readCsv().then((val) {
+      setState(() {
+        loaded = val;
+      });
+    });
+    super.initState();
+  }
+
   static const Color primary = Color.fromRGBO(205, 118, 114, 1.0);
   static const Color accent = Color.fromRGBO(69, 79, 99, 1.0);
   static const Color bg = Colors.white;
@@ -41,21 +55,16 @@ class _MainState extends State<Main> {
   ];
 
   void onTabTapped(int index) {
-    db.insertCountry(Country(code: 'AZ', lat: 33, lon: 69, name: 'Arizona'));
-    // var cords = db.getCords('arizona');
-    // cords.then((value) {
-    //   print("Got back cords ${value}");
-    // });
-    // db.insertCountry(
-    //     Country(code: 'NZ', lat: 21, lon: 77, name: 'New Zealeand'));
-    // db.deleteCountry('Arizona');
-    db.clearCountries();
-    var countries = db.countries();
-    countries.then((list) {
-      for (var i = 0; i < list.length; i++) {
-        print(list[i]);
+    if (index == 1) {
+      print("On maps tab");
+      if (!loaded) {
+        geo.readCsv().then((val) {
+          setState(() {
+            loaded = val;
+          });
+        });
       }
-    });
+    }
     setState(() {
       _currentIndex = index;
     });
