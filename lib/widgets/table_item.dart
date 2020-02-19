@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'marquee.dart';
 
@@ -72,7 +71,7 @@ class TableItem extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(2.0),
-                          child: imageUrl != null
+                          child: imageUrl != "https://"
                               ? Image.network(
                                   imageUrl,
                                   height: 13,

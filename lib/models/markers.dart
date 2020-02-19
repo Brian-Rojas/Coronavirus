@@ -87,11 +87,9 @@ class Markers with ChangeNotifier {
     print("MARKERS CLEARED!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     markers.clear();
     count = 0;
-    // countries.clear();
     notifyListeners();
   }
 
   Set<Marker> get getMarkers => markers;
-  // Map<String, bool> get getCountries => countries;
   int get getCount => count;
 }
