@@ -1,5 +1,6 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../widgets/exp_animated.dart';
 
 class About extends StatelessWidget {
@@ -83,25 +84,29 @@ class About extends StatelessWidget {
                               child: Container(
                                 // color: Color.fromRGBO(283, 70, 102, 0.15),
                                 color: Colors.transparent,
-                                height: 200.0,
+                                height: 150.0,
                                 width: 360.0,
                                 child: ListView(
                                   padding: EdgeInsets.all(20),
                                   children: <Widget>[
-                                    Center(
-                                      child: Text(
-                                        "App Info\n",
-                                        style: TextStyle(
-                                            fontSize: 24,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal),
+                                    Text(
+                                      "App Info",
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .title,
+                                    ),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 0, vertical: 10 ),
+                                      child: Divider(
+                                        height: 1,
                                       ),
                                     ),
                                     Text(
-                                      'The data is updated every hour...',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      ),
+                                      'App data will be updated hourly\nData Source: Wikipedia',
+                                      style: Theme.of(context)
+                                          .accentTextTheme
+                                          .display3,
                                     ),
                                   ],
                                 ),
@@ -112,24 +117,24 @@ class About extends StatelessWidget {
                       },
                       icon: Icon(
                         Icons.info,
-                        // color: Color.fromARGB(283, 70, 102, 0.75),
+                        color: Theme.of(context).accentColor,
                       ),
                       label: Text(
                         'Info',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Color.fromRGBO(283, 70, 102, 0.75),
-                        ),
+                        style: Theme.of(context).accentTextTheme.title,
                       ),
                     ),
-                    // FlatButton.icon(
-                    //   onPressed: () {},
-                    //   icon: Icon(Icons.share),
-                    //   label: Text(
-                    //     'Share',
-                    //     style: Theme.of(context).textTheme.title,
-                    //   ),
-                    // ),
+                    FlatButton.icon(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.share,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      label: Text(
+                        'Share',
+                        style: Theme.of(context).accentTextTheme.title,
+                      ),
+                    ),
                   ],
                 ),
               ),
