@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coronavirus_app/util/size_config.dart';
 import 'package:coronavirus_app/widgets/table_item.dart';
 import 'package:coronavirus_app/widgets/table_title.dart';
 import 'package:flutter/material.dart';
@@ -50,83 +51,100 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            // Grabs the total sums of the status card
-            Container(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: Firestore.instance.collection('totals').snapshots(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (!snapshot.hasData)
-                    return StatusCardTri(
-                      firstVal: 0,
-                      firstLbl: '?',
-                      secondVal: 0,
-                      secondLbl: '?',
-                      thirdVal: 0,
-                      thirdLbl: '?',
-                    );
-                  return _buildStatusCard(
-                    context,
-                    snapshot.data.documents.first,
+    SizeConfig().init(context);
+    return Container(
+      height: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          SafeArea(
+            child: Container(
+                // color: Colors.red,
+                ),
+          ),
+          // Grabs
+          Container(
+            // color: Colors.amber,
+            child: StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance.collection('totals').snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData)
+                  return StatusCardTri(
+                    firstVal: 0,
+                    firstLbl: '?',
+                    secondVal: 0,
+                    secondLbl: '?',
+                    thirdVal: 0,
+                    thirdLbl: '?',
                   );
-                },
-              ),
+                return _buildStatusCard(
+                  context,
+                  snapshot.data.documents.first,
+                );
+              },
             ),
-            Container(
-              // margin: EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 20),
-              margin: EdgeInsets.symmetric(horizontal: 10), //chart margin sides
-              decoration: new BoxDecoration(
-                color: Colors.white,
-                borderRadius: new BorderRadius.circular(12.0),
-                boxShadow: <BoxShadow>[
-                  new BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    blurRadius: 4.0, // has the effect of softening the shadow
-                    spreadRadius: 2.0, // has the effect of extending the shadow
-                  ),
-                ],
-              ),
+          ),
+          Expanded(
+            flex: 8,
+            child: Container(
+              // color: Colors.red,
+              margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+              // margin: EdgeInsets.symmetric(horizontal: 10), //chart margin sides
+              // color: Colors.red,
+              // decoration: new BoxDecoration(
+              //   color: Colors.white,
+              //   borderRadius: new BorderRadius.circular(12.0),
+              //   boxShadow: <BoxShadow>[
+              //     new BoxShadow(
+              //       color: Colors.grey.withOpacity(0.1),
+              //       blurRadius: 4.0, // has the effect of softening the shadow
+              //       spreadRadius:
+              //           2.0, // has the effect of extending the shadow
+              //     ),
+              //   ],
+              // ),
               child: Column(
                 children: <Widget>[
                   TableTitle(),
-                  RefreshIndicator(
-                    child: Container(
-                      // color: Colors.yellow,
-                      margin: EdgeInsets.only(bottom: 0), // for the curb add 10
-                      alignment: Alignment.topCenter,
-                      height: MediaQuery.of(context).size.height - 283,
-                      width: MediaQuery.of(context).size.width,
-                      child: StreamBuilder<QuerySnapshot>(
-                        stream: Firestore.instance
-                            .collection('locations')
-                            .orderBy("infected", descending: true)
-                            .snapshots(),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (!snapshot.hasData)
-                            return const Text('Loading...');
-                          return new ListView(
-                            padding: EdgeInsets.symmetric(horizontal: 0),
-                            children: snapshot.data.documents.map((document) {
-                              return _buildListItem(context, document);
-                            }).toList(),
-                          );
-                        },
+                  Expanded(
+                    child: RefreshIndicator(
+                      child: Container(
+                        // color: Colors.yellow,
+                        margin:
+                            EdgeInsets.only(bottom: 0), // for the curb add 10
+                        alignment: Alignment.topCenter,
+                        height: SizeConfig.safeBlockVertical * 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: StreamBuilder<QuerySnapshot>(
+                          stream: Firestore.instance
+                              .collection('locations')
+                              .orderBy("infected", descending: true)
+                              .snapshots(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<QuerySnapshot> snapshot) {
+                            if (!snapshot.hasData)
+                              return const Text('Loading...');
+                            return new ListView(
+                              padding: EdgeInsets.symmetric(horizontal: 0),
+                              children: snapshot.data.documents.map((document) {
+                                return _buildListItem(context, document);
+                              }).toList(),
+                            );
+                          },
+                        ),
                       ),
+                      onRefresh: _handleRefresh,
                     ),
-                    onRefresh: _handleRefresh,
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          // SafeArea(
+          //   child: Container(),
+          // ),
+        ],
       ),
     );
   }

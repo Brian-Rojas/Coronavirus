@@ -1,4 +1,6 @@
+import 'package:coronavirus_app/util/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'marquee.dart';
 
@@ -32,10 +34,11 @@ class TableItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       // color: Colors.red,
-      width: MediaQuery.of(context).size.width,
-      height: 50,
+      // width: SizeConfig.safeBlockHorizontal * 1,
+      height: SizeConfig.blockSizeVertical * 5.2,
       child: Center(
         child: Container(
           decoration: new BoxDecoration(
@@ -45,14 +48,14 @@ class TableItem extends StatelessWidget {
             ],
           ),
           child: Container(
-            height: 48,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  color: lblBGColor,
+                  // color: Colors.blue,
+                  width: SizeConfig.safeBlockHorizontal * 40,
+                  // color: lblBGColor,
                   // color: Colors.red,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,12 +92,15 @@ class TableItem extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 128,
+                        width: SizeConfig.safeBlockHorizontal * 30,
                         child: MarqueeWidget(
                           direction: Axis.horizontal,
                           child: Text(
                             country,
-                            style: Theme.of(context).accentTextTheme.display2,
+                            style: GoogleFonts.openSans(
+                              color: Theme.of(context).accentColor,
+                              fontSize: SizeConfig.safeBlockHorizontal * 4,
+                            ),
                           ),
                         ),
                       ),
@@ -102,24 +108,33 @@ class TableItem extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width / 3 - 30,
-                  height: 20,
-                  color: lblBGColor,
+                  width: SizeConfig.safeBlockHorizontal * 25,
+                  height: SizeConfig.blockSizeVertical * 5,
+                  // color: lblBGColor,
+                  // color: Colors.red,
                   child: Center(
                     child: Text(
                       cases.toString(),
-                      style: Theme.of(context).textTheme.display2,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).textTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 4,
+                      ),
                     ),
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width / 3 - 30,
-                  height: 20,
-                  color: lblBGColor,
+                  width: SizeConfig.safeBlockHorizontal * 25,
+                  height: SizeConfig.blockSizeVertical * 5,
+                  // height: 20,
+                  // color: lblBGColor,
+                  // color: Colors.green,
                   child: Center(
                     child: Text(
                       deaths.toString(),
-                      style: Theme.of(context).textTheme.display2,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).textTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 4,
+                      ),
                     ),
                   ),
                 ),

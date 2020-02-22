@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:coronavirus_app/util/size_config.dart';
 
 class TableTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final Color lblColor = Theme.of(context).accentColor;
     final Color lblBGColor = Colors.transparent;
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 50,
+      // height: 50,
+      height: SizeConfig.safeBlockVertical * 6,
       child: Center(
         child: Container(
           // color: Colors.red,
@@ -29,7 +32,11 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'COUNTRY',
-                        style: Theme.of(context).accentTextTheme.display3,
+                        style: GoogleFonts.openSans(
+                          color:
+                              Theme.of(context).accentTextTheme.display2.color,
+                          fontSize: SizeConfig.safeBlockHorizontal * 5,
+                        ),
                       ),
                     ),
                   ),
@@ -39,7 +46,11 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'CASES',
-                        style: Theme.of(context).accentTextTheme.display3,
+                        style: GoogleFonts.openSans(
+                          color:
+                              Theme.of(context).accentTextTheme.display2.color,
+                          fontSize: SizeConfig.safeBlockHorizontal * 5,
+                        ),
                       ),
                     ),
                   ),
@@ -49,7 +60,11 @@ class TableTitle extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'DEATHS',
-                        style: Theme.of(context).accentTextTheme.display3,
+                        style: GoogleFonts.openSans(
+                          color:
+                              Theme.of(context).accentTextTheme.display2.color,
+                          fontSize: SizeConfig.safeBlockHorizontal * 5,
+                        ),
                       ),
                     ),
                   ),

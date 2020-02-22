@@ -1,4 +1,6 @@
+import 'package:coronavirus_app/util/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StatusCardTri extends StatelessWidget {
   final int firstVal;
@@ -19,9 +21,11 @@ class StatusCardTri extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16),
-      height: 81,
+      height: SizeConfig.safeBlockVertical * 10,
+      // height: 90,
       // margin: EdgeInsets.only(top: 50,),
       child: Center(
         child: Card(
@@ -33,16 +37,22 @@ class StatusCardTri extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                padding: const EdgeInsets.only(top: 8, bottom: 8),
                 child: Column(
                   children: <Widget>[
                     Text(
                       firstVal.toString(),
-                      style: Theme.of(context).accentTextTheme.title,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).accentTextTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 6,
+                      ),
                     ),
                     Text(
                       firstLbl,
-                      style: Theme.of(context).textTheme.display2,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).textTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 4,
+                      ),
                     ),
                   ],
                 ),
@@ -59,11 +69,17 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       secondVal.toString(),
-                      style: Theme.of(context).accentTextTheme.title,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).accentTextTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 6,
+                      ),
                     ),
                     Text(
                       secondLbl,
-                      style: Theme.of(context).textTheme.display2,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).textTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 4,
+                      ),
                     ),
                   ],
                 ),
@@ -80,11 +96,17 @@ class StatusCardTri extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       thirdVal.toString(),
-                      style: Theme.of(context).accentTextTheme.title,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).accentTextTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 6,
+                      ),
                     ),
                     Text(
                       thirdLbl,
-                      style: Theme.of(context).textTheme.display2,
+                      style: GoogleFonts.openSans(
+                        color: Theme.of(context).textTheme.display2.color,
+                        fontSize: SizeConfig.safeBlockHorizontal * 4,
+                      ),
                     ),
                   ],
                 ),
