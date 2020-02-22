@@ -22,9 +22,13 @@ class StatusCardTri extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    var size = MediaQuery.of(context).size.width;
+    print("size ${MediaQuery.of(context).size.width}");
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16),
-      height: SizeConfig.safeBlockVertical * 10,
+      height: (size < 330)
+          ? SizeConfig.safeBlockVertical * 13
+          : SizeConfig.safeBlockVertical * 10,
       // height: 90,
       // margin: EdgeInsets.only(top: 50,),
       child: Center(

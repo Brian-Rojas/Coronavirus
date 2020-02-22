@@ -172,9 +172,9 @@ class _MapState extends State<Map> {
           ),
           Positioned(
             child: SafeArea(
-              minimum: EdgeInsets.only(top: 50),
+              // minimum: EdgeInsets.only(top: 50),
               child: Padding(
-                padding: const EdgeInsets.only(top: 0),
+                padding: const EdgeInsets.only(top: 10),
                 child: StatusCardTri(
                   firstVal: Provider.of<RegionStatus>(context, listen: false)
                       .getCases,

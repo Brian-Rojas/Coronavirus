@@ -64,6 +64,7 @@ class Chart extends StatelessWidget {
           ),
           // Grabs
           Container(
+            margin: EdgeInsets.only(top: 10),
             // color: Colors.amber,
             child: StreamBuilder<QuerySnapshot>(
               stream: Firestore.instance.collection('totals').snapshots(),
