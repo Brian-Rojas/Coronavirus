@@ -2,6 +2,7 @@ import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/exp_animated.dart';
+import 'package:coronavirus_app/util/size_config.dart';
 
 class About extends StatelessWidget {
   final String info =
@@ -18,6 +19,8 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print('-----------------------------${MediaQuery.of(context).size.width}');
+    double size = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -37,35 +40,47 @@ class About extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: EdgeInsets.only(top: 20),
           color: Colors.transparent,
           child: Column(
             children: <Widget>[
               ImageSlider(),
               // ExpAnimated(),
-              ExpAnimated(
-                cardTitle: 'Overview\n\n',
-                textHeight: 250,
-                discription: info,
-                color: Color.fromRGBO(283, 70, 102, 0.25),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: ExpAnimated(
+                  cardTitle: 'Overview\n\n',
+                  textHeight: 250,
+                  discription: info,
+                  color: Color.fromRGBO(283, 70, 102, 0.25),
+                ),
               ),
-              ExpAnimated(
-                cardTitle: 'Transmission\n\n',
-                textHeight: 300,
-                discription: transmission,
-                color: Color.fromRGBO(205, 118, 114, 0.25),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: ExpAnimated(
+                  cardTitle: 'Transmission\n\n',
+                  textHeight: 300,
+                  discription: transmission,
+                  color: Color.fromRGBO(205, 118, 114, 0.25),
+                ),
               ),
-              ExpAnimated(
-                cardTitle: 'Symptoms\n\n',
-                textHeight: 250,
-                discription: symptoms,
-                color: Color.fromRGBO(238, 180, 98, 0.25),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: ExpAnimated(
+                  cardTitle: 'Symptoms\n\n',
+                  textHeight: 250,
+                  discription: symptoms,
+                  color: Color.fromRGBO(238, 180, 98, 0.25),
+                ),
               ),
-              ExpAnimated(
-                cardTitle: 'Prevention\n\n',
-                textHeight: 250,
-                discription: prevention,
-                color: Color.fromRGBO(19, 128, 134, 0.25),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: ExpAnimated(
+                  cardTitle: 'Prevention\n\n',
+                  textHeight: 250,
+                  discription: prevention,
+                  color: Color.fromRGBO(19, 128, 134, 0.25),
+                ),
               ),
               Container(
                 padding: EdgeInsets.only(top: 40),
@@ -85,25 +100,26 @@ class About extends StatelessWidget {
                                 // color: Color.fromRGBO(283, 70, 102, 0.15),
                                 color: Colors.transparent,
                                 height: 150.0,
-                                width: 360.0,
+                                // width: size,
+                                // width: 400.0,
                                 child: ListView(
                                   padding: EdgeInsets.all(20),
                                   children: <Widget>[
                                     Text(
-                                      "App Info",
+                                      "Info",
                                       style: Theme.of(context)
                                           .primaryTextTheme
                                           .title,
                                     ),
                                     Container(
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: 0, vertical: 10 ),
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 0, vertical: 10),
                                       child: Divider(
                                         height: 1,
                                       ),
                                     ),
                                     Text(
-                                      'App data will be updated hourly\nData Source: Wikipedia',
+                                      'Updated hourly\nData Source: Wikipedia',
                                       style: Theme.of(context)
                                           .accentTextTheme
                                           .display3,

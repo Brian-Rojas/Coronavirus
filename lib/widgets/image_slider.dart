@@ -13,7 +13,8 @@ class ImageSlider extends StatelessWidget {
     this.imgNames = const [
       '1.jpg',
       '2.jpg',
-      '3.jpg'
+      '3.jpg',
+      '4.png'
     ],
     this.autoPlay = false,
   });
@@ -49,7 +50,7 @@ class ImageSlider extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        color: Colors.white,
+                        color: Colors.transparent,
                         child: PhotoView(
                           backgroundDecoration:
                               BoxDecoration(color: Colors.transparent),
@@ -63,7 +64,7 @@ class ImageSlider extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   child: Image.asset(
                     'assets/images/$i',
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
               ),

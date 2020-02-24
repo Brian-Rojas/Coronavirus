@@ -21,16 +21,34 @@ class StatusCardTri extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceHeight(double size) {
+      if (size <= 540) {
+        //nuxus one
+        return SizeConfig.safeBlockVertical * 14;
+      } else if (size <= 690) {
+        //pixel
+        return SizeConfig.safeBlockVertical * 13;
+      } else if (size <= 780) {
+        //pixel 2 xl
+        return SizeConfig.safeBlockVertical * 11;
+      } else {
+        //one plus 6t
+        return SizeConfig.safeBlockVertical * 10;
+      }
+    }
+
     SizeConfig().init(context);
-    var size = MediaQuery.of(context).size.width;
-    print("size ${MediaQuery.of(context).size.width}");
+    double size = MediaQuery.of(context).size.height;
+    print("Pixel Ratio: ${MediaQuery.of(context).devicePixelRatio}");
+    print("size: ${MediaQuery.of(context).size}");
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16),
-      height: (size < 330)
-          ? SizeConfig.safeBlockVertical * 13
-          : SizeConfig.safeBlockVertical * 10,
-      // height: 90,
-      // margin: EdgeInsets.only(top: 50,),
+      height: deviceHeight(size),
+
+      // height: (size <= 800)
+      //     ? SizeConfig.safeBlockVertical * 14
+      //     : SizeConfig.safeBlockVertical * 10,
+
       child: Center(
         child: Card(
           elevation: 4,

@@ -121,7 +121,7 @@ class NewsArticle extends StatelessWidget {
                   child: AutoSizeText(
                     description,
                     style: Theme.of(context).accentTextTheme.display1,
-                    minFontSize: 14,
+                    minFontSize: 12,
                   ),
                 ),
               ),
