@@ -1,8 +1,6 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../widgets/exp_animated.dart';
-import 'package:coronavirus_app/util/size_config.dart';
 
 class About extends StatelessWidget {
   final String info =
@@ -19,8 +17,6 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print('-----------------------------${MediaQuery.of(context).size.width}');
-    double size = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -46,7 +42,6 @@ class About extends StatelessWidget {
           child: Column(
             children: <Widget>[
               ImageSlider(),
-              // ExpAnimated(),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: ExpAnimated(
@@ -98,11 +93,8 @@ class About extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Container(
-                                // color: Color.fromRGBO(283, 70, 102, 0.15),
                                 color: Colors.transparent,
                                 height: 150.0,
-                                // width: size,
-                                // width: 400.0,
                                 child: ListView(
                                   padding: EdgeInsets.all(20),
                                   children: <Widget>[
@@ -111,6 +103,7 @@ class About extends StatelessWidget {
                                       style: Theme.of(context)
                                           .primaryTextTheme
                                           .title,
+                                      textScaleFactor: 1.0,
                                     ),
                                     Container(
                                       margin: EdgeInsets.symmetric(
@@ -124,6 +117,7 @@ class About extends StatelessWidget {
                                       style: Theme.of(context)
                                           .accentTextTheme
                                           .display3,
+                                      textScaleFactor: 1.0,
                                     ),
                                   ],
                                 ),
@@ -142,18 +136,6 @@ class About extends StatelessWidget {
                         textScaleFactor: 1.0,
                       ),
                     ),
-                    // FlatButton.icon(
-                    //   onPressed: () {},
-                    //   icon: Icon(
-                    //     Icons.share,
-                    //     color: Theme.of(context).accentColor,
-                    //   ),
-                    //   label: Text(
-                    //     'Share',
-                    //     style: Theme.of(context).accentTextTheme.title,
-                    //     textScaleFactor: 1.0,
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

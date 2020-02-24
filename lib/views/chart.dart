@@ -58,14 +58,11 @@ class Chart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           SafeArea(
-            child: Container(
-                // color: Colors.red,
-                ),
+            child: Container(),
           ),
           // Grabs
           Container(
             margin: EdgeInsets.only(top: 10),
-            // color: Colors.amber,
             child: StreamBuilder<QuerySnapshot>(
               stream: Firestore.instance.collection('totals').snapshots(),
               builder: (BuildContext context,
@@ -89,29 +86,13 @@ class Chart extends StatelessWidget {
           Expanded(
             flex: 8,
             child: Container(
-              // color: Colors.red,
               margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-              // margin: EdgeInsets.symmetric(horizontal: 10), //chart margin sides
-              // color: Colors.red,
-              // decoration: new BoxDecoration(
-              //   color: Colors.white,
-              //   borderRadius: new BorderRadius.circular(12.0),
-              //   boxShadow: <BoxShadow>[
-              //     new BoxShadow(
-              //       color: Colors.grey.withOpacity(0.1),
-              //       blurRadius: 4.0, // has the effect of softening the shadow
-              //       spreadRadius:
-              //           2.0, // has the effect of extending the shadow
-              //     ),
-              //   ],
-              // ),
               child: Column(
                 children: <Widget>[
                   TableTitle(),
                   Expanded(
                     child: RefreshIndicator(
                       child: Container(
-                        // color: Colors.yellow,
                         margin:
                             EdgeInsets.only(bottom: 0), // for the curb add 10
                         alignment: Alignment.topCenter,
@@ -142,9 +123,6 @@ class Chart extends StatelessWidget {
               ),
             ),
           ),
-          // SafeArea(
-          //   child: Container(),
-          // ),
         ],
       ),
     );

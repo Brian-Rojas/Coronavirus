@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-// import 'package:flutter/widgets.dart';
 
 class ExpAnimated extends StatefulWidget {
   final String cardTitle;
@@ -64,7 +62,6 @@ class _ExpAnimatedState extends State<ExpAnimated> {
           ),
           duration: Duration(milliseconds: 1000),
           curve: Curves.elasticInOut,
-          // curve: Curves.decelerate,
           height: _height,
           width: _mediaQueryData.size.width,
           child: Container(

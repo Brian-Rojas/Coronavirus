@@ -63,10 +63,6 @@ class ImageSlider extends StatelessWidget {
                   ),
                 ),
               ),
-              // child: Text(
-              //   'text $i',
-              //   style: TextStyle(fontSize: 16.0),
-              // ),
             );
           },
         );

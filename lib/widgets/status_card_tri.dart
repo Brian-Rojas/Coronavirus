@@ -23,19 +23,14 @@ class StatusCardTri extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceHeight(double size) {
       if (size <= 540) {
-        //nuxus one
         return SizeConfig.safeBlockVertical * 14;
       } else if (size <= 690) {
-        //pixel
         return SizeConfig.safeBlockVertical * 13;
       } else if (size <= 740) {
-        //pixel 2 xl
         return SizeConfig.safeBlockVertical * 12;
       } else if (size <= 780) {
-        //pixel 2 xl
         return SizeConfig.safeBlockVertical * 11;
       } else {
-        //one plus 6t
         return SizeConfig.safeBlockVertical * 10;
       }
     }
@@ -47,11 +42,6 @@ class StatusCardTri extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16),
       height: deviceHeight(size),
-
-      // height: (size <= 800)
-      //     ? SizeConfig.safeBlockVertical * 14
-      //     : SizeConfig.safeBlockVertical * 10,
-
       child: Center(
         child: Card(
           elevation: 4,

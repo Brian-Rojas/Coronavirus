@@ -37,13 +37,12 @@ class NewsArticle extends StatelessWidget {
     return Center(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 11),
+        padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 11),
         height: 240,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
           decoration: new BoxDecoration(
             color: Colors.white,
-            // shape: BoxShape.rectangle,
             borderRadius: new BorderRadius.circular(12.0),
             boxShadow: <BoxShadow>[
               new BoxShadow(
@@ -103,7 +102,7 @@ class NewsArticle extends StatelessWidget {
                             ),
                         textAlign: TextAlign.start,
                         maxLines: 2,
-                        minFontSize: 12,
+                        minFontSize: 14,
                         textScaleFactor: 1.0,
                         // maxFontSize: 18,
                       ),

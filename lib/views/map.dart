@@ -20,12 +20,6 @@ class _MapState extends State<Map> {
   GoogleMapController mapController;
   GeoUtility geo;
   Geocoder geoCoder;
-  String _light;
-  String _dark;
-  String _black;
-  String _retro;
-  String _blue;
-  String _normal;
   String _new;
 
   getLocationPermission() async {
@@ -64,13 +58,11 @@ class _MapState extends State<Map> {
     Provider.of<Regions>(context, listen: false)
         .getRegions
         .forEach((_, region) {
-      // print(region.region);
       var markers = Provider.of<Markers>(context, listen: false);
       if (markers.getMarkerWithId(region.region) == null) {
         var newCords = geoCoder.findCords(region.region);
 
         newCords.then((onValue) {
-          print("making a marker brian with cords $onValue");
           markers.addMarker(
             region.region,
             cases: region.cases,
@@ -88,32 +80,6 @@ class _MapState extends State<Map> {
     super.initState();
     geo = new GeoUtility();
     geoCoder = new Geocoder();
-    // getLocationPermission();
-
-    rootBundle.loadString('assets/map_styles/dark.json').then((string) {
-      _dark = string;
-    });
-
-    rootBundle.loadString('assets/map_styles/light.json').then((string) {
-      _light = string;
-    });
-
-    rootBundle.loadString('assets/map_styles/normal.json').then((string) {
-      _normal = string;
-    });
-
-    rootBundle.loadString('assets/map_styles/black.json').then((string) {
-      _black = string;
-    });
-
-    rootBundle.loadString('assets/map_styles/retro.json').then((string) {
-      _retro = string;
-    });
-
-    rootBundle.loadString('assets/map_styles/blue.json').then((string) {
-      _blue = string;
-    });
-
     rootBundle.loadString('assets/map_styles/new.json').then((string) {
       _new = string;
     });
@@ -130,15 +96,12 @@ class _MapState extends State<Map> {
 
   @override
   Widget build(BuildContext context) {
-    // var mapData = Provider.of<Markers>(context);
-    // print(mapData.getMarkers.first.position);
     if (mapController != null) {
       setMapStyle();
       _getRegions();
     }
 
     return Consumer<Markers>(builder: (context, markers, _) {
-      // print("Markers found $markers");
       return Stack(
         children: <Widget>[
           GoogleMap(
@@ -172,7 +135,6 @@ class _MapState extends State<Map> {
           ),
           Positioned(
             child: SafeArea(
-              // minimum: EdgeInsets.only(top: 50),
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: StatusCardTri(

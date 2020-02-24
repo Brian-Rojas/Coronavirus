@@ -174,6 +174,7 @@ class _MainState extends State<Main> {
                   style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
+                  textScaleFactor: 1.0,
                 ),
               ),
               BottomNavigationBarItem(
@@ -183,6 +184,7 @@ class _MainState extends State<Main> {
                   style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
+                  textScaleFactor: 1.0,
                 ),
               ),
               BottomNavigationBarItem(
@@ -192,6 +194,7 @@ class _MainState extends State<Main> {
                   style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
+                  textScaleFactor: 1.0,
                 ),
               ),
               BottomNavigationBarItem(
@@ -201,6 +204,7 @@ class _MainState extends State<Main> {
                   style: GoogleFonts.openSans(
                     fontSize: 14,
                   ),
+                  textScaleFactor: 1.0,
                 ),
               ),
             ],
