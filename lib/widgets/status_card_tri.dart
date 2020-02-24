@@ -28,6 +28,9 @@ class StatusCardTri extends StatelessWidget {
       } else if (size <= 690) {
         //pixel
         return SizeConfig.safeBlockVertical * 13;
+      } else if (size <= 740) {
+        //pixel 2 xl
+        return SizeConfig.safeBlockVertical * 12;
       } else if (size <= 780) {
         //pixel 2 xl
         return SizeConfig.safeBlockVertical * 11;
