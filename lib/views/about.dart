@@ -142,18 +142,18 @@ class About extends StatelessWidget {
                         textScaleFactor: 1.0,
                       ),
                     ),
-                    FlatButton.icon(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.share,
-                        color: Theme.of(context).accentColor,
-                      ),
-                      label: Text(
-                        'Share',
-                        style: Theme.of(context).accentTextTheme.title,
-                        textScaleFactor: 1.0,
-                      ),
-                    ),
+                    // FlatButton.icon(
+                    //   onPressed: () {},
+                    //   icon: Icon(
+                    //     Icons.share,
+                    //     color: Theme.of(context).accentColor,
+                    //   ),
+                    //   label: Text(
+                    //     'Share',
+                    //     style: Theme.of(context).accentTextTheme.title,
+                    //     textScaleFactor: 1.0,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
