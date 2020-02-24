@@ -4,7 +4,6 @@ import 'package:coronavirus_app/models/regions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
 
 import 'controllers/db.dart';
 
@@ -17,15 +16,8 @@ import 'controllers/geocoder.dart';
 Geocoder geo;
 bool loaded = false;
 
-    
 void main() {
   geo = Geocoder();
-  
-  
-      
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  // ]);
   runApp(Main());
 }
 
