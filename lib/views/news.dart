@@ -27,6 +27,7 @@ class News extends StatelessWidget {
           child: Text(
             'News',
             style: Theme.of(context).accentTextTheme.headline,
+            textScaleFactor: 1.0,
           ),
         ),
         centerTitle: false,

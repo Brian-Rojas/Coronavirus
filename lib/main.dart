@@ -19,7 +19,10 @@ bool loaded = false;
 
 void main() {
   geo = Geocoder();
-
+  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+  //   .then((_) {
+  //     runApp(Main());
+  //   });
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

@@ -68,6 +68,7 @@ class StatusCardTri extends StatelessWidget {
                         color: Theme.of(context).accentTextTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
+                      textScaleFactor: 1.0,
                     ),
                     Text(
                       firstLbl,
@@ -75,6 +76,7 @@ class StatusCardTri extends StatelessWidget {
                         color: Theme.of(context).textTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
+                      textScaleFactor: 1.0,
                     ),
                   ],
                 ),
@@ -95,6 +97,7 @@ class StatusCardTri extends StatelessWidget {
                         color: Theme.of(context).accentTextTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
+                      textScaleFactor: 1.0,
                     ),
                     Text(
                       secondLbl,
@@ -102,6 +105,7 @@ class StatusCardTri extends StatelessWidget {
                         color: Theme.of(context).textTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
+                      textScaleFactor: 1.0,
                     ),
                   ],
                 ),
@@ -122,6 +126,7 @@ class StatusCardTri extends StatelessWidget {
                         color: Theme.of(context).accentTextTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
+                      textScaleFactor: 1.0,
                     ),
                     Text(
                       thirdLbl,
@@ -129,6 +134,7 @@ class StatusCardTri extends StatelessWidget {
                         color: Theme.of(context).textTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
+                      textScaleFactor: 1.0,
                     ),
                   ],
                 ),

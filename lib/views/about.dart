@@ -33,6 +33,7 @@ class About extends StatelessWidget {
           child: Text(
             'About',
             style: Theme.of(context).accentTextTheme.headline,
+            textScaleFactor: 1.0,
           ),
         ),
         centerTitle: false,
@@ -138,6 +139,7 @@ class About extends StatelessWidget {
                       label: Text(
                         'Info',
                         style: Theme.of(context).accentTextTheme.title,
+                        textScaleFactor: 1.0,
                       ),
                     ),
                     FlatButton.icon(
@@ -149,6 +151,7 @@ class About extends StatelessWidget {
                       label: Text(
                         'Share',
                         style: Theme.of(context).accentTextTheme.title,
+                        textScaleFactor: 1.0,
                       ),
                     ),
                   ],

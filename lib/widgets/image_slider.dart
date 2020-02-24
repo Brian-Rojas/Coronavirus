@@ -10,12 +10,7 @@ class ImageSlider extends StatelessWidget {
 
   ImageSlider({
     this.height = 175,
-    this.imgNames = const [
-      '1.jpg',
-      '2.jpg',
-      '3.jpg',
-      '4.png'
-    ],
+    this.imgNames = const ['1.jpg', '2.jpg', '3.jpg', '4.png'],
     this.autoPlay = false,
   });
 
@@ -64,7 +59,7 @@ class ImageSlider extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   child: Image.asset(
                     'assets/images/$i',
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

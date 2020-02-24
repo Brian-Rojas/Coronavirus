@@ -103,7 +103,8 @@ class NewsArticle extends StatelessWidget {
                             ),
                         textAlign: TextAlign.start,
                         maxLines: 2,
-                        minFontSize: 14,
+                        minFontSize: 12,
+                        textScaleFactor: 1.0,
                         // maxFontSize: 18,
                       ),
                     ),
@@ -122,6 +123,7 @@ class NewsArticle extends StatelessWidget {
                     description,
                     style: Theme.of(context).accentTextTheme.display1,
                     minFontSize: 12,
+                    textScaleFactor: 1.0,
                   ),
                 ),
               ),
@@ -150,6 +152,7 @@ class NewsArticle extends StatelessWidget {
                           child: Text(
                             convertDateFromString(date),
                             style: Theme.of(context).textTheme.display1,
+                            textScaleFactor: 1.0,
                           ),
                         ),
                         Row(
@@ -163,6 +166,7 @@ class NewsArticle extends StatelessWidget {
                                 "Read More",
                                 style:
                                     Theme.of(context).accentTextTheme.display2,
+                                textScaleFactor: 1.0,
                               ),
                             ),
                             Container(
