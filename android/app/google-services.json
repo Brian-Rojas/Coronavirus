@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:521074527418:android:8f975055ce70cfef02c683",
         "android_client_info": {
-          "package_name": "com.example.coronavirus_app"
+          "package_name": "com.fluxsudo.coronavirus_stats"
         }
       },
       "oauth_client": [

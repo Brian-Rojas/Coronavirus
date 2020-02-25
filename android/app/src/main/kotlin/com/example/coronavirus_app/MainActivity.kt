@@ -1,4 +1,4 @@
-package com.example.coronavirus_app
+package com.fluxsudo.coronavirus_stats
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
