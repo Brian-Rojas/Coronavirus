@@ -106,7 +106,7 @@ class Chart extends StatelessWidget {
                           builder: (BuildContext context,
                               AsyncSnapshot<QuerySnapshot> snapshot) {
                             if (!snapshot.hasData)
-                              return const Text('Loading...');
+                              return const Center(child: Text('Loading...'));
                             return new ListView(
                               padding: EdgeInsets.symmetric(horizontal: 0),
                               children: snapshot.data.documents.map((document) {

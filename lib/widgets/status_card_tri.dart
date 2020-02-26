@@ -40,7 +40,7 @@ class StatusCardTri extends StatelessWidget {
     print("Pixel Ratio: ${MediaQuery.of(context).devicePixelRatio}");
     print("size: ${MediaQuery.of(context).size}");
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16),
+      padding: EdgeInsets.only(left:8, right: 8),
       height: deviceHeight(size),
       child: Center(
         child: Card(

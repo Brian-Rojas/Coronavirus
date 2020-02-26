@@ -40,7 +40,8 @@ class News extends StatelessWidget {
               .orderBy("time", descending: true)
               .snapshots(),
           builder: (context, snapshot) {
-            if (!snapshot.hasData) return const Text('Loading...');
+            if (!snapshot.hasData)
+              return const Center(child: Text('Loading...'));
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) =>
@@ -56,5 +57,4 @@ class News extends StatelessWidget {
 
 Future<Null> _handleRefresh() async {
   await new Future.delayed(new Duration(milliseconds: 500));
-  
 }
