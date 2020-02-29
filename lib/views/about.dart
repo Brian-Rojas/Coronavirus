@@ -1,5 +1,6 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import '../widgets/exp_animated.dart';
 
 class About extends StatelessWidget {
@@ -8,7 +9,6 @@ class About extends StatelessWidget {
 
   final String transmission =
       'The virus is thought to spread mainly from person-to-person. Between people who are in close contact with one another (within about 6 feet). Via respiratory droplets produced when an infected person coughs or sneezes. These droplets can land in the mouths or noses of people who are nearby or possibly be inhaled into the lungs.';
-
 
   final String symptoms =
       'Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death. ';
@@ -133,6 +133,22 @@ class About extends StatelessWidget {
                       ),
                       label: Text(
                         'Info',
+                        style: Theme.of(context).accentTextTheme.title,
+                        textScaleFactor: 1.0,
+                      ),
+                    ),
+                    FlatButton.icon(
+                      onPressed: () {
+                        Share.share(
+                          'Download the Coronavirus Stats app at https://fluxsudo.com',
+                        );
+                      },
+                      icon: Icon(
+                        Icons.share,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      label: Text(
+                        'Share',
                         style: Theme.of(context).accentTextTheme.title,
                         textScaleFactor: 1.0,
                       ),
