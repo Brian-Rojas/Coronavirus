@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../controllers/geo_utility.dart';
-
 class Markers with ChangeNotifier {
   BitmapDescriptor pinLocationIcon;
   Set<Marker> markers;
   Map<Marker, LatLng> markerInfo;
   int count = 0;
-  GeoUtility geo;
 
   Markers() {
     markers = Set();
     markerInfo = Map<Marker, LatLng>();
     _loadIcon();
-    geo = new GeoUtility();
     notifyListeners();
   }
 
@@ -35,7 +31,6 @@ class Markers with ChangeNotifier {
     if (cords == null) {
       return;
     }
-    // LatLng cords = getCords(country);
     Marker mark = Marker(
       markerId: MarkerId(
         country,
@@ -58,17 +53,6 @@ class Markers with ChangeNotifier {
     } else {
       print("Marker $country already existed so not added.");
     }
-  }
-
-  LatLng getCords(String location) {
-    Future<LatLng> cords = geo.findCords(location);
-    cords.then((value) {
-      return value;
-    });
-    cords.catchError((error) {
-      print("Error $error");
-      return null;
-    });
   }
 
   Marker getMarkerWithId(String id) {

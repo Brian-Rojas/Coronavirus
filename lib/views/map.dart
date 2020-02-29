@@ -3,10 +3,7 @@ import 'package:coronavirus_app/widgets/status_card_tri.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
-
-import '../controllers/geo_utility.dart';
 import '../models/markers.dart';
 import '../models/region_status.dart';
 import '../models/regions.dart';
@@ -18,39 +15,8 @@ class Map extends StatefulWidget {
 
 class _MapState extends State<Map> {
   GoogleMapController mapController;
-  GeoUtility geo;
   Geocoder geoCoder;
   String _new;
-
-  getLocationPermission() async {
-    var location = new Location();
-    try {
-      location.requestPermission(); //to lunch location permission popup
-    } catch (e) {
-      if (e.code == 'PERMISSION_DENIED') {
-        print('Permission denied');
-      }
-    }
-  }
-
-  void _currentLocation() async {
-    final GoogleMapController controller = mapController;
-    LocationData currentLocation;
-    var location = new Location();
-    try {
-      currentLocation = await location.getLocation();
-    } on Exception {
-      currentLocation = null;
-    }
-
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-      CameraPosition(
-        bearing: 0,
-        target: LatLng(currentLocation.latitude, currentLocation.longitude),
-        zoom: 5,
-      ),
-    ));
-  }
 
   void _getRegions() {
     geoCoder = Geocoder();
@@ -78,7 +44,6 @@ class _MapState extends State<Map> {
   @override
   void initState() {
     super.initState();
-    geo = new GeoUtility();
     geoCoder = new Geocoder();
     rootBundle.loadString('assets/map_styles/new.json').then((string) {
       _new = string;
@@ -114,24 +79,13 @@ class _MapState extends State<Map> {
             },
             markers: Set.from(markers.getMarkers),
             compassEnabled: false,
-            myLocationEnabled: true,
+            myLocationEnabled: false,
             trafficEnabled: false,
             mapToolbarEnabled: false,
             myLocationButtonEnabled: false,
             tiltGesturesEnabled: false,
             indoorViewEnabled: false,
             minMaxZoomPreference: MinMaxZoomPreference(1, 10),
-          ),
-          Positioned(
-            bottom: 10,
-            right: 10,
-            child: FloatingActionButton(
-              foregroundColor: Theme.of(context).accentColor,
-              backgroundColor: Colors.white,
-              onPressed: _currentLocation,
-              child: Icon(Icons.my_location),
-              mini: true,
-            ),
           ),
           Positioned(
             child: SafeArea(
