@@ -1,6 +1,7 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../widgets/exp_animated.dart';
 
 class About extends StatelessWidget {
@@ -114,7 +115,7 @@ class About extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      'Updated hourly\nData Source: Wikipedia',
+                                      'Updated: Hourly\nData Source: Wikipedia',
                                       style: Theme.of(context)
                                           .accentTextTheme
                                           .display3,
@@ -128,7 +129,7 @@ class About extends StatelessWidget {
                         );
                       },
                       icon: Icon(
-                        Icons.info,
+                        Icons.info_outline,
                         color: Theme.of(context).accentColor,
                       ),
                       label: Text(
@@ -137,6 +138,22 @@ class About extends StatelessWidget {
                         textScaleFactor: 1.0,
                       ),
                     ),
+
+                       FlatButton.icon(
+                      onPressed: () {
+                        launch('https://www.cdc.gov/coronavirus/2019-ncov/index.html');
+                      },
+                      icon: Icon(
+                        Icons.link,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      label: Text(
+                        'CDC',
+                        style: Theme.of(context).accentTextTheme.title,
+                        textScaleFactor: 1.0,
+                      ),
+                    ),
+                   
                     FlatButton.icon(
                       onPressed: () {
                         Share.share(

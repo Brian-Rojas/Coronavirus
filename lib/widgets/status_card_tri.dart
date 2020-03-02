@@ -40,7 +40,7 @@ class StatusCardTri extends StatelessWidget {
     print("Pixel Ratio: ${MediaQuery.of(context).devicePixelRatio}");
     print("size: ${MediaQuery.of(context).size}");
     return Container(
-      padding: EdgeInsets.only(left:8, right: 8),
+      padding: EdgeInsets.only(left:10, right: 10),
       height: deviceHeight(size),
       child: Center(
         child: Card(
@@ -67,6 +67,7 @@ class StatusCardTri extends StatelessWidget {
                       firstLbl,
                       style: GoogleFonts.openSans(
                         color: Theme.of(context).textTheme.display2.color,
+                        
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
                       textScaleFactor: 1.0,
@@ -87,7 +88,8 @@ class StatusCardTri extends StatelessWidget {
                     Text(
                       secondVal.toString(),
                       style: GoogleFonts.openSans(
-                        color: Theme.of(context).accentTextTheme.display2.color,
+                        // color: Theme.of(context).accentTextTheme.display2.color,
+                        color: Color.fromRGBO(205, 118, 114, 1.0),
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
                       textScaleFactor: 1.0,
@@ -117,6 +119,7 @@ class StatusCardTri extends StatelessWidget {
                       thirdVal.toString(),
                       style: GoogleFonts.openSans(
                         color: Theme.of(context).accentTextTheme.display2.color,
+                        // color: Color.fromRGBO(29, 188, 96, 1.0),
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
                       textScaleFactor: 1.0,
