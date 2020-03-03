@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coronavirus_app/util/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -75,8 +76,8 @@ class TableItem extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(2.0),
                           child: imageUrl != "https://"
-                              ? Image.network(
-                                  imageUrl,
+                              ? Image(
+                                  image: CachedNetworkImageProvider(imageUrl),
                                   height: 13,
                                   alignment: Alignment.centerLeft,
                                 )

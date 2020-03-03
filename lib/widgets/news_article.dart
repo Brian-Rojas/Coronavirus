@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -71,8 +72,8 @@ class NewsArticle extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: image != null
-                          ? Image.network(
-                              image,
+                          ? Image(
+                              image: CachedNetworkImageProvider(image),
                               height: 40,
                               width: 40,
                             )
