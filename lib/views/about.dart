@@ -1,4 +1,5 @@
 import 'package:coronavirus_app/widgets/image_slider.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,6 +17,14 @@ class About extends StatelessWidget {
 
   final String prevention =
       'Standard recommendations to prevent infection spread include regular hand washing, covering mouth and nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone showing symptoms of respiratory illness such as coughing and sneezing.';
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +51,7 @@ class About extends StatelessWidget {
           padding: EdgeInsets.only(top: 20),
           color: Colors.transparent,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               ImageSlider(),
               Container(
@@ -73,6 +83,7 @@ class About extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
+                margin: EdgeInsets.only(bottom: 20),
                 child: ExpAnimated(
                   cardTitle: 'Prevention\n\n',
                   textHeight: 250,
@@ -81,7 +92,27 @@ class About extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 40),
+                padding: EdgeInsets.all(15),
+                child: RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Tap here to read more from CDC',
+                        style: Theme.of(context).accentTextTheme.display3,
+                        recognizer: new TapGestureRecognizer()
+                          ..onTap = () {
+                            _launchURL(
+                                'https://www.cdc.gov/coronavirus/2019-ncov/index.html');
+                          },
+                          
+                      ),
+                      
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                // padding: EdgeInsets.only(top: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -138,22 +169,6 @@ class About extends StatelessWidget {
                         textScaleFactor: 1.0,
                       ),
                     ),
-
-                       FlatButton.icon(
-                      onPressed: () {
-                        launch('https://www.cdc.gov/coronavirus/2019-ncov/index.html');
-                      },
-                      icon: Icon(
-                        Icons.link,
-                        color: Theme.of(context).accentColor,
-                      ),
-                      label: Text(
-                        'CDC',
-                        style: Theme.of(context).accentTextTheme.title,
-                        textScaleFactor: 1.0,
-                      ),
-                    ),
-                   
                     FlatButton.icon(
                       onPressed: () {
                         Share.share(
