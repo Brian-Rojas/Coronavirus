@@ -101,7 +101,7 @@ class About extends StatelessWidget {
                       TextSpan(
                         // text: 'Tap here to read more from CDC',
                         text: 'Read more',
-                        style: TextStyle(color: Color.fromRGBO(205, 118, 114, 1.0), fontSize: 20 ),
+                        style: TextStyle(color: Color.fromRGBO(205, 118, 114, 0.7), fontSize: 20 ),
                         // style: Theme.of(context).accentTextTheme.display3,
                         recognizer: new TapGestureRecognizer()
                           ..onTap = () {
