@@ -74,23 +74,18 @@ class TableItem extends StatelessWidget {
                           ],
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(2.0),
-                          child: imageUrl != "https://"
-                              ? Image(
-                                  image: CachedNetworkImageProvider(imageUrl),
-                                  height: 13,
-                                  alignment: Alignment.centerLeft,
-                                )
-                              : SizedBox(
-                                  child: Icon(
-                                    Icons.flag,
-                                    color: Theme.of(context).accentColor,
-                                    size: 20,
-                                  ),
-                                  height: 20,
-                                  width: 20,
-                                ),
-                        ),
+                            borderRadius: BorderRadius.circular(2.0),
+                            child: imageUrl != "https://"
+                                ? Image(
+                                    image: CachedNetworkImageProvider(imageUrl),
+                                    height: 13,
+                                    alignment: Alignment.centerLeft,
+                                  )
+                                : Image.asset(
+                                    "assets/images/white_flag.png",
+                                    height: 13,
+                                    alignment: Alignment.centerLeft,
+                                  )),
                       ),
                       SizedBox(
                         width: SizeConfig.safeBlockHorizontal * 30,
