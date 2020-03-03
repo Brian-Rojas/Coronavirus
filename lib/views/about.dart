@@ -51,7 +51,7 @@ class About extends StatelessWidget {
           padding: EdgeInsets.only(top: 20),
           color: Colors.transparent,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               ImageSlider(),
               Container(
@@ -92,21 +92,23 @@ class About extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(15),
+                // padding: EdgeInsets.all(15),
+                padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
+
                 child: RichText(
                   text: TextSpan(
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'Tap here to read more from CDC',
-                        style: Theme.of(context).accentTextTheme.display3,
+                        // text: 'Tap here to read more from CDC',
+                        text: 'Read more',
+                        style: TextStyle(color: Color.fromRGBO(205, 118, 114, 1.0), fontSize: 20 ),
+                        // style: Theme.of(context).accentTextTheme.display3,
                         recognizer: new TapGestureRecognizer()
                           ..onTap = () {
                             _launchURL(
                                 'https://www.cdc.gov/coronavirus/2019-ncov/index.html');
                           },
-                          
                       ),
-                      
                     ],
                   ),
                 ),

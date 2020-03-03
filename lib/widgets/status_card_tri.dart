@@ -67,7 +67,6 @@ class StatusCardTri extends StatelessWidget {
                       firstLbl,
                       style: GoogleFonts.openSans(
                         color: Theme.of(context).textTheme.display2.color,
-                        
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
                       textScaleFactor: 1.0,
@@ -88,8 +87,7 @@ class StatusCardTri extends StatelessWidget {
                     Text(
                       secondVal.toString(),
                       style: GoogleFonts.openSans(
-                        // color: Theme.of(context).accentTextTheme.display2.color,
-                        color: Color.fromRGBO(205, 118, 114, 1.0),
+                        color: Theme.of(context).accentTextTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
                       textScaleFactor: 1.0,
@@ -97,7 +95,7 @@ class StatusCardTri extends StatelessWidget {
                     Text(
                       secondLbl,
                       style: GoogleFonts.openSans(
-                        color: Theme.of(context).textTheme.display2.color,
+                        color: Color.fromRGBO(205, 118, 114, 0.7),
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
                       textScaleFactor: 1.0,
@@ -119,7 +117,6 @@ class StatusCardTri extends StatelessWidget {
                       thirdVal.toString(),
                       style: GoogleFonts.openSans(
                         color: Theme.of(context).accentTextTheme.display2.color,
-                        // color: Color.fromRGBO(29, 188, 96, 1.0),
                         fontSize: SizeConfig.safeBlockHorizontal * 6,
                       ),
                       textScaleFactor: 1.0,
@@ -127,7 +124,8 @@ class StatusCardTri extends StatelessWidget {
                     Text(
                       thirdLbl,
                       style: GoogleFonts.openSans(
-                        color: Theme.of(context).textTheme.display2.color,
+                        color: Color.fromRGBO(29, 188, 96, 0.7),
+                        // color: Theme.of(context).textTheme.display2.color,
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
                       ),
                       textScaleFactor: 1.0,
