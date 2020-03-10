@@ -8,4 +8,4 @@ An application developed to view the latest statistics and news articles on the 
 	* Ad Free
 
 ## Demo
-![Coronavirus Stats Demo](assets/demo.gif | width=200)
+![Coronavirus Stats Demo](assets/demo.gif | width=200px)
