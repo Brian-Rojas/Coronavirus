@@ -12,4 +12,4 @@ Unfortunately, was later removed from the stores to prevent panic.
 	- Ad Free
 
 ## Demo
-![Coronavirus Stats Demo](assets/demo.gif)
+<img src="assets/demo.gif" alt="Coronavirus Stats Demo" width="200"/>
